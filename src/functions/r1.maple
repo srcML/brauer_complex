@@ -70,5 +70,5 @@ calculate_r1 := proc(order)
 
   return number_rows, r1_matrix, r1_lookup_table;
 
-end proc;
+end proc:
 
