@@ -7,6 +7,7 @@ brauer_complex_r1 := proc(order)
   local number_rows := size / 4;
 
   local r1 := Matrix(number_rows, number_columns);
+  local r1_lookup_table := Array(1 .. max_value - 1, fill=0, datatype=integer);
 
   local is_generated := Array(1 .. max_value - 1, fill=false, datatype=boolean);
 
@@ -53,8 +54,18 @@ brauer_complex_r1 := proc(order)
 	 current_size := current_size + 4;
 
   end do; 
-  
 
-  return number_rows, r1;
+  for row from 1 to number_rows do
+
+      for column from 1 to 4 do
+
+            r1_lookup_table[r1[row, column]] := r1[row, 1]
+
+      end do;
+
+  end do;
+
+  return number_rows, r1, r1_lookup_table;
 
 end proc;
+
