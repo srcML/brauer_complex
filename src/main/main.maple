@@ -2,9 +2,9 @@ $include "src/functions/r1.maple" ;
 
 interface(rtablesize=infinity):
 
-number_rows, r1, r1_lookup_table := brauer_complex_r1(8):
+number_rows, r1_matrix, r1_lookup_table := calculate_r1(8):
 
 number_rows;
-r1;
+r1_matrix;
 r1_lookup_table;
 r1_lookup_table[22];
