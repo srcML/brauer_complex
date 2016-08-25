@@ -13,6 +13,11 @@ brauer_complex_r1 := proc(order)
   local current_number := 0;
   local current_row := 1;
   local current_size := 0;
+
+  local column_two_value := 0;
+  local column_three_value := 0;
+  local column_four_value := 0;
+
   while not (current_size = size)  do
 
 	 current_number := current_number + 1;
