@@ -1,0 +1,55 @@
+brauer_complex_r1 := proc(order)
+
+  local max_value := order ^ 2 - 1;
+  local size := order ^ 2 - 2 * order;
+
+  local number_columns := 4;
+  local number_rows := size / 4;
+
+  local r1 := Matrix(number_rows, number_columns);
+
+  local is_generated := Array(1 .. max_value - 1, fill=false, datatype=boolean);
+
+  local current_number := 0;
+  local current_row := 1;
+  local current_size := 0;
+  while not (current_size = size)  do
+
+	 current_number := current_number + 1;
+
+  	 if current_number mod (order - 1) = 0 then
+		next;
+	 end if; 
+
+  	 if current_number mod (order + 1) = 0 then
+		next;
+	 end if; 
+
+  	 if is_generated[current_number] then
+		next;
+	 end if; 
+
+	 r1[current_row, 1] := current_number;
+  	 is_generated[current_number] := true;
+
+	 column_two_value := (order * current_number) mod max_value;
+	 r1[current_row, 2] := column_two_value;
+  	 is_generated[column_two_value] := true;
+
+	 column_three_value := (order ^ 2 - 1 - current_number) mod max_value;
+	 r1[current_row, 3] := column_three_value;
+  	 is_generated[column_three_value] := true;
+
+	 column_four_value := (order ^ 2 - 1 - order * current_number) mod max_value;
+	 r1[current_row, 4] := column_four_value;
+  	 is_generated[column_four_value] := true;
+	 
+	 current_row := current_row + 1;
+	 current_size := current_size + 4;
+
+  end do; 
+  
+
+  return number_rows, r1;
+
+end proc;
