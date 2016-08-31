@@ -1,4 +1,6 @@
-$include "src/functions/r1.maple" ;
+$include "brauer_complex/src/functions/r1.maple" ;
+$include "brauer_complex/src/functions/X_q.maple" ;
+
 
 interface(rtablesize=infinity):
 
@@ -8,3 +10,5 @@ number_rows;
 r1_matrix;
 r1_lookup_table;
 r1_lookup_table[22];
+
+brauer_complex_X_q(2);
