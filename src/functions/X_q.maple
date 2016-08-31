@@ -1,0 +1,27 @@
+#This function should construct the basis for the weight space X_q
+#first initiate the process 
+
+brauer_complex_X_q:=proc(order)
+
+
+#definition of local variables
+	local X_q:= Matrix(order^3,3);   #The weights will be listed with x,y,z in each column
+	
+
+#Here is the nested loop which fills the values
+
+      for i from 0 to order-1 do
+      	  for j from 0 to order-1 do
+	      for k from 0 to order-1 do
+
+	       	   X_q[order^2*i+order*j+k+1,1]:=i+j+k;
+		   X_q[order^2*i+order*j+k+1,2]:=j+k;
+		   X_q[order^2*i+order*j+k+1,3]:=k;
+
+		  end do;
+	end do;
+end do;
+
+return X_q;    #send the matrix back to the main program for use
+
+end proc;
