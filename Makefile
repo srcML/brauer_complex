@@ -1,7 +1,7 @@
 all: run
 
 run:
-	maple src/main/main.maple
+	maple -I src/functions src/main/main.maple
 
 test: test_r1
 
