@@ -1,24 +1,38 @@
-$include <r1.maple> ;
 $include <X_q.maple> ;
+
+$include <r1.maple> ;
 $include <r2.maple> ;
 $include <t1.maple> ;
+$include <t2.maple> ;
+$include <s2.maple> ;
+
 
 interface(rtablesize=infinity):
 
-r1, r1_lookup_table := brauer_complex_r1(8):
-r2, r2_lookup_table := brauer_complex_r2(8):
+#r1, r1_lookup_table := brauer_complex_r1(8):
+#r2, r2_lookup_table := brauer_complex_r2(8):
 t1, t1_lookup_table := brauer_complex_t1(8);
+t2, t2_lookup_table := brauer_complex_t2(8);
+s2, s2_lookup_table := brauer_complex_s2(8);
 
-r1;
-r1_lookup_table;
-r1_lookup_table[22];
+#r1;
+#r1_lookup_table;
+#r1_lookup_table[22];
 
-r2;
-r2_lookup_table;
-r2_lookup_table[22];
+#r2;
+#r2_lookup_table;
+#r2_lookup_table[22];
 
 t1;
 t1_lookup_table;
 t1_lookup_table[5];
 
-brauer_complex_X_q(8);
+t2;
+t2_lookup_table;
+t2_lookup_table[5];
+
+s2;
+s2_lookup_table;
+s2_lookup_table[63];
+
+#brauer_complex_X_q(8);
