@@ -1,0 +1,65 @@
+brauer_complex_r2 := proc(order)
+
+  local max_value := order ^ 2 + 1;           #note since q^2+1=0 that q^2=-1 mod max_value  
+  local size := order ^ 2;
+
+  local number_columns := 4;
+  local number_rows := size / 4;
+
+  local r2_matrix := Matrix(number_rows, number_columns);
+  local r2_lookup_table := Array(1 .. max_value - 1, fill=0, datatype=integer);
+
+  local is_generated := Array(1 .. max_value - 1, fill=false, datatype=boolean);
+
+  local current_number := 0;
+  local current_row := 1;
+  local current_size := 0;
+
+  local column_two_value := 0;
+  local column_three_value := 0;
+  local column_four_value := 0;
+
+  local row := 0;
+  local column := 0;
+
+  while not (current_size = size)  do
+						#Since q^2+1 does not factor, there aren't persistent zero divisors to skip
+	 current_number := current_number + 1;
+  	 if is_generated[current_number] then
+		next;
+	 end if; 
+
+	 r2_matrix[current_row, 1] := current_number;
+  	 is_generated[current_number] := true;
+
+	 column_two_value := (order * current_number) mod max_value;
+	 r2_matrix[current_row, 2] := column_two_value;
+  	 is_generated[column_two_value] := true;
+
+	 column_three_value := (order ^ 2 - 1 - current_number) mod max_value;
+	 r2_matrix[current_row, 3] := column_three_value;
+  	 is_generated[column_three_value] := true;
+
+	 column_four_value := (order ^ 2 - 1 - order * current_number) mod max_value;
+	 r2_matrix[current_row, 4] := column_four_value;
+  	 is_generated[column_four_value] := true;
+	 
+	 current_row := current_row + 1;
+	 current_size := current_size + 4;
+
+  end do; 
+						#the algorithm is the same as for r1
+  for row from 1 to number_rows do
+
+      for column from 1 to 4 do
+
+            r2_lookup_table[r2_matrix[row, column]] := r2_matrix[row, 1];
+
+      end do;
+
+  end do;
+
+  return r2_matrix, r2_lookup_table;
+
+end proc:
+
