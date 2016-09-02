@@ -7,15 +7,24 @@ $include <t2.maple> ;
 $include <s2.maple> ;
 $include <s1.maple> ;
 
+$include <tori.maple> ;
+$include <characterfamilies.maple> ;
+$include <weighttwister.maple> ;
 
 interface(rtablesize=infinity):
 
-r1, r1_lookup_table := brauer_complex_r1(8):
-r2, r2_lookup_table := brauer_complex_r2(8):
-t1, t1_lookup_table := brauer_complex_t1(8):
-t2, t2_lookup_table := brauer_complex_t2(8):
-s2, s2_lookup_table := brauer_complex_s2(8):
-s1, s1_lookup_table := brauer_complex_s1(8):
+order := 8;     #eight is essentially the only reasonable value, though we may run 16 to check things
+
+DM := Matrix[(order+1)*(order^2+order+4), order^3, fill=0, datatype=integer]:
+
+brauer_complex_X_q(order):
+
+r1, r1_lookup_table := brauer_complex_r1(order):
+r2, r2_lookup_table := brauer_complex_r2(order):
+t1, t1_lookup_table := brauer_complex_t1(order):
+t2, t2_lookup_table := brauer_complex_t2(order):
+s2, s2_lookup_table := brauer_complex_s2(order):
+s1, s1_lookup_table := brauer_complex_s1(order):
 
 r1;
 r1_lookup_table;
@@ -41,4 +50,3 @@ s1;
 s1_lookup_table;
 s1_lookup_table[63];
 
-brauer_complex_X_q(8);
