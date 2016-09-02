@@ -7,15 +7,15 @@ $include <t2.maple> ;
 $include <s2.maple> ;
 $include <s1.maple> ;
 
-$include <tori.maple> ;
-$include <characterfamilies.maple> ;
-$include <weighttwister.maple> ;
+#$include <tori.maple> ;
+#$include <characterfamilies.maple> ;
+#$include <weighttwister.maple> ;
 
 interface(rtablesize=infinity):
 
-order := 8;     #eight is essentially the only reasonable value, though we may run 16 to check things
+order := 2;     #eight is essentially the only reasonable value, though we may run 16 to check things
 
-DM := Matrix[(order+1)*(order^2+order+4), order^3, fill=0, datatype=integer]:
+#DM := Matrix[(order+1)*(order^2+order+4), order^3, fill=0, datatype=integer]:
 
 brauer_complex_X_q(order):
 
@@ -50,3 +50,4 @@ s1;
 s1_lookup_table;
 s1_lookup_table[63];
 
+#chi13(1,2,order,4);
