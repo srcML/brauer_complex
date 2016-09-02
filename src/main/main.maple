@@ -8,29 +8,32 @@ $include <s2.maple> ;
 $include <s1.maple> ;
 
 #$include <tori.maple> ;
-#$include <characterfamilies.maple> ;
+$include <characterfamilies.maple> ;
 #$include <weighttwister.maple> ;
 
 interface(rtablesize=infinity):
 
-order := 2;     #eight is essentially the only reasonable value, though we may run 16 to check things
+que := 2;     #eight is essentially the only reasonable value, though we may run 16 to check things
 
-#DM := Matrix[(order+1)*(order^2+order+4), order^3, fill=0, datatype=integer]:
+nrchars := (que+1)*(que^2+order+4);
+nrBrchars :=que^3;
 
-brauer_complex_X_q(order):
+DM := Matrix[nrchars, nrBrchars, fill=0, datatype=integer]:
 
-r1, r1_lookup_table := brauer_complex_r1(order):
-r2, r2_lookup_table := brauer_complex_r2(order):
-t1, t1_lookup_table := brauer_complex_t1(order):
-t2, t2_lookup_table := brauer_complex_t2(order):
-s2, s2_lookup_table := brauer_complex_s2(order):
-s1, s1_lookup_table := brauer_complex_s1(order):
+brauer_complex_X_q(que):
 
-r1;
+r1, r1_lookup_table := brauer_complex_r1(que):
+r2, r2_lookup_table := brauer_complex_r2(que):
+t1, t1_lookup_table := brauer_complex_t1(que):
+t2, t2_lookup_table := brauer_complex_t2(que):
+s2, s2_lookup_table := brauer_complex_s2(que):
+s1, s1_lookup_table := brauer_complex_s1(que):
+
+#r1;
 r1_lookup_table;
 r1_lookup_table[22];
 
-r2;
+#r2;
 r2_lookup_table;
 r2_lookup_table[22];
 
@@ -42,12 +45,13 @@ t2;
 t2_lookup_table;
 t2_lookup_table[5];
 
-s2;
+#s2;
 s2_lookup_table;
 s2_lookup_table[63];
 
-s1;
+#s1;
 s1_lookup_table;
 s1_lookup_table[63];
 
-#chi13(1,2,order,4);
+chi13(1,2,que,4);
+DM;

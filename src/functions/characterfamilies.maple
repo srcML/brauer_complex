@@ -3,6 +3,9 @@
 
 chi1 := proc(coefficient,column) 
 
+     local coefficient;
+     local column;
+    
      DM[1,column]= DM[1,column] + coefficient;
 
 end proc;
@@ -11,6 +14,10 @@ end proc;
 #up to chi12 similar
 
 chi13 :=proc(coefficient,parameter,column)
+
+      local parameter;
+      local coefficient;
+      local column;
 
       DM[12+parameter,column]= DM[12+parameter,column]+coefficient;
 
