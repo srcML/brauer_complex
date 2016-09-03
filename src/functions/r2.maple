@@ -1,4 +1,4 @@
-compute_r2 := proc(order)
+calculate_r2 := proc(order)
 
   local max_value := order ^ 2 + 1;           #note since q^2+1=0 that q^2=-1 mod max_value  
   local size := order ^ 2;
