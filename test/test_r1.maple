@@ -7,10 +7,11 @@ kernelopts(assertlevel=1);
 
 
 # test 
-number_rows, r1_matrix, r1_lookup_table := calculate_r1(8):
+#number_rows, r1_matrix, r1_lookup_table := calculate_r1(8):
+r1_matrix, r1_lookup_table := calculate_r1(8):
 
 # verification
-ASSERT(number_rows = 12, "calculate_r1(8): Failed number of rows test");
+#ASSERT(number_rows = 12, "calculate_r1(8): Failed number of rows test");
 
 test_matrix := Matrix(12, 4, [[ 1,  8, 62, 55],
                               [ 2, 16, 61, 47],
