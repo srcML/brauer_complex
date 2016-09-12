@@ -1,0 +1,46 @@
+$include "src/functions/r2.maple"
+with(LinearAlgebra):
+with(ArrayTools):
+
+kernelopts(assertlevel=1);
+
+
+
+# test 
+#number_rows, r2_matrix, r2_lookup_table := calculate_r2(8):
+r2_matrix, r2_lookup_table := calculate_r2(8):
+
+# verification
+#ASSERT(number_rows = 12, "calculate_r2(8): Failed number of rows test");
+
+test_matrix := Matrix(16, 4,
+[
+[ 1,  8, 62, 55],
+[ 2, 16, 61, 47],
+[ 3, 24, 60, 39],
+[ 4, 32, 59, 31],
+[ 5, 40, 58, 23],
+[ 6, 48, 57, 15],
+[ 7, 56, 56,  7],
+[ 9,  7, 54, 56],
+[10, 15, 53, 48],
+[11, 23, 52, 40],
+[12, 31, 51, 32],
+[13, 39, 50, 24],
+[14, 47, 49, 16],
+[17,  6, 46, 57],
+[18, 14, 45, 49],
+[19, 22, 44, 41]
+]
+):
+ASSERT(Equal(r2_matrix, test_matrix), "calculate_r2(8): Failed matrix test");
+
+
+test_lookup_table := Array(
+[
+1, 2, 3, 4, 5, 17, 9, 1, 9, 10, 11, 12, 13, 18, 10, 14, 17, 18, 19, 0, 0, 19,
+11, 13, 0, 0, 0, 0, 0, 0, 12, 12, 0, 0, 0, 0, 0, 0, 13, 11, 19, 0, 0, 19, 18,
+17, 14, 10, 18, 13, 12, 11, 10, 9, 1, 9, 17, 5, 4, 3, 2, 1, 0, 0
+]
+):
+ASSERT(IsEqual(r2_lookup_table, test_lookup_table), "calculate_r2(8): Failed lookup table test");

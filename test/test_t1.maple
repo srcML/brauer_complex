@@ -1,0 +1,31 @@
+$include "src/functions/t1.maple"
+with(LinearAlgebra):
+with(ArrayTools):
+
+kernelopts(assertlevel=1);
+
+
+
+# test 
+#number_rows, t1_matrix, t1_lookup_table := calculate_t1(8):
+t1_matrix, t1_lookup_table := calculate_t1(8):
+
+# verification
+#ASSERT(number_rows = 12, "calculate_t1(8): Failed number of rows test");
+
+test_matrix := Matrix(3, 2,
+[
+[1, 6],
+[2, 5],
+[3, 4]
+]
+):
+ASSERT(Equal(t1_matrix, test_matrix), "calculate_t1(8): Failed matrix test");
+
+
+test_lookup_table := Array(
+[
+1, 2, 3, 3, 2, 1
+]
+):
+ASSERT(IsEqual(t1_lookup_table, test_lookup_table), "calculate_t1(8): Failed lookup table test");

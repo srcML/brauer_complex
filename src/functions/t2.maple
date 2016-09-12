@@ -1,4 +1,4 @@
-brauer_complex_t2 := proc(order)
+calculate_t2 := proc(order)
 
   local max_value := order + 1;
   local size := order ;

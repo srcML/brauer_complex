@@ -23,14 +23,14 @@ nrBrchars :=3;     #for testing purposes
 
 DM := Matrix(nrchars, nrBrchars):
 
-X_q := brauer_complex_X_q(que):
+X_q := calculate_X_q(que):
 
-r1, r1_lookup_table := brauer_complex_r1(que):
-r2, r2_lookup_table := brauer_complex_r2(que):
-t1, t1_lookup_table := brauer_complex_t1(que):
-t2, t2_lookup_table := brauer_complex_t2(que):
-s2, s2_lookup_table := brauer_complex_s2(que):
-s1, s1_lookup_table := brauer_complex_s1(que):
+r1, r1_lookup_table := calculate_r1(que):
+r2, r2_lookup_table := calculate_r2(que):
+t1, t1_lookup_table := calculate_t1(que):
+t2, t2_lookup_table := calculate_t2(que):
+s2, s2_lookup_table := calculate_s2(que):
+s1, s1_lookup_table := calculate_s1(que):
 
 #r1;
 #r1_lookup_table;

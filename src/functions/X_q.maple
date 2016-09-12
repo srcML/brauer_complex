@@ -1,7 +1,7 @@
 #This function should construct the basis for the weight space X_q
 #first initiate the process 
 
-brauer_complex_X_q:=proc(order)
+calculate_X_q:=proc(order)
 
 
 #definition of local variables

@@ -1,4 +1,4 @@
-brauer_complex_s1 := proc(order)
+calculate_s1 := proc(order)
 
   local max_value := order ^ 3 - 1;
   local size := order ^ 3 -  order;
@@ -75,7 +75,7 @@ brauer_complex_s1 := proc(order)
 
   end do;
 
-return  s1_matrix, s1_lookup_table;
+  return s1_matrix, s1_lookup_table;
 
 end proc:
 

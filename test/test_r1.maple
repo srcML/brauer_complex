@@ -7,25 +7,37 @@ kernelopts(assertlevel=1);
 
 
 # test 
-number_rows, r1_matrix, r1_lookup_table := calculate_r1(8):
+#number_rows, r1_matrix, r1_lookup_table := calculate_r1(8):
+r1_matrix, r1_lookup_table := calculate_r1(8):
 
 # verification
-ASSERT(number_rows = 12, "calculate_r1(8): Failed number of rows test");
+#ASSERT(number_rows = 12, "calculate_r1(8): Failed number of rows test");
 
-test_matrix := Matrix(12, 4, [[ 1,  8, 62, 55],
-                              [ 2, 16, 61, 47],
-                              [ 3, 24, 60, 39],
-                              [ 4, 32, 59, 31],
-                              [ 5, 40, 58, 23],
-                              [ 6, 48, 57, 15],
-                              [10, 17, 53, 46],
-                              [11, 25, 52, 38],
-                              [12, 33, 51, 30],
-                              [13, 41, 50, 22],
-                              [19, 26, 44, 37],
-                              [20, 34, 43, 29]]):
+test_matrix := Matrix(12, 4,
+[
+[ 1,  8, 62, 55],
+[ 2, 16, 61, 47],
+[ 3, 24, 60, 39],
+[ 4, 32, 59, 31],
+[ 5, 40, 58, 23],
+[ 6, 48, 57, 15],
+[10, 17, 53, 46],
+[11, 25, 52, 38],
+[12, 33, 51, 30],
+[13, 41, 50, 22],
+[19, 26, 44, 37],
+[20, 34, 43, 29]
+]
+):
 ASSERT(Equal(r1_matrix, test_matrix), "calculate_r1(8): Failed matrix test");
 
 
-test_lookup_table := Array([1, 2, 3, 4, 5, 6, 0, 1, 0, 10, 11, 12, 13, 0, 6, 2, 10, 0, 19, 20, 0, 13, 5, 3, 11, 19, 0, 0, 20, 12, 4, 4, 12, 20, 0, 0, 19, 11, 3, 5, 13, 0, 20, 19, 0, 10, 2, 6, 0, 13, 12, 11, 10, 0, 1, 0, 6, 5, 4, 3, 2, 1]):
+test_lookup_table := Array(
+[
+1, 2, 3, 4, 5, 6, 0, 1, 0, 10, 11, 12, 13, 0, 6, 2, 10, 0, 19,
+20, 0, 13, 5, 3, 11, 19, 0, 0, 20, 12, 4, 4, 12, 20, 0, 0, 19,
+11, 3, 5, 13, 0, 20, 19, 0, 10, 2, 6, 0, 13, 12, 11, 10, 0, 1,
+0, 6, 5, 4, 3, 2, 1
+]
+):
 ASSERT(IsEqual(r1_lookup_table, test_lookup_table), "calculate_r1(8): Failed lookup table test");
