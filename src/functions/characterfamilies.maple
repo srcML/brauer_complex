@@ -2,21 +2,21 @@
 #they should each accept order, parameters and coefficients. Based on order and parameter they write a coefficient into the appropriate index in a matrix. 
 
 chi1 := proc(index::list, DM::Matrix, coefficient) 
-
-	   DM[index] := DM[index] + coefficient;
+     		local existingcoefficient:= DM[index];
+	   DM[index] := existingcoefficient + coefficient;
 	  
 end proc;
 
-chi1 := proc(coefficient,column,DM) 
+#chi1 := proc(coefficient,column,DM) 
     
-     local coefficient;
-     local column;
+#     local coefficient;
+#     local column;
      
-     local index := [1, column];
-     index/chi1[index, DM, coefficient];
+#     local index := [1, column];
+#     index/chi1[index, DM, coefficient];
 
 
-end proc;
+#end proc;
 
 
 #up to chi12 similar
