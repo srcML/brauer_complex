@@ -2,8 +2,8 @@
 #they should each accept order, parameters and coefficients. Based on order and parameter they write a coefficient into the appropriate index in a matrix. 
 
 chi1 := proc(index::list, DM::Matrix, coefficient) 
-     		local existingcoefficient:= DM[index];
-	   DM[index] := existingcoefficient + coefficient;
+
+	   DM[op(index)] := DM[op(index)] + coefficient;
 	  
 end proc;
 
