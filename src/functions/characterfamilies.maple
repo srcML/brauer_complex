@@ -1,10 +1,10 @@
 #this is a collection of 66 character families which depend on various parameter sets t1-s2
 #they should each accept order, parameters and coefficients. Based on order and parameter they write a coefficient into the appropriate index in a matrix. 
 
-`index/chi1` := proc(index, DM, coefficient) 
+chi1 := proc(index::list, DM::Matrix, coefficient) 
 
 	   DM[index] := DM[index] + coefficient;
-
+	  
 end proc;
 
 chi1 := proc(coefficient,column,DM) 
