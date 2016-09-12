@@ -1,22 +1,22 @@
 #this is a collection of ten functions, corresponding to tori. They should all accept order, and a twisted weight from the weight twister function
 
-tone := proc(a,b,c,column,order,DM::Matrix)
+brauer_complex_tone := proc(a,b,c,order)
 
 #if else tree 
-#if a==b==c==0 then 
-chi1(1,column,DM);
-#   chi12(3,column) 
+if a==b==c==0 then 
+   chi11(1)
+   chi12(3) 
 
    	    #and so on
 
 end proc;
 
-brauer_complex_ttwo := proc(a,b,c,order,column)
+brauer_complex_ttwo := proc(a,b,c,order)
 
 
 end proc;
 
-brauer_complex_tthree := proc(a,b,order,column)
+brauer_complex_tthree := proc(a,b,order)
 
 end proc;
 

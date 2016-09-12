@@ -1,16 +1,18 @@
-#this function will take a weight, produce an array which stands for the column of that weight and send 48 twisted weights to the ten tori the appropriate number of times. 
+#this function will take a weight, produce the column of that weight and send 48 twisted weights to the ten tori the appropriate number of times. 
 
-brauer_complex_weight_twister := proc(a,b,c,order)
+weighttwister := proc(a,b,c,lambda,order,DM::Matrix)
 
-tone(a,b,c,order,column):
+     local column := order ^ 3 - (lambda - 1);   #in the viscinity of the mathematical algorithm which twists the weights is a function which reverses the order of the output for technical reasons. 
+			  
+tone(a,b,c,column,order,DM):
 
-ttwo(a,b,c,order,column):
-ttwo(a,c,b,order,column):
-ttwo(c,b,a,order,column):
+#ttwo(a,b,c,colum,order,DM):
+#ttwo(a,c,b,column,order):
+#ttwo(c,b,a,order,column):
 
-tthree(a+qb,c,order,column):
+#tthree(a+qb,c,order,column):
 
-
+return column;
 #and so on 
 
 end proc;
