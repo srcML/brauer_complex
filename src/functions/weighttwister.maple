@@ -6,13 +6,60 @@ weighttwister := proc(a,b,c,lambda,order,DM::Matrix)
 			  
 tone(a,b,c,column,order,DM):
 
-#ttwo(a,b,c,colum,order,DM):
-#ttwo(a,c,b,column,order):
-#ttwo(c,b,a,order,column):
+ttwo(a,b,c,column,order,DM):
+ttwo(a,c,b,column,order,DM):
+ttwo(c,b,a,column,order,DM):
 
-#tthree(a+qb,c,order,column):
+tthree(a+qb,c,column,order,DM):
+tthree(a+qc,b,column,order,DM):
+tthree(b+qc,a,column,order,DM):
+tthree(b-qc,a,column,order,DM):
+tthree(a-qc,b,column,order,DM):
+tthree(a-qb,c,column,order,DM):
 
-return column;
-#and so on 
+tfour(a,b,c,column,order,DM):
+tfour(b,a,c,column,order,DM):
+tfour(c,a,b,column,order,DM):
+
+tfive(a+qb,c,column,order,DM):
+tfive(a+qc,b,column,order,DM):
+tfive(b+qc,a,column,order,DM):
+tfive(b-qc,a,column,order,DM):
+tfive(a-qc,b,column,order,DM):
+tfive(a-qb,c,column,order,DM):
+ 
+tsix(a+qb,c,column,order,DM):
+tsix(a+qc,b,column,order,DM):
+tsix(b+qc,a,column,order,DM):
+tsix(b-qc,a,column,order,DM):
+tsix(a-qc,b,column,order,DM):
+tsix(a-qb,c,column,order,DM):
+
+tseven(a+qc+q^2b,column,order,DM):
+tseven(a+qb+q^2c,column,order,DM):
+tseven(a-qc+q^2b,column,order,DM):
+tseven(a+qb-q^2c,column,order,DM):
+tseven(a-qc-q^2b,column,order,DM):
+tseven(a-qc-q^2c,column,order,DM):
+tseven(a-qb+q^2c,column,order,DM):
+tseven(a+qc-q^2b,column,order,DM):
+
+teight(a,b,c,column,order,DM):
+
+tnine(a+qb,c,column,order,DM):
+tnine(a+qc,b,column,order,DM):
+tnine(b+qc,a,column,order,DM):
+tnine(b-qc,a,column,order,DM):
+tnine(a-qc,b,column,order,DM):
+tnine(a-qb,c,column,order,DM):
+
+tten(a+qc+q^2b,column,order,DM):
+tten(a+qb+q^2c,column,order,DM):
+tten(a-qc+q^2b,column,order,DM):
+tten(a+qb-q^2c,column,order,DM):
+tten(a-qc-q^2b,column,order,DM):
+tten(a-qc-q^2c,column,order,DM):
+tten(a-qb+q^2c,column,order,DM):
+tten(a+qc-q^2b,column,order,DM):
 
 end proc;

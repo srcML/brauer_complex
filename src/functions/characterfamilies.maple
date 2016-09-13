@@ -1,38 +1,86 @@
 #this is a collection of 66 character families which depend on various parameter sets t1-s2
 #they should each accept order, parameters and coefficients. Based on order and parameter they write a coefficient into the appropriate index in a matrix. 
 
-chi1 := proc(coefficient, column, DM::Matrix) 
+chi11 := proc(coefficient, column, DM::Matrix) 
 
 	   DM[1,column] := DM[1,column] + coefficient;
 	  
 end proc;
 
-#chi1 := proc(coefficient,column,DM) 
-    
-#     local coefficient;
-#     local column;
-     
-#     local index := [1, column];
-#     index/chi1[index, DM, coefficient];
+chi12 := proc(coefficient, column, DM::Matrix)
 
+      DM[2,column] := DM[2,column] + coefficient;
 
-#end proc;
+end proc;
 
+chi13 := proc(coefficient, column, DM::Matrix)
 
-#up to chi12 similar
+     DM[3,column] := DM[3,column] + coefficient;
+
+end proc;
+
+chi14 := proc(coefficient, column, DM::Matrix)
+
+     DM[4,column] := DM[4,column] + coefficient;
+
+end proc;
+
+chi15 := proc(coefficient, column, DM::Matrix)
+
+     DM[5,column] := DM[5,column] + coefficient;
+
+end proc;
+
+chi16 :=	proc(coefficient, column, DM::Matrix)
+
+     DM[6,column] := DM[6,column] + coefficient;
+
+end proc;
+
+chi17 :=	proc(coefficient, column, DM::Matrix)
+
+     DM[7,column] := DM[7,column] + coefficient;
+
+end proc;
+
+chi18 :=	proc(coefficient, column, DM::Matrix)
+
+     DM[8,column] := DM[8,column] + coefficient;
+
+end proc;
+
+chi19 :=	proc(coefficient, column, DM::Matrix)
+
+     DM[9,column] := DM[9,column] + coefficient;
+
+end proc;
+
+chi110 :=	proc(coefficient, column, DM::Matrix)
+
+     DM[10,column] := DM[10,column] + coefficient;
+
+end proc;
+
+chi111 :=	proc(coefficient, column, DM::Matrix)
+
+     DM[11,column] := DM[11,column] + coefficient;
+
+end proc;
+
+chi112 :=	proc(coefficient, column, DM::Matrix)
+
+     DM[12,column] := DM[12,column] + coefficient;
+
+end proc;
 
 chi131 :=proc(coefficient,parameter,column,DM)
 
-      local parameter;
-      local coefficient;
-      local column;
-      local DM;
+       #WARNUNG wo ist parameteribereisch ??!!!!!
 
       DM[12+parameter,column] := DM[12+parameter,column]+coefficient;
 
-return DM;
-
 end proc;
+
 
 
 #hereafter it gets more complicated

@@ -2,23 +2,86 @@
 
 tone := proc(a,b,c,column,order,DM::Matrix)
 
-#if else tree 
-#if a==b==c==0 then 
-chi1(1,column,DM);
-#   chi12(3,column) 
+#manage the parameter sets via lookuptables here??
+
+if a=0 then
+   chi11(1,column,DM);
+   chi12(3,column,DM); 
+   chi13(1,column,DM);
+   chi14(2,column,DM);
+   chi16(3,column,DM);
+   chi17(3,column,DM);
+   chi18(3,column,DM);
+   chi19(2,column,DM);
+   chi110(1,column,DM);
+   chi112(1,column,DM);
+
+elif b=0 then
+     chi61();
+     #etc
+elif c=0 then
+    if a=b then
+     chi111();
+     #andc
+
+     else 
+          chi171(a,b,);
+    	  #andc
+
+elif a=c then
+     chi81(a,);
+     #andc
+elif b=c then
+     chi161(a,b,);
+     #andc
+else 
+     chi251(a,b,c,);     
+
+
+#else some kind of error message throw catch?
+end if;
 
    	    #and so on
 
 end proc;
 
-brauer_complex_ttwo := proc(a,b,c,order,column)
+ttwo := proc(a,b,c,column,order,DM::Matrix)
+
+
+
+end proc;
+
+tthree := proc(a,b,column,order,DM::Matrix)
 
 
 end proc;
 
-brauer_complex_tthree := proc(a,b,order,column)
+tfour := proc(a,b,c,column,order,DM::Matrix)
+
 
 end proc;
 
+tfive := proc(a,b,column,order,DM::Matrix)
 
+end proc;
+
+tsix := proc(a,b,column,order,DM::Matrix)
+
+end proc;
+
+tseven := proc(a,column,order,DM::Matrix)
+
+end proc;
+
+teight := proc(a,b,c,column,order,DM::Matrix)
+
+end proc;
+
+tnine := proc(a,b,column,order,DM::Matrix)
+
+end proc;
+
+tten := proc(a,column,order,DM::Matrix)
+
+end proc;
 
