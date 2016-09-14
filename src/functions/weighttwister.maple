@@ -1,14 +1,16 @@
 #this function will take a weight, produce the column of that weight and send 48 twisted weights to the ten tori the appropriate number of times. 
 
-weighttwister := proc(a,b,c,lambda,order,DM::Matrix)
+weighttwister := proc(a,b,c,lambda,order,DM::Matrix,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt)
 
      local column := order ^ 3 - (lambda - 1);   #in the viscinity of the mathematical algorithm which twists the weights is a function which reverses the order of the output for technical reasons. 
 			  
-tone(a,b,c,column,order,DM):
+tone(a,b,c,column,order,DM,t1_lt):
 
-ttwo(a,b,c,column,order,DM):
-ttwo(a,c,b,column,order,DM):
-ttwo(c,b,a,column,order,DM):
+ttwo(a,b,c,column,order,DM,t1_lt,t2_lt):
+ttwo(a,c,b,column,order,DM,t1_lt,t2_lt):
+ttwo(c,b,a,column,order,DM,t1_lt,t2_lt):
+
+#need to determine which lookuptables need to be sent to each torus
 
 tthree(a+qb,c,column,order,DM):
 tthree(a+qc,b,column,order,DM):
