@@ -73,14 +73,21 @@ chi112 :=	proc(coefficient, column, DM::Matrix)
 
 end proc;
 
-chi131 :=proc(coefficient,parameter,column,DM)
+chi131 :=proc(coefficient,parameter,column,DM::Matrix)
 
-       #WARNUNG wo ist parameteribereisch ??!!!!!
 
       DM[12+parameter,column] := DM[12+parameter,column]+coefficient;
 
 end proc;
 
+##all subsequent families require order
+
+chi131 := proc(coefficient,parameter,column,DM::Matrix)
+       
+#       DM[12+ (
+
+end proc;
 
 
-#hereafter it gets more complicated
+
+## warning, must name chi_11,1 and 11,2 differently from 1,11 and 1,12

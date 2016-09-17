@@ -3,10 +3,21 @@
 tone := proc(a,b,c,column,order,DM::Matrix,t1_lt)
 
 #manage the parameter sets via lookuptables here
+	local a1:
+	local b1:
+	local c1:
 
-local a1 := t1_lt[a]:
-local b1 := t1_lt[b]:
-local c1 := t1_lt[c];     #this is the simplest case of parameter management in the entire complex
+if a mod (order-1) = 0 then a1 := 0:
+    else a1 := t1_lt[a mod (order-1)]:
+    end if;
+if b mod (order-1)= 0  then b1 := 0:
+    else b1 := t1_lt[b mod (order-1)]:
+    end if;
+if c mod (order-1) = 0  then c1 := 0:
+    else c1 := t1_lt[c mod (order-1)]:     #this is the simplest case of parameter management in the entire complex
+    end if;
+
+#Begin if/else tree for D-L chars
 
 if a1=0 then
    chi11(1,column,DM);
@@ -18,42 +29,67 @@ if a1=0 then
    chi18(3,column,DM);
    chi19(2,column,DM);
    chi110(1,column,DM);
-   chi112(1,column,DM);
+   chi112(1,column,DM);      #this is the result of (0,0,0), which for T_1 is equivalent to a=0. 
 
 elif b1=0 then
-     chi61();
-     #etc
+     chi61(1,a1,order,column,DM);
+     chi62(2,a1,order,column,DM);
+     chi63(1,a1,order,column,DM);
+     chi64(1,a1,order,column,DM);
+     chi66(1,a1,order,column,DM);      # case (a,0,0)
+    
 elif c1=0 then
     if a1=b1 then
-     chi111();
-     #andc
+     chi11_1(1,a1,order,column,DM);
+     chi11_2(1,a1,order,column,DM);
+     chi113(1,a1,order,column,DM);
+     chi114(1,a1,order,column,DM);  # case (a,a,0)
 
      else 
-          chi171(a1,b1,);
-    	  #andc
+          chi171(1,a1,b1,order,column,DM);
+	  chi172(1,a1,b1,order,column,DM);  # case (a,b,0)
+
+	  end if;   #not sure if this will cause problems###########!!!#################
 
 elif a1=c1 then
-     chi81(a1,);
-     #andc
+     chi81(1,a1,order,column,DM);
+     chi82(2,a1,order,column,DM);
+     chi83(1,a1,order,column,DM); # case (a,a,a)
+    
 elif b1=c1 then
-     chi161(a1,b1,);
-     #andc
+     chi161(1,a1,b1,order,column,DM);
+     chi162(1,a1,b1,order,column,DM);  # case (a,b,b)
+    
 else 
-     chi251(a1,b1,c1,);     
+     chi251(1,a1,b1,c1,order,column,DM);     #case (a,b,c)
 
 
 #else some kind of error message throw catch?
+
 end if;
 
 end proc;
 
+#########################################################
+#########################################################
+
 ttwo := proc(a,b,c,column,order,DM::Matrix, t1_lt, t2_lt)
 
-local a1 := t1_lt[a];
-local b1 := t1_lt[b];
-local c1 := t2_lt[c];
+local a1:
+local b1:
+local c1:
 
-#Here, since a,b,c have been possibly permuted, we may make use of sets to manage cases in the if-else tree
+if a mod (order-1)=0 then a1 := 0:
+   else  a1 := t1_lt[a mod (order-1)];
+   end if;
+if b1 mod (order-1)=0 then b1 := 0:
+   else  b1 := t1_lt[b mod (order-1)];
+   end if;
+if c1 mod (order-1 )=0 then c1:=0:
+   else c1 := t2_lt[c mod (order+1)];
+   end if;
+
+#Here, since a,b,c have been possibly permuted, we may make use of sets to manage cases in the if-else tree, radically more complex than in T1
 
 
 end proc;
