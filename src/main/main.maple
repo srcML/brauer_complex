@@ -16,14 +16,15 @@ interface(rtablesize=infinity):
 
 que := 2;     #eight is essentially the only reasonable value, though we may run 16 to check things
 
-nrchars := (que+1) * (que^2+que+4);
-nrBrchars := que^3;
+#nrchars := (que+1) * (que^2+que+4);
+#nrBrchars := que^3;
 
-#nrchars :=3;
-#nrBrchars :=3;     #for testing purposes
+nrchars :=12;
+nrBrchars :=2;     #for testing purposes
 
 DM := Matrix(nrchars, nrBrchars);
-X_q := calculate_X_q(que):
+
+#X_q := calculate_X_q(que):
 
 #bigiterator(que,DM,X_q):
 
@@ -34,6 +35,8 @@ t1, t1_lt := calculate_t1(que):
 t2, t2_lt := calculate_t2(que):
 s2, s2_lt := calculate_s2(que):
 s1, s1_lt := calculate_s1(que):
+
+
 
 #r1;
 #r1_lookup_table;
@@ -53,6 +56,21 @@ s1, s1_lt := calculate_s1(que):
 #s1;
 #s1_lookup_table;
 
+
+
+
+
+
+
+
+
+
+
+##############################################################
+#Here is a testing ground for functions. 
+
+#test primary function decomposition
+
 #X_q;
 #bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt);
 #weighttwister(3,2,1,3,que,DM);
@@ -60,4 +78,25 @@ s1, s1_lt := calculate_s1(que):
 #chi1(column,DM,5);
 #DM;
 
-t1_lt[0];
+#t1_lt[0];
+
+
+#below was a test for the if-else tree of tone
+#tone(0,0,0,1,4,DM,t1_lt);
+#DM;
+#tone(1,0,0,1,4,DM,t1_lt);
+#DM;
+#tone(1,1,0,1,4,DM,t1_lt);
+#DM;
+#tone(1,1,1,1,4,DM,t1_lt);
+#DM;
+#tone(2,1,0,1,4,DM,t1_lt);
+#DM;
+#tone(2,2,1,1,4,DM,t1_lt);
+#DM;
+#tone(2,1,1,1,4,DM,t1_lt);
+#DM;
+#tone(3,2,1,1,4,DM,t1_lt);
+#DM;
+
+

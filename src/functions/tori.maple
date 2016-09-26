@@ -59,7 +59,11 @@ elif a1=c1 then
 elif b1=c1 then
      chi161(1,a1,b1,order,column,DM);
      chi162(1,a1,b1,order,column,DM);  # case (a,b,b)
-    
+
+elif a1=b1 then
+     chi161(1,a1,c1,order,column,DM);
+     chi162(1,a1,c1,order,column,DM);  # case (a,a,b)
+
 else 
      chi251(1,a1,b1,c1,order,column,DM);     #case (a,b,c)
 
