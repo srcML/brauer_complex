@@ -7,6 +7,8 @@ $include <t2.maple> ;
 $include <s2.maple> ;
 $include <s1.maple> ;
 
+#$include <t1test.maple> ;
+
 #$include <bigiterator.maple> ;
 #$include <tori.maple> ;
 #$include <characterfamilies.maple> ;
@@ -19,7 +21,7 @@ que := 2;     #eight is essentially the only reasonable value, though we may run
 #nrchars := (que+1) * (que^2+que+4);
 #nrBrchars := que^3;
 
-nrchars :=12;
+nrchars :=18;
 nrBrchars :=2;     #for testing purposes
 
 DM := Matrix(nrchars, nrBrchars);
@@ -81,22 +83,35 @@ s1, s1_lt := calculate_s1(que):
 #t1_lt[0];
 
 
-#below was a test for the if-else tree of tone
+#below is a test for the if-else tree of various tori; in each case I wrote the if-else tree into tone in t1test.maple 
 #tone(0,0,0,1,4,DM,t1_lt);
 #DM;
 #tone(1,0,0,1,4,DM,t1_lt);
 #DM;
+#tone(0,1,0,1,4,DM,t1_lt);
+#DM;
+#tone(0,0,1,1,4,DM,t1_lt);
+#DM;
 #tone(1,1,0,1,4,DM,t1_lt);
+#DM;
+#tone(0,1,1,1,4,DM,t1_lt);
+#DM;
+#tone(1,0,1,1,4,DM,t1_lt);
+#DM;
+#tone(1,2,0,1,4,DM,t1_lt);
+#DM;
+#tone(0,1,2,1,4,DM,t1_lt);
+#DM;
+#tone(1,0,2,1,4,DM,t1_lt);
 #DM;
 #tone(1,1,1,1,4,DM,t1_lt);
 #DM;
-#tone(2,1,0,1,4,DM,t1_lt);
+#tone(1,1,2,1,4,DM,t1_lt);
 #DM;
-#tone(2,2,1,1,4,DM,t1_lt);
+#tone(1,2,2,1,4,DM,t1_lt);
 #DM;
-#tone(2,1,1,1,4,DM,t1_lt);
+#tone(1,2,1,1,4,DM,t1_lt);
 #DM;
-#tone(3,2,1,1,4,DM,t1_lt);
+#tone(1,2,3,1,4,DM,t1_lt);
 #DM;
-
 

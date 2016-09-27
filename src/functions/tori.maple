@@ -99,45 +99,68 @@ if a1=0 then
     if b1=0 then
    	 if c1=0 then
   	 #case 000
+       	       chi11(-1,column,DM);
+	       chi12(-1,column,DM);
+	       chi13(1,column,DM);
+	       chi14(-2,column,DM);
+	       chi16(1,column,DM);
+	       chi17(-1,column,DM);
+	       chi18(1,column,DM);
+	       chi19(2,column,DM);
+	       chi110(-1,column,DM);
+	       chi112(1,column,DM);
          else #case 00c
+	      chi71(1,c1,order,column,DM);
+	      chi72(2,c1,order,column,DM);
+	      chi73(1,c1,order,column,DM);
+	      chi74(1,c1,order,column,DM);
+	      chi76(1,c1,order,column,DM);
       end if;
    elif c1=0 then
    	#case 0b0
-   elif b1=c1 then
-   	#case 0bb
-   else #case 0bc
+	      chi61(-1,b1,order,column,DM);
+	      chi63(-1,b1,order,column,DM);
+	      chi64(1,b1,order,column,DM);
+	      chi66(1,b1,order,column,DM);
+     else #case 0bc
+     	  chi201(1,b1,c1,order,column,DM);
+	  chi202(1,b1,c1,order,column,DM);
    end if;
 else #a1!=0 
      if b1=0 then 
      	if c1=0 then
 	   #case a00
-	elif a1=c1 then
-	     #case a0a
+	   	 chi61(-1,a1,order,column,DM);
+		 chi63(-1,a1,order,column,DM);
+                 chi64(1,a1,order,column,DM);
+                 chi66(1,a1,order,column,DM);
 	 else 
 	     #case a0c
+	     	   chi201(1,a1,c1,order,column,DM);
+                   chi202(1,a1,c1,order,column,DM);
         end if;
-      else if c1=0 then
-      if a1=b1 then
+      else
+       if c1=0 then
+       	   if a1=b1 then
       	       #case aa0
-	  else 
-	       #case ab0
-    end if;
+	       	     chi11_1(-1,a1,order,column,DM);
+		     chi11_2(1,a1,order,column,DM);
+		     chi113(-1,a1,order,column,DM);
+		     chi114(1,a1,order,column,DM);
+	  else
+	       	     chi171(-1,a1,b1,order,column,DM);
+		     chi172(1,a1,b1,order,column,DM);
+   	 end if;
 else #none are zero
      if a1=b1 then
-     	if b1=c1 then
-	   #case aaa
-	else 
-	   #case aab
-	end if;
-     elif a1=c1 then 
-     	  #case aba
-     elif b1=c1 then
-     	  #case abb
+	   chi181(1,a1,c1,order,column,DM);
+	   chi182(1,a1,c1,order,column,DM);
      else 
-     	  #case abc
+	  chi261(1,a1,b1,c1,order,column,DM);
      end if;
 end if;
-
+end if;
+end if;
 
 
 end proc;
@@ -160,12 +183,33 @@ tsix := proc(a,b,column,order,DM::Matrix)
 
 end proc;
 
-tseven := proc(a,column,order,DM::Matrix)
+tseven := proc(a,column,order,DM::Matrix,s1_lt,t1_lt)
+#parameter management
+local a1:
+if a mod (order ^ 2 + order + 1)=0 then
+then a1 := t1_lt[a mod (order ^ 3 - 1)  / (order ^ 2 + order + 1)];
+end if;
+local a2 := s1_lt[a mod	(order ^ 3 - 1)];
 
+#character outputs
+if a mod (order	^3 - 1) =0 then
+   chi11(1,column,DM);
+   chi13(1,column,DM);
+   chi14(-1,column,DM);
+   chi19(-1,column,DM);
+   chi110(1,column,DM);
+   chi112(1,column,DM);
+elif a mod (order ^2 + order +1) =0 then
+     chi81(1,a1, order,column,DM);
+     chi82(-1,a1,order,column,DM);
+     chi83(1,a1,order,column,DM);
+else
+     chi311(1,a2,order,column,DM);
+end if;
 end proc;
 
-teight := proc(a,b,c,column,order,DM::Matrix)
-       local a1:
+teight := proc(a,b,c,column,order,DM::Matrix,t2_lt)
+        local a1:
         local b1:
         local c1:
 
@@ -238,7 +282,30 @@ tnine := proc(a,b,column,order,DM::Matrix)
 
 end proc;
 
-tten := proc(a,column,order,DM::Matrix)
+tten := proc(a,column,order,DM::Matrix,s2_lt,t2_lt)
+#parameter management
+local a1;
+if a mod (order ^ 2 - order + 1) =0 then 
+a1 := t2_lt[a mod (order ^ 3 + 1)  / (order ^ 2 - order + 1)]; 
+end if;
+local a2;
+if := s2_lt[a mod (order ^ 3 + 1)];
+
+#character outputs
+if a mod (order ^3 +1) =0 then
+   chi11(-1,column,DM);
+   chi12(1,column,DM);
+   chi15(-1,column,DM);
+   chi18(-1,column,DM);
+   chi111(1,column,DM);
+   chi112(1,column,DM);
+elif a mod (order ^2 - order +1) =0 then
+     chi91(-1,a1, order,column,DM);
+     chi92(1,a1,order,column,DM);
+     chi93(1,a1,order,column,DM);
+else 
+     chi341(1,a2,order,column,DM);
+end if;
 
 end proc;
 
