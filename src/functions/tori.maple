@@ -1,4 +1,4 @@
-#this is a collection of ten functions, corresponding to tori. They should all accept order, and a twisted weight from the weight twister function
+#this is a collection of ten functions, corresponding to tori. They should all accept order, a twisted weight from the weight twister function, the correct lookup tables, a column index, and the decomposition matrix
 
 tone := proc(a,b,c,column,order,DM::Matrix,t1_lt)
 
@@ -74,8 +74,9 @@ end if;
 
 end proc;
 
-#########################################################
-#########################################################
+#############################################################################################################
+
+#############################################################################################################
 
 ttwo := proc(a,b,c,column,order,DM::Matrix, t1_lt, t2_lt)
 
@@ -166,6 +167,10 @@ end if;
 
 end proc;
 
+#############################################################################################################
+
+#############################################################################################################
+
 tthree := proc(a,b,column,order,DM::Matrix,t1_lt,t2_lt,r1_lt)
 
 #parameter management; a is the result of a+qb and is reduced mod q^2-1, b is reduced mod q-1
@@ -206,18 +211,102 @@ end if;   #the if where a is congruent to zero overall
 
 end proc;
 
-tfour := proc(a,b,c,column,order,DM::Matrix)
+#############################################################################################################
+
+#############################################################################################################
+
+tfour := proc(a,b,c,column,order,DM::Matrix,t1_lt,t2_lt)
+
+#parameter management
+
+local a1:
+local b1:
+local c1:
+
+if a mod (order-1)=0 then a1 := 0:
+   else  a1 := t1_lt[a mod (order-1)];
+   end if;
+if b1 mod (order-1)=0 then b1 := 0:
+   else  b1 := t2_lt[b mod (order+1)];
+   end if;
+if c1 mod (order+1 )=0 then c1:=0:
+   else c1 := t2_lt[c mod (order+1)];
+   end if;
+
+#i else tree for character calls
 
 
 end proc;
+
+#############################################################################################################
+
+#############################################################################################################
 
 tfive := proc(a,b,column,order,DM::Matrix)
 
+#parameter management; a is the result of a+-qb and is reduced mod q^2-1, b is reduced mod q+1
+local a1:  #case a ain't congruent to anything
+local a2: #case a congruent to q-1
+local a3: #case a congruent to q+1 
+local b1:
+
+if b mod (order + 1) = 0 then b1:=0;
+   else b1:= t2_lt[b mod (order-1)];
+end if;
+
+if a mod (order ^ 2 - 1) = 0 then
+    a1:=0;
+    a2:=0;
+    a3:=0;
+else
+if a mod (order+1)=0 then
+   a3 := t1_lt[a mod (order ^ 2 - 1) / (order + 1)];
+   a2:=0;
+   a1:=0;
+elif a mod (order - 1)=0 then
+   a2 := t2_lt[a mod (order ^ 2 - 1) / (order - 1)];
+   a1:=0;
+   a3:=0;
+else
+   a1 := r1_lt[a mod (order ^ 2 - 1)];
+   a2:=0;
+   a3:=0;
+end if;   # the various congruence if/elif
+end if;   #the if where a is congruent to zero overall
+
+#if else tree for character calls
+
 end proc;
 
-tsix := proc(a,b,column,order,DM::Matrix)
+#############################################################################################################
+
+#############################################################################################################
+
+tsix := proc(a,b,column,order,DM::Matrix,r2_lt,t1_lt)
+
+#parameter management made easy by virtue of few cases. a is the result of a+-qb and is reduced mod q^2+1, b is reduced mod q-1
+local a1:
+local b1:
+
+if a mod (order^2 +1)=0 then 
+    a1:=0;
+else
+    a1:=r2_lt[a mod (order ^ 2 + 1)];
+end if;
+
+if b mod (order - 1)=0 then 
+     b1:=0;
+else b1:= t1_lt[b mod (order -1)];
+end if;
+
+
+#if else tree for character calls
 
 end proc;
+
+#############################################################################################################
+
+#############################################################################################################
 
 tseven := proc(a,column,order,DM::Matrix,s1_lt,t1_lt)
 #parameter management
@@ -254,6 +343,10 @@ else
      chi311(1,a2,order,column,DM);
 end if;
 end proc;
+
+#############################################################################################################
+
+#############################################################################################################
 
 teight := proc(a,b,c,column,order,DM::Matrix,t2_lt)
         local a1:
@@ -325,9 +418,35 @@ end if;
 
 end proc;
 
-tnine := proc(a,b,column,order,DM::Matrix)
+#############################################################################################################
+
+#############################################################################################################
+
+tnine := proc(a,b,column,order,DM::Matrix,r2_lt,t2_lt)
+
+#parameter management made easy by virtue of few cases. a is the result of a+-qb and is reduced mod q^2+1, b is reduced mod q+1
+local a1:
+local b1:
+
+if a mod (order^2 +1)=0 then 
+    a1:=0;
+else
+    a1:=r2_lt[a mod (order ^ 2 + 1)];
+end if;
+
+if b mod (order + 1)=0 then 
+     b1:=0;
+else b1:= t2_lt[b mod (order +1)];
+end if;
+
+
+#if else tree for character calls
 
 end proc;
+
+#############################################################################################################
+
+#############################################################################################################
 
 tten := proc(a,column,order,DM::Matrix,s2_lt,t2_lt)
 #parameter management
