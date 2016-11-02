@@ -93,7 +93,8 @@ if c1 mod (order+1 )=0 then c1:=0:
    else c1 := t2_lt[c mod (order+1)];
    end if;
 
-#Here, since a,b,c have been possibly permuted, we may make use of sets to manage cases in the if-else tree, radically more complex than in T1
+#Here, the parameters have been permuted, which makes the if-else tree more complex. 
+
 
 if a1=0 then
     if b1=0 then
@@ -165,7 +166,42 @@ end if;
 
 end proc;
 
-tthree := proc(a,b,column,order,DM::Matrix)
+tthree := proc(a,b,column,order,DM::Matrix,t1_lt,t2_lt,r1_lt)
+
+#parameter management; a is the result of a+qb and is reduced mod q^2-1, b is reduced mod q-1
+local a1:  #case a ain't congruent to anything
+local a2: #case a congruent to q-1
+local a3: #case a congruent to q+1 
+local b1:
+
+if b mod (order - 1) = 0 then b1:=0;
+   else b1:= t1_lt[b mod (order-1)];
+end if;
+
+if a mod (order ^ 2 - 1) = 0 then
+    a1:=0;
+    a2:=0;
+    a3:=0;
+else
+if a mod (order+1)=0 then
+   a3 := t1_lt[a mod (order ^ 2 - 1) / (order + 1)];
+   a2:=0;
+   a1:=0;
+elif a mod (order - 1)=0 then
+   a2 := t2_lt[a mod (order ^ 2 - 1) / (order - 1)];
+   a1:=0;
+   a3:=0;
+else
+   a1 := r1_lt[a mod (order ^ 2 - 1)];
+   a2:=0;
+   a3:=0;
+end if;   # the various congruence if/elif
+end if;   #the if where a is congruent to zero overall
+
+
+#if-else tree for character calls. Note that the same if-else from the parameter management must be a sub-tree
+#question: since the cases are uniquely determined in the cases above, should we use that, or rebuild the tree as was done in tseven and tten? Good practice? 
+
 
 
 end proc;
@@ -185,11 +221,22 @@ end proc;
 
 tseven := proc(a,column,order,DM::Matrix,s1_lt,t1_lt)
 #parameter management
-local a1:
+
+local a1:   #a is congruent to a zero divisor
+local a2:   #a is not congruent to anything
+
+if a mod (order ^ 3 - 1)= 0 then
+   a1:=0;
+   a2:=0;
+else
 if a mod (order ^ 2 + order + 1)=0 then
-then a1 := t1_lt[a mod (order ^ 3 - 1)  / (order ^ 2 + order + 1)];
-end if;
-local a2 := s1_lt[a mod	(order ^ 3 - 1)];
+    a1 := t1_lt[a mod (order ^ 3 - 1)  / (order ^ 2 + order + 1)];
+    a2:=0;
+else
+    a2 := s1_lt[a mod	(order ^ 3 - 1)];
+    a1:=0;
+end if; #cong 0 mod zero divisor
+end if; #a cong 0 overall
 
 #character outputs
 if a mod (order	^3 - 1) =0 then
@@ -284,12 +331,22 @@ end proc;
 
 tten := proc(a,column,order,DM::Matrix,s2_lt,t2_lt)
 #parameter management
-local a1;
+local a1:
+local a2:
+
+if a mod (order ^ 3 + 1)=0 then
+   a1:=0;
+   a2:=0;
+else
+
 if a mod (order ^ 2 - order + 1) =0 then 
-a1 := t2_lt[a mod (order ^ 3 + 1)  / (order ^ 2 - order + 1)]; 
-end if;
-local a2;
-if := s2_lt[a mod (order ^ 3 + 1)];
+     a1 := t2_lt[a mod (order ^ 3 + 1)  / (order ^ 2 - order + 1)]; 
+     a2 :=0;
+else
+     a2 := s2_lt[a mod (order ^ 3 + 1)];
+     a1 :=0;
+end if; #cong 0 mod zero diviser
+end if; #cong 0 overall
 
 #character outputs
 if a mod (order ^3 +1) =0 then
