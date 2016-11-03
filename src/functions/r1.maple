@@ -7,7 +7,7 @@ calculate_r1 := proc(order)
   local number_rows := size / 4;
 
   local r1_matrix := Matrix(number_rows, number_columns);
-  local r1_lookup_table := Array(1 .. max_value - 1, fill=0, datatype=integer);
+  local r1_lookup_table := Matrix(2, max_value, fill=0);
 
   local is_generated := Array(1 .. max_value - 1, fill=false, datatype=boolean);
 
@@ -62,7 +62,8 @@ calculate_r1 := proc(order)
 
       for column from 1 to 4 do
 
-            r1_lookup_table[r1_matrix[row, column]] := r1_matrix[row, 1];
+            r1_lookup_table[1, r1_matrix[row, column]] := row;
+            r1_lookup_table[2, r1_matrix[row, column]] := r1_matrix[row, 1];
 
       end do;
 
