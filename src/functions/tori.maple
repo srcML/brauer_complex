@@ -198,7 +198,52 @@ if a mod (order ^ 2 - 1) <> 0 then
 end if; # the various congruence if/elif
 
 #if-else tree for character calls. Note that the same if-else from the parameter management must be a sub-tree
-#question: since the cases are uniquely determined in the cases above, should we use that, or rebuild the tree as was done in tseven and tten? Good practice? 
+
+if a1=0 then
+   if b1=0 then
+      chi11(-1,column,DM);
+      chi12(-1,column,DM);
+      chi13(-1,column,DM);
+      chi16(-1,column,DM);
+      chi17(1,column,DM);
+      chi18(1,column,DM);
+      chi110(1,column,DM);
+      chi112(1,column,DM);   #case 0,0
+   else
+	chi61(-1,b1,order,column,DM);
+	chi63(1,b1,order,column,DM);
+	chi64(-1,b1,order,column,DM);
+	chi66(1,b1,order,column,DM);   #case 0,b
+   end if; #cases 0,0 and 0,b
+elif a3 <> 0 then         #either b is modulus, 0 or distinct
+     if b1= a3 then
+     	chi81(-1,b1,order,column,DM);
+	chi83(1,b1,order,column,DM);
+     elif b1=0 then
+     	  chi11_1(-1,a3,order,column,DM);
+	  chi11_2(-1,a3,order,column,DM);
+	  chi113(1,a3,order,column,DM);
+	  chi114(1,a3,order,column,DM);
+     else
+	chi161(-1,a3,b1,order,column,DM);
+	chi162(1,a3,b1,order,column,DM);
+     end if;    #cases aq+a
+elif a2<>0 then     #b is 0 or distinct
+     if b1=0 then
+     	chi131(1,a2,order,column,DM);
+	chi132(1,a2,order,column,DM);
+	chi133(1,a2,order,column,DM);
+	chi134(1,a2,order,column,DM);
+     else
+	chi211(1,a2,b1,order,column,DM);
+	chi212(1,a2,b1,order,column,DM);
+     end if;   #cases aq-a
+elif b1=0 then 
+     chi191(1,a1,order,column,DM);
+     chi192(1,a1,order,column,DM);
+else 
+     chi 271(1,a1,b1,order,column,DM);
+end if; #a =0
 
 
 
@@ -228,8 +273,60 @@ if c1 mod (order+1) <> 0 then
    c1 := t2_lt[c mod (order+1)];
 end if;
 
-#i else tree for character calls
-
+#if else tree for character calls
+if a1=0 then
+   if b1=0 then
+      if c1=0 then
+        chi11(1,column,DM);
+        chi12(1,column,DM);
+        chi13(-1,column,DM);
+        chi15(-2,column,DM);
+        chi16(-1,column,DM);
+        chi17(-1,column,DM);
+        chi18(1,column,DM);
+        chi110(-1,column,DM);
+        chi111(-2,column,DM);
+        chi112(1,column,DM);        	 #case 000
+      else 
+      	chi71(-1,c1,order,column,DM);
+	chi72(-1,c1,order,column,DM);
+	chi73(1,c1,order,column,DM);
+	chi74(1,c1,order,column,DM);   #case 00c
+       end if; 
+   elif c1=0 then
+      	chi71(-1,b1,order,column,DM);
+	chi72(-1,b1,order,column,DM);
+	chi73(1,b1,order,column,DM);
+	chi74(1,b1,order,column,DM);    #case 00c again
+   elif b1=c1 then
+   	chi131(-1,b1,order,column,DM);
+	chi132(1,b1,order,column,DM);
+	chi133(-1,b1,order,column,DM);
+	chi134(1,b1,order,column,DM);   	#case 0aa
+   else 
+   	chi231(1,c1,b1,order,column,DM);
+	chi232(1,c1,b1,order,column,DM);   	#case 0ab
+   end if;    
+elif b1=0 then
+     if c1=0 then 
+	chi61(1,a1,order,column,DM);
+	chi63(-1,a1,order,column,DM);
+	chi64(-1,a1,order,column,DM);
+	chi65(-2,a1,order,column,DM);
+	chi66(1,a1,order,column,DM);       	#case a00
+     else 
+     	chi201(-1,a1,c1,order,column,DM);
+	chi202(1,a1,c1,order,column,DM);     	  #case a0c
+     end if;
+elif c1=0 then 
+     	chi201(-1,a1,b1,order,column,DM);
+	chi202(1,a1,b1,order,column,DM);    #case a0c again
+elif b1=c1 then
+     	 chi211(-1,b1,a1,order,column,DM);
+	 chi212(1,b1,a1,order,column,DM);     	   #case abb
+else 
+	chi281(1,a1,b1,c1,order,column,DM);	#case abc
+end if;
 
 end proc;
 
@@ -260,6 +357,52 @@ if a mod (order ^ 2 - 1) <> 0 then
 end if; # the various congruence if/elif
 #if else tree for character calls
 
+if a1=0 then
+   if b1=0 then
+      chi11(1,column,DM);
+      chi12(-1,column,DM);
+      chi13(-1,column,DM);
+      chi16(1,column,DM);
+      chi17(1,column,DM);
+      chi18(-1,column,DM);
+      chi110(-1,column,DM);
+      chi112(1,column,DM);   #case 0,0
+   else
+	chi71(-1,b1,order,column,DM);
+	chi73(1,b1,order,column,DM);
+	chi74(-1,b1,order,column,DM);
+	chi76(1,b1,order,column,DM);   #case 0,b
+   end if; #cases 0,0 and 0,b
+elif a3 <> 0 then         #either b is modulus, 0 or distinct
+    if b1=0 then
+     	  chi11_1(-1,a3,order,column,DM);
+	  chi11_2(-1,a3,order,column,DM);
+	  chi113(1,a3,order,column,DM);
+	  chi114(1,a3,order,column,DM);
+     else
+	chi181(-1,a3,b1,order,column,DM);
+	chi182(1,a3,b1,order,column,DM);
+     end if;    #cases aq+a
+elif a2<>0 then     #b is 0 or distinct
+     if b1= a2 then
+     	chi91(-1,b1,order,column,DM);
+	chi93(1,b1,order,column,DM);
+     elif b1=0 then
+     	chi11_1(1,a2,order,column,DM);
+	chi11_2(-1,a2,order,column,DM);
+	chi113(-1,a2,order,column,DM);
+	chi114(1,a2,order,column,DM);
+     else
+	chi221(1,a2,b1,order,column,DM);
+	chi222(1,a2,b1,order,column,DM);
+     end if;   #cases aq-a
+elif b1=0 then 
+     chi191(-1,a1,order,column,DM);
+     chi192(1,a1,order,column,DM);
+else 
+     chi 291(1,a1,b1,order,column,DM);
+end if; #a =0
+
 end proc;
 
 #############################################################################################################
@@ -282,6 +425,17 @@ end if;
 
 
 #if else tree for character calls
+
+if a1= 0 then
+   if b1 = 0 then 
+         #case 00
+   else 
+   	#case 0b
+elif b1=0 then
+       #case a0
+else
+	#case ab
+end if;
 
 end proc;
 
@@ -410,6 +564,16 @@ end if;
 
 #if else tree for character calls
 
+if a1= 0 then
+   if b1 = 0 then 
+         #case 00
+   else 
+   	#case 0b
+elif b1=0 then
+       #case a0
+else
+	#case ab
+end if;
 end proc;
 
 #############################################################################################################

@@ -1,0 +1,1 @@
+#this function will take the decomposition matrix and X_q after the main sequence has run, and divide by stabilizer size. The stabilizer size is apparent from the tuple in x_q, and the if-else tree will be nearly identical to those from tone, ttwo and teight.
