@@ -13,6 +13,7 @@ $include <s1.maple> ;
 #$include <tori.maple> ;
 #$include <characterfamilies.maple> ;
 #$include <weighttwister.maple> ;
+#$include <stabilizer.maple> ;
 
 interface(rtablesize=infinity):
 
@@ -29,6 +30,8 @@ DM := Matrix(nrchars, nrBrchars);
 #X_q := calculate_X_q(que):
 
 #bigiterator(que,DM,X_q):
+
+#stabilizer(que,X_q,DM):
 
 
 r1, r1_lt := calculate_r1(que):

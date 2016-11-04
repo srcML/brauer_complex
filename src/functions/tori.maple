@@ -428,13 +428,26 @@ end if;
 
 if a1= 0 then
    if b1 = 0 then 
-         #case 00
+       chi11(1,column,DM);
+       chi14(1,column,DM);
+       chi15(1,column,DM);
+       chi16(-1,column,DM);
+       chi17(-1,column,DM);
+       chi19(1,column,DM);
+       chi111(1,column,DM);
+       chi112(1,column,DM);         #case 00
    else 
-   	#case 0b
+   	chi241(1,b1,order,column,DM);
+	chi242(1,b1,order,column,DM);#case 0b
+   end if;
 elif b1=0 then
+	chi61(1,a1,order,column,DM);
+	chi62(-1,a1,order,column,DM);
+	chi65(1,a1,order,column,DM);
+	chi66(1,a1,order,column,DM);       	#case a00
        #case a0
 else
-	#case ab
+	chi301(1,a1,b1,order,column,DM);#case ab
 end if;
 
 end proc;
@@ -566,13 +579,26 @@ end if;
 
 if a1= 0 then
    if b1 = 0 then 
-         #case 00
+       chi11(-1,column,DM);
+       chi14(1,column,DM);
+       chi15(1,column,DM);
+       chi16(1,column,DM);
+       chi17(-1,column,DM);
+       chi19(-1,column,DM);
+       chi111(-1,column,DM);
+       chi112(1,column,DM);         #case 00
    else 
-   	#case 0b
+   	chi71(1,b1,order,column,DM);
+	chi72(-1,b1,order,column,DM);
+	chi75(1,b1,order,column,DM);
+	chi76(1,b1,order,column,DM);       	#case 0b
+    end if;
 elif b1=0 then
+	chi241(-1,a1,order,column,DM);
+	chi242(1,a1,order,column,DM);#case 0b
        #case a0
 else
-	#case ab
+	chi331(1,a1,b1,order,column,DM);#case ab
 end if;
 end proc;
 

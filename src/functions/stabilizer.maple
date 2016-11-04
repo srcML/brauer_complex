@@ -1,1 +1,87 @@
 #this function will take the decomposition matrix and X_q after the main sequence has run, and divide by stabilizer size. The stabilizer size is apparent from the tuple in x_q, and the if-else tree will be nearly identical to those from tone, ttwo and teight.
+
+stabilizer := proc(order,X_q,DM::Matrix)
+
+local a1:
+local b1:
+local c1:
+local column:
+
+for lambda from 1 to order^3 do
+  
+column := order ^ 3 - (lambda - 1):
+  
+a1 = X_q[lambda,1]:
+b1 = X_q[lambda,2]:
+c1 = X_q[lambda,3]:
+
+
+#Begin if/else tree for D-L chars
+
+if a1=0 then
+
+   for row from 1 to (order+1) * (order^2+order+4) do
+
+       DM[row,column] := DM[row,column] / 48;      #only one entry will actually be 48, all others will be 0, this is more a sanity check
+
+   end do;		#case 000
+
+elif b1=0 then
+   for row from 1 to (order+1) * (order^2+order+4) do
+
+       DM[row,column] := DM[row,column] / 8;    
+
+   end do;	     # case (a,0,0)
+
+elif c1=0 then
+    if a1=b1 then
+   for row from 1 to (order+1) * (order^2+order+4) do
+
+       DM[row,column] := DM[row,column] / 4;    
+
+   end do;			  # case (a,a,0)
+
+     else
+   for row from 1 to (order+1) * (order^2+order+4) do
+
+       DM[row,column] := DM[row,column] / 2;    
+
+   end do;			  # case (a,b,0)
+
+          end if;
+
+elif a1=c1 then
+   for row from 1 to (order+1) * (order^2+order+4) do
+
+       DM[row,column] := DM[row,column] / 6;    
+
+   end do;	     	    # case (a,a,a)
+
+elif b1=c1 then 
+  for row from 1 to (order+1) * (order^2+order+4) do
+
+       DM[row,column] := DM[row,column] / 2;    
+
+   end do;	
+		 # case (a,b,b)
+
+elif a1=b1 then
+   for row from 1 to (order+1) * (order^2+order+4) do
+
+       DM[row,column] := DM[row,column] / 2;    
+
+   end do;	
+     	     # case (a,a,b)
+
+else
+		 #case (a,b,c)
+#do nothing, stabilizer is size 1
+
+
+end if;
+
+
+ end do;
+
+end proc;
+
