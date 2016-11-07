@@ -69,7 +69,10 @@ calculate_s2 := proc(order)
 
       for column from 1 to 6 do
 
-            s2_lookup_table[s2_matrix[row, column]] := s2_matrix[row, 1];
+
+	    s2_lookup_table[1, s2_matrix[row, column]] := row;
+            s2_lookup_table[2, s2_matrix[row, column]] := s2_matrix[row, 1];
+
 
       end do;
 

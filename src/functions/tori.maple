@@ -193,7 +193,7 @@ if a mod (order ^ 2 - 1) <> 0 then
    elif a mod (order - 1)=0 then
       a2 := t2_lt[a mod (order ^ 2 - 1) / (order - 1)];
    else
-      a1 := r1_lt[a mod (order ^ 2 - 1)];
+      a1 := r1_lt[2,a mod (order ^ 2 - 1)];
    end if;
 end if; # the various congruence if/elif
 
@@ -352,7 +352,7 @@ if a mod (order ^ 2 - 1) <> 0 then
    elif a mod (order - 1) = 0 then
       a2 := t2_lt[a mod (order ^ 2 - 1) / (order - 1)];
    else
-      a1 := r1_lt[a mod (order ^ 2 - 1)];
+      a1 := r1_lt[2,a mod (order ^ 2 - 1)];
    end if;
 end if; # the various congruence if/elif
 #if else tree for character calls
@@ -416,7 +416,7 @@ local a1 = 0:
 local b1 = 0:
 
 if a mod (order^2 +1) <> 0 then 
-   a1:=r2_lt[a mod (order ^ 2 + 1)];
+   a1:=r2_lt[2,a mod (order ^ 2 + 1)];
 end if;
 
 if b mod (order - 1) <> 0 then 
@@ -475,7 +475,7 @@ elif a mod (order ^ 2 + order + 1) = 0 then
     chi82(-1,a1,order,column,DM);
     chi83(1,a1,order,column,DM);
 else
-    a2 := s1_lt[a mod	(order ^ 3 - 1)];
+    a2 := s1_lt[2,a mod	(order ^ 3 - 1)];
     chi311(1,a2,order,column,DM);
 end if;
 
@@ -567,7 +567,7 @@ local a1 = 0:
 local b1 = 0:
 
 if a mod (order^2 +1) <> 0 then 
-    a1 := r2_lt[a mod (order ^ 2 + 1)];
+    a1 := r2_lt[2,a mod (order ^ 2 + 1)];
 end if;
 
 if b mod (order + 1) <> 0 then 

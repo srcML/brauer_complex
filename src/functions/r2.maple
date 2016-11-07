@@ -53,7 +53,10 @@ calculate_r2 := proc(order)
 
       for column from 1 to 4 do
 
-            r2_lookup_table[r2_matrix[row, column]] := r2_matrix[row, 1];
+
+	    r2_lookup_table[1, r2_matrix[row, column]] := row;
+            r2_lookup_table[2, r2_matrix[row, column]] := r2_matrix[row, 1];
+
 
       end do;
 
