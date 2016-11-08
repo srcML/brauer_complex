@@ -1,6 +1,6 @@
 #this is a collection of ten functions, corresponding to tori. They should all accept order, a twisted weight from the weight twister function, the correct lookup tables, a column index, and the decomposition matrix
 
-tone := proc(a,b,c,column,order,DM::Matrix,t1_lt)
+tone := proc(a,b,c,column,order,DM::Matrix,t1_lt,twentyfivelt)
 
 #manage the parameter sets via lookuptables here
 local a1 = 0:
@@ -67,7 +67,7 @@ elif a1=b1 then
      chi162(1,a1,c1,order,column,DM);  # case (a,a,b)
 
 else 
-     chi251(1,a1,b1,c1,order,column,DM);     #case (a,b,c)
+     chi251(1,a1,b1,c1,order,column,DM,twentyfivelt);     #case (a,b,c)
 
 
 #else some kind of error message throw catch?
@@ -239,8 +239,8 @@ elif a2<>0 then     #b is 0 or distinct
 	chi212(1,a2,b1,order,column,DM);
      end if;   #cases aq-a
 elif b1=0 then 
-     chi191(1,a1,order,column,DM);
-     chi192(1,a1,order,column,DM);
+     chi191(1,a1,order,column,DM,r1_lt);
+     chi192(1,a1,order,column,DM,r1_lt);
 else 
      chi 271(1,a1,b1,order,column,DM);
 end if; #a =0
@@ -397,8 +397,8 @@ elif a2<>0 then     #b is 0 or distinct
 	chi222(1,a2,b1,order,column,DM);
      end if;   #cases aq-a
 elif b1=0 then 
-     chi191(-1,a1,order,column,DM);
-     chi192(1,a1,order,column,DM);
+     chi191(-1,a1,order,column,DM,r1_lt);
+     chi192(1,a1,order,column,DM,r1_lt);
 else 
      chi 291(1,a1,b1,order,column,DM);
 end if; #a =0
@@ -437,8 +437,8 @@ if a1= 0 then
        chi111(1,column,DM);
        chi112(1,column,DM);         #case 00
    else 
-   	chi241(1,b1,order,column,DM);
-	chi242(1,b1,order,column,DM);#case 0b
+   	chi241(1,b1,order,column,DM,r2_lt);
+	chi242(1,b1,order,column,DM,r2_lt);#case 0b
    end if;
 elif b1=0 then
 	chi61(1,a1,order,column,DM);
@@ -476,7 +476,7 @@ elif a mod (order ^ 2 + order + 1) = 0 then
     chi83(1,a1,order,column,DM);
 else
     a2 := s1_lt[2,a mod	(order ^ 3 - 1)];
-    chi311(1,a2,order,column,DM);
+    chi311(1,a2,order,column,DM,s1_lt);
 end if;
 
 end proc;
@@ -594,8 +594,8 @@ if a1= 0 then
 	chi76(1,b1,order,column,DM);       	#case 0b
     end if;
 elif b1=0 then
-	chi241(-1,a1,order,column,DM);
-	chi242(1,a1,order,column,DM);#case 0b
+	chi241(-1,a1,order,column,DM,r2_lt);
+	chi242(1,a1,order,column,DM,r2_lt);#case 0b
        #case a0
 else
 	chi331(1,a1,b1,order,column,DM);#case ab
@@ -625,7 +625,7 @@ elif a mod (order ^ 2 - order + 1) = 0 then
      chi93(1,a1,order,column,DM);
 else
      a2 := s2_lt[a mod (order ^ 3 + 1)];
-     chi341(1,a2,order,column,DM);
+     chi341(1,a2,order,column,DM,s2_lt);
 end if; #cong 0 mod zero diviser
 
 end proc;

@@ -7,7 +7,7 @@ calculate_s2 := proc(order)
   local number_rows := size / 6;
 
   local s2_matrix := Matrix(number_rows, number_columns);
-  local s2_lookup_table := Array(1 .. max_value - 1, fill=0, datatype=integer);
+  local s2_lookup_table := Matrix(2, max_value - 1, fill=0, datatype=integer);
 
   local is_generated := Array(1 .. max_value - 1, fill=false, datatype=boolean);
 

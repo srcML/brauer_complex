@@ -132,91 +132,161 @@ chi134 := proc(coefficient,a,order,column,DM::Matrix)
       DM[25 * order / 2 - 1 + a, column] := DM[25 * order / 2 - 1 + a , column] + coefficient;
 end proc;
 chi161 := proc(coefficient,a,b,order,column,DM::Matrix)  
+       local row:=0:
 if b>a then 
-      DM[13 * order - 1 +(order-2)/2*(a-1)+b-1 , column] := DM[13 * order - 1 +(order-2)/2*(a-1)+b-1 , column] + coefficient;
+      row:=13 * order - 1 +(order-4)/2*(a-1)+b-1;
 else
-      DM[13 * order - 1 +(order-2)/2*(a-1)+b, column] := DM[13 * order - 1  +(order-2)/2*(a-1)+b, column] + coefficient;
+      row:=13 * order - 1 +(order-4)/2*(a-1)+b;
 end if;
+          DM[row  , column] := DM[row, column]+coefficient;
+
 end proc;
 chi162 := proc(coefficient,a,b,order,column,DM::Matrix)
+       local row:=0:
 if b>a then
-      DM[1 + 23 / 2 * order + 1 / 4 * order ^ 2 + +(order-2)/2*(a-1)+b-1, column] := DM[1 + 23 / 2 * order + 1 / 4 * order ^ 2+(order-2)/2*(a-1)+b-1 , column] + coefficient;
+      row:=1 + 23 / 2 * order + 1 / 4 * order ^ 2  +(order-4)/2*(a-1)+b-1;
 else
-      DM[1 + 23 / 2 * order + 1 / 4 * order ^ 2 + +(order-2)/2*(a-1)+b, column] := DM[1 + 23 / 2 * order + 1 / 4 * order ^ 2+(order-2)/2*(a-1)+b , column] + coefficient
+      row:=1 + 23 / 2 * order + 1 / 4 * order ^ 2  +(order-4)/2*(a-1)+b;
 end if;
+          DM[row  , column] := DM[row, column]+coefficient;
+
 end proc;
 chi171 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[3 + 10 * order + 1 / 2 * order ^ 2 + b * ( a + 1 ), column] := DM[3 + 10 * order + 1 / 2 * order ^ 2 , column] + coefficient;
+       local row:=0:
+if b>a then     
+ row:=3 + 10 * order + 1 / 2 * order ^ 2 +(order-4)/2*(a-1)+b-1;
+else
+ row:=3 + 10 * order + 1 / 2 * order ^ 2 +(order-4)/2*(a-1)+b:
+end if;
+          DM[row  , column] := DM[row, column]+coefficient;
 end proc;
 chi172 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[4 + 37 / 4 * order + order ^ 2 + b * ( a + 1 ), column] := DM[4 + 37 / 4 * order + order ^ 2 , column] + coefficient;
+local row:=0:
+if b>a then    
+   row:=4 + 37 / 4 * order + order ^ 2 +(order-4)/2*(a-1)+b-1
+else
+  row:=4 + 37 / 4 * order + order ^ 2 +(order-4)/2*(a-1)+b
+end if;
+          DM[row  , column] := DM[row, column]+coefficient;
 end proc;
 chi181 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5 + 17 / 2 * order + 3 / 4 * order ^ 2 + b * ( a + 1 ), column] := DM[5 + 17 / 2 * order + 3 / 4 * order ^ 2 , column] + coefficient;
+      DM[5 + 17 / 2 * order + 3 / 4 * order ^ 2 + order/2*(a-1)+b , column] := DM[5 + 17 / 2 * order + 3 / 4 * order ^ 2 + order/2*(a-1)+b , column] + coefficient;
 end proc;
 chi182 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+8*order+order^2 + b * ( a + 1 ), column] := DM[5+8*order+order^2 , column] + coefficient;
+      DM[5+8*order+order^2 + order/2*(a-1)+b , column] := DM[5+8*order+order^2 + order/2*(a-1)+b , column] + coefficient;
 end proc;
-chi191 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+15/2*order+5/4*order^2 + b * ( a + 1 ), column] := DM[5+15/2*order+5/4*order^2 , column] + coefficient;
+chi191 := proc(coefficient,a,order,column,DM::Matrix,r1_lt)
+       local a_row:= r1_lt[1,a]:
+      DM[5+15/2*order+5/4*order^2 + a_row , column] := DM[5+15/2*order+5/4*order^2 , column] + coefficient;
 end proc;
-chi192 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+7*order+3/2*order^2 + b * ( a + 1 ), column] := DM[5+7*order+3/2*order^2 , column] + coefficient;
+chi192 := proc(coefficient,a,order,column,DM::Matrix,r1_lt)
+       local a_row:= r1_lt[1,a]:
+      DM[5+7*order+3/2*order^2 +a_row, column] := DM[5+7*order+3/2*order^2 , column] + coefficient;
 end proc;
 chi201 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+13/2*order+7/4*order^2 + b * ( a + 1 ), column] := DM[5+13/2*order+7/4*order^2 , column] + coefficient;
+      DM[5+13/2*order+7/4*order^2 + order/2*(a-1)+b  , column] := DM[5+13/2*order+7/4*order^2+ order/2*(a-1)+b , column] + coefficient;
 end proc;
 chi202 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+6*order+2*order^2 + b * ( a + 1 ), column] := DM[5+6*order+2*order^2 , column] + coefficient;
+      DM[5+6*order+2*order^2 + order/2*(a-1)+b  , column] := DM[5+6*order+2*order^2+ order/2*(a-1)+b , column] + coefficient;
 end proc;
 chi211 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+11/2*order+9/4*order^2 + b * ( a + 1 ), column] := DM[5+11/2*order+9/4*order^2 , column] + coefficient;
+      DM[5+11/2*order+9/4*order^2 + (order-2)/2*(a-1)+b , column] := DM[5+11/2*order+9/4*order^2+(order-2)/2*(a-1)+b , column] + coefficient;
 end proc;
 chi212 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+5*order+5/2*order^ 2+ b * ( a + 1 ), column] := DM[5+5*order+5/2*order^2 , column] + coefficient;
+      DM[5+5*order+5/2*order^ 2+(order-2)/2*(a-1)+b  , column] := DM[5+5*order+5/2*order^2+(order-2)/2*(a-1)+b , column] + coefficient;
 end proc;
 chi221 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+9/2*order+11/4*order^2 + b * ( a + 1 ), column] := DM[5+9/2*order+11/4*order^2 , column] + coefficient;
+       local row:=0:
+if b>a then     
+   row:=5+9/2*order+11/4*order^2 + (order-2)/2*(a-1)+b-1;
+else
+   row:=5+9/2*order+11/4*order^2 + (order-2)/2*(a-1)+b;
+end if;
+          DM[row  , column] := DM[row, column]+coefficient;
 end proc;
 chi222 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+4*order+3*order^2 + b * ( a + 1 ), column] := DM[5+4*order+3*order^2 , column] + coefficient;
+       local row:=0:
+if b > a then
+      row:=5+4*order+3*order^2 +  (order-2)/2*(a-1)+b-1;
+else
+      row:=5+4*order+3*order^2 +  (order-2)/2*(a-1)+b:
+end if;
+          DM[row  , column] := DM[row, column]+coefficient;
 end proc;
 chi231 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+7/2*order+13/4*order^2 + b * ( a + 1 ), column] := DM[5+7/2*order+13/4*order^2 , column] + coefficient;
+       local row:=0:
+if b > a then
+      row:= 5+7/2*order+13/4*order^2 + (order-2)/2*(a-1)+b-1:
+else 
+      row:=5+7/2*order+13/4*order^2 + (order-2)/2*(a-1)+b:
+end if;
+      DM[row  , column] := DM[row, column]+coefficient;
 end proc;
 chi232 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+13/4*order+27/8*order^2 + b * ( a + 1 ), column] := DM[5+13/4*order+27/8*order^2 , column] + coefficient;
+       local row:=0:
+if b>a then 
+   row:=5+13/4*order+27/8*order^2 +(order-2)/2*(a-1)+b-1:
+else
+	row:=5+13/4*order+27/8*order^2 +(order-2)/2*(a-1)+b:
+end if;
+      DM[row  , column] := DM[row, column]+coefficient;
+
 end proc;
-chi241 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+3*order+7/2*order^2 + b * ( a + 1 ), column] := DM[5+3*order+7/2*order^2 , column] + coefficient;
+chi241 := proc(coefficient,a,order,column,DM::Matrix,r2_lt)
+      local a_row := r2_lt[1,a]:
+      DM[5+3*order+7/2*order^2 +a_row  , column] := DM[5+3*order+7/2*order^2+a_row , column] + coefficient;
 end proc;
-chi242 := proc(coefficient,a,b,order,column,DM::Matrix)
-      DM[5+3*order+15/4*order^2 + b * ( a + 1 ), column] := DM[5+3*order+15/4*order^2 , column] + coefficient;
+chi242 := proc(coefficient,a,order,column,DM::Matrix,r2_lt)
+       local a_row := r2_lt[1,a]:
+      DM[5+3*order+15/4*order^2 +a_row  , column] := DM[5+3*order+15/4*order^2+a_row , column] + coefficient;
 end proc;
-chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[5+3*order+4*order^2 , column] := DM[5+3*order+4*order^2 , column] + coefficient;
+chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix,twentyfivelt) 
+       local index:= twentyfivelt[c,b,a]:         #easier to write ascending than descending triples
+       local row:= 5+3*order+4*order^2+index:   
+      DM[row , column] := DM[row , column] + coefficient;
 end proc;
-chi261 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[4+47/12*order+15/4*order^2+1/48*order^3 , column] := DM[4+47/12*order+15/4*order^2+1/48*order^3 , column] + coefficient;
+chi261 := proc(coefficient,a,b,c,order,column,DM::Matrix,twentysixlt)
+       local index:=twentysixlt[a,b,c]:
+       local row := 4+47/12*order+15/4*order^2+1/48*order^3+index:
+      DM[row , column] := DM[row , column] + coefficient;
 end proc;
-chi271 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[4+53/12*order+27/8*order^2+1/12^order^3 , column] := DM[4+53/12*order+27/8*order^2+1/12^order^3 , column] + coefficient;
+chi271 := proc(coefficient,a,b,order,column,DM::Matrix,r1_lt)
+       local index:=(order-2)/2*(r1_lt[1,a]-1)+b:
+       local row:= 4+53/12*order+27/8*order^2+1/12^order^3+index:
+      DM[row , column] := DM[row , column] + coefficient;
 end proc;
-chi281 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[4+59/12*order+23/8*order^2+5/24*order^3 , column] := DM[4+59/12*order+23/8*order^2+5/24*order^3 , column] + coefficient;
+chi281 := proc(coefficient,a,b,c,order,column,DM::Matrix,twentyeightlt)
+      local index:= twentyeightlt[a,b,c] :
+      local row:=4+59/12*order+23/8*order^2+5/24*order^3 + index:
+      DM[row, column] := DM[row , column] + coefficient;
 end proc;
-chi291 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[4+31/6*order+21/8*order^2+13/48*order^3 , column] := DM[4+31/6*order+21/8*order^2+13/48*order^3 , column] + coefficient;
+chi291 := proc(coefficient,a,b,order,column,DM::Matrix,r1_lt)
+       local index:= order/2*(r1_lt[1,a]-1)+b:
+       local row:=4+31/6*order+21/8*order^2+13/48*order^3+index:
+      DM[row , column] := DM[row , column] + coefficient;
 end proc;
-chi301 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[(order+2)*(19*order^2+76*order+96)/48 , column] := DM[(order+2)*(19*order^2+76*order+96)/48 , column] + coefficient;
+chi301 := proc(coefficient,a,b,order,column,DM::Matrix,r2_lt)
+       local index:=(order-2)/2*(r2_lt[1,a]-1)+b :
+       local row:= (order+2)*(19*order^2+76*order+96)/48+index:
+      DM[row , column] := DM[row , column] + coefficient;
 end proc;
-chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[4+31/6*order+17/8*order^2+25/48*order^3 , column] := DM[4+31/6*order+17/8*order^2+25/48*order^3 , column] + coefficient;
+chi311 := proc(coefficient,a,order,column,DM::Matrix,s1_lt)
+       local a_row:= s1_lt[1,a]:
+      local row:=4+31/6*order+17/8*order^2+25/48*order^3+a_row:
+       DM[row,column]:=DM[row,column]+coefficient;
 end proc;
-chi331 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[4+5*order+17/8*order^2+11/16*order^3 , column] := DM[4+5*order+17/8*order^2+11/16*order^3 , column] + coefficient;
+chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix,thirtytwolt)
+       local index:= thirtytwolt[a,b,c]:
+       local row:= 4+5*order+17/8*order^2+11/16*order^3+index:
+      DM[row , column] := DM[row , column] + coefficient;
 end proc;
-chi341 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      DM[4+31/6*order+2*order^2+17/24*order^3 , column] := DM[4+31/6*order+2*order^2+17/24*order^3 , column] + coefficient;
+chi331 := proc(coefficient,a,b,order,column,DM::Matrix,r2_lt)
+       local index:=order/2*(r2_lt[1,a]-1)+b:
+       local row:=4+31/6*order+2*order^2+17/24*order^3+index: 
+      DM[row , column] := DM[row , column] + coefficient;
+end proc;
+chi341 := proc(coefficient,a,order,column,DM::Matrix,s2_lt)
+       local a_row:= s2_lt[1,a]:
+       local row:=(order+1)*(5*order^2+7*order+24)/6+a_row :
+      DM[row , column] := DM[row , column] + coefficient;
 end proc;

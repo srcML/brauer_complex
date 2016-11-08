@@ -17,7 +17,7 @@ $include <s1.maple> ;
 
 interface(rtablesize=infinity):
 
-que := 2;     #eight is essentially the only reasonable value, though we may run 16 to check things
+que := 16;     #eight is essentially the only reasonable value, though we may run 16 to check things
 
 #nrchars := (que+1) * (que^2+que+4);
 #nrBrchars := que^3;
@@ -25,7 +25,7 @@ que := 2;     #eight is essentially the only reasonable value, though we may run
 nrchars :=18;
 nrBrchars :=2;     #for testing purposes
 
-DM := Matrix(nrchars, nrBrchars);
+#DM := Matrix(nrchars, nrBrchars);
 
 #X_q := calculate_X_q(que):
 
@@ -36,7 +36,7 @@ DM := Matrix(nrchars, nrBrchars);
 
 r1, r1_lt := calculate_r1(que):
 r2, r2_lt := calculate_r2(que):
-t1, t1_lt := calculate_t1(que):
+t1, t1_lt, twentyfivetriples, twentyfivelt := calculate_t1(que):
 t2, t2_lt := calculate_t2(que):
 s2, s2_lt := calculate_s2(que):
 s1, s1_lt := calculate_s1(que):
@@ -49,8 +49,11 @@ s1, s1_lt := calculate_s1(que):
 #r2;
 #r2_lookup_table;
 
-#t1;
-#t1_lookup_table;
+t1;
+t1_lookup_table;
+twentyfivetriples;
+twentyfivelt[1,2,3];
+twentyfivelt[1,2,4];
 
 #t2;
 #t2_lookup_table;
