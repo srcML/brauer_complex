@@ -241,13 +241,17 @@ chi242 := proc(coefficient,a,order,column,DM::Matrix,r2_lt)
       DM[5+3*order+15/4*order^2 +a_row  , column] := DM[5+3*order+15/4*order^2+a_row , column] + coefficient;
 end proc;
 chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-       local m:=(order-2)/2: 
+       local m:=(order-2)/2-c: 
        local index:= : (m-2)*(m^2+20*m-6)/3*(c-1)+(m-1)*(m-2)/2*(b-c-1)+a-b:
        local row:= 5+3*order+4*order^2+index:   
       DM[row , column] := DM[row , column] + coefficient;
 end proc;
 chi261 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-       local index:= :
+if b>a then      
+       local index:=(order/2)*(order/2-1-a)*(a-1)+b-a+c :
+else
+       local index:= 1/32*order*(order-2)*(order-4)+ (order/2)*(order/2-1-b)*(b-1)+a-a+c :
+end if;      
        local row := 4+47/12*order+15/4*order^2+1/48*order^3+index:
       DM[row , column] := DM[row , column] + coefficient;
 end proc;
@@ -257,7 +261,11 @@ chi271 := proc(coefficient,a,b,order,column,DM::Matrix,r1_lt)
       DM[row , column] := DM[row , column] + coefficient;
 end proc;
 chi281 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-      local index:=  :
+if c>b then      
+       local index:=(order/2-1)*(order/2-b)*(b-1)+c-b+a :
+else
+       local index:= 1/32*order*(order-2)^2+(order/2-1)*(order/2-c)*(c-1)+b-c+a :
+end if;      
       local row:=4+59/12*order+23/8*order^2+5/24*order^3 + index:
       DM[row, column] := DM[row , column] + coefficient;
 end proc;
@@ -277,7 +285,7 @@ chi311 := proc(coefficient,a,order,column,DM::Matrix,s1_lt)
        DM[row,column]:=DM[row,column]+coefficient;
 end proc;
 chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix)
-       local m:=order/2: 
+       local m:=order/2-c: 
        local index:= : (m-2)*(m^2+20*m-6)/3*(c-1)+(m-1)*(m-2)/2*(b-c-1)+a-b:
        local row:= 4+5*order+17/8*order^2+11/16*order^3+index:
       DM[row , column] := DM[row , column] + coefficient;
