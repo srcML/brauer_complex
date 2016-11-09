@@ -67,7 +67,7 @@ elif a1=b1 then
      chi162(1,a1,c1,order,column,DM);  # case (a,a,b)
 
 else 
-     chi251(1,a1,b1,c1,order,column,DM,twentyfivelt);     #case (a,b,c)
+     chi251(1,a1,b1,c1,order,column,DM);     #case (a,b,c)
 
 
 #else some kind of error message throw catch?

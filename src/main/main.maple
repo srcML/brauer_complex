@@ -36,7 +36,7 @@ nrBrchars :=2;     #for testing purposes
 
 r1, r1_lt := calculate_r1(que):
 r2, r2_lt := calculate_r2(que):
-t1, t1_lt, twentyfivetriples, twentyfivelt := calculate_t1(que):
+t1, t1_lt := calculate_t1(que):
 t2, t2_lt := calculate_t2(que):
 s2, s2_lt := calculate_s2(que):
 s1, s1_lt := calculate_s1(que):

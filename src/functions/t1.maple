@@ -8,8 +8,6 @@ calculate_t1 := proc(order)
 
   local t1_matrix := Matrix(number_rows, number_columns);
   local t1_lookup_table := Array(1 .. max_value - 1, fill=0, datatype=integer);
-  local twentyfivetriples := Matrix(1/48*(order-2)*(order-4)*(order-6),3);
-  local twentyfivelt := Array(1 .. 1/48*(order-2)*(order-4)*(order-6), fill = 0, datatype=integer);
 
   local is_generated := Array(1 .. max_value - 1, fill=false, datatype=boolean);
 
@@ -52,27 +50,7 @@ calculate_t1 := proc(order)
 
   end do;
 
-for i from 1 to number_rows-2 do
-    for j from i+1 to number_rows-1 do
-    	for k from j+1 to number_rows do
-	    twentyfivetriples[number_rows^2*(i-1)+number_rows*(j-2)+k-3+1,1]:=i;
-	    twentyfivetriples[number_rows^2*(i-1)+number_rows*(j-2)+k-3+1,2]:=j;
-	    twentyfivetriples[number_rows^2*(i-1)+number_rows*(j-2)+k-3+1,3]:=k;
-	 end do;
-    end do;
-end do;
-
-for row from 1 to 1/48*(order-2)*(order-4)*(order-6)  do
-
-      for column from 1 to 3 do
-
-            twentyfivelt[twentyfivetriples[row, column]] := row;
-
-      end do;
-
-  end do;
-
-return  t1_matrix, t1_lookup_table, twentyfivetriples, twentyfivelt;
+return  t1_matrix, t1_lookup_table;
 
 end proc:
 

@@ -240,13 +240,14 @@ chi242 := proc(coefficient,a,order,column,DM::Matrix,r2_lt)
        local a_row := r2_lt[1,a]:
       DM[5+3*order+15/4*order^2 +a_row  , column] := DM[5+3*order+15/4*order^2+a_row , column] + coefficient;
 end proc;
-chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix,twentyfivelt) 
-       local index:= twentyfivelt[c,b,a]:         #easier to write ascending than descending triples
+chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix)
+       local m:=(order-2)/2: 
+       local index:= : (m-2)*(m^2+20*m-6)/3*(c-1)+(m-1)*(m-2)/2*(b-c-1)+a-b:
        local row:= 5+3*order+4*order^2+index:   
       DM[row , column] := DM[row , column] + coefficient;
 end proc;
-chi261 := proc(coefficient,a,b,c,order,column,DM::Matrix,twentysixlt)
-       local index:=twentysixlt[a,b,c]:
+chi261 := proc(coefficient,a,b,c,order,column,DM::Matrix)
+       local index:= :
        local row := 4+47/12*order+15/4*order^2+1/48*order^3+index:
       DM[row , column] := DM[row , column] + coefficient;
 end proc;
@@ -255,8 +256,8 @@ chi271 := proc(coefficient,a,b,order,column,DM::Matrix,r1_lt)
        local row:= 4+53/12*order+27/8*order^2+1/12^order^3+index:
       DM[row , column] := DM[row , column] + coefficient;
 end proc;
-chi281 := proc(coefficient,a,b,c,order,column,DM::Matrix,twentyeightlt)
-      local index:= twentyeightlt[a,b,c] :
+chi281 := proc(coefficient,a,b,c,order,column,DM::Matrix)
+      local index:=  :
       local row:=4+59/12*order+23/8*order^2+5/24*order^3 + index:
       DM[row, column] := DM[row , column] + coefficient;
 end proc;
@@ -275,8 +276,9 @@ chi311 := proc(coefficient,a,order,column,DM::Matrix,s1_lt)
       local row:=4+31/6*order+17/8*order^2+25/48*order^3+a_row:
        DM[row,column]:=DM[row,column]+coefficient;
 end proc;
-chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix,thirtytwolt)
-       local index:= thirtytwolt[a,b,c]:
+chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix)
+       local m:=order/2: 
+       local index:= : (m-2)*(m^2+20*m-6)/3*(c-1)+(m-1)*(m-2)/2*(b-c-1)+a-b:
        local row:= 4+5*order+17/8*order^2+11/16*order^3+index:
       DM[row , column] := DM[row , column] + coefficient;
 end proc;
