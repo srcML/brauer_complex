@@ -1,5 +1,6 @@
 $include <X_q.maple> ;
 
+$include <labelmakers.maple> ;
 $include <r1.maple> ;
 $include <r2.maple> ;
 $include <t1.maple> ;
@@ -17,22 +18,26 @@ $include <s1.maple> ;
 
 interface(rtablesize=infinity):
 
-que := 16;     #eight is essentially the only reasonable value, though we may run 16 to check things
+que := 2;     #eight is essentially the only reasonable value, though we may run 16 to check things
 
-#nrchars := (que+1) * (que^2+que+4);
-#nrBrchars := que^3;
+nrchars := (que+1) * (que^2+que+4);
+nrBrchars := que^3;
 
-nrchars :=18;
-nrBrchars :=2;     #for testing purposes
+#nrchars :=18;
+#nrBrchars :=2;     #for testing purposes
 
-#DM := Matrix(nrchars, nrBrchars);
+DM := Matrix(nrchars, nrBrchars);
+DMlbl := Array(1..nrchars, datatype=string);
 
-#X_q := calculate_X_q(que):
 
-#bigiterator(que,DM,X_q):
+X_q := calculate_X_q(que):
+X_q;
+#bigiterator(que,DM,X_q,DMlbl):
 
 #stabilizer(que,X_q,DM):
 
+DMLambdalbl, DMPhilbl := calculatelbls(X_q,order):
+DMLambdalbl;
 
 r1, r1_lt := calculate_r1(que):
 r2, r2_lt := calculate_r2(que):

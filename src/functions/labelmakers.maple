@@ -1,0 +1,21 @@
+#constructing column headers
+
+calculatelbls := proc(X_q,order)
+
+local DMLlbl:=Array(1..order^3, dataype=string):
+local DMPlbl:=Array(1..order^3, dataype=string):
+
+
+for i from 1 to order^3 do
+
+    DMLlbl:= cat("\Lambda (" convert(X_q(i,1),string),convert(X_q[i,2],string),convert(X_q[i,3],string),")" );
+
+end do
+for i from 1 to order^3 do
+
+    DMPlbl:= cat("\Phi (" convert(X_q[i,1],string),convert(X_q[i,2],string),convert(X_q[i,3],string),")" );
+
+end do
+
+return DMLlbl, DMPlbl;
+end proc;
