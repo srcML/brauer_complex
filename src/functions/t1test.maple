@@ -1,74 +1,79 @@
 #this is a test for the if-else tree of tori functions
 
-tone := proc(a,b,c,column,order,DM::Matrix,t1_lt)
+
+tone := proc(a,b,c,column,order,DM::Matrix,t1_lt,lbl)
 
 #manage the parameter sets via lookuptables here
-	local a1:=a;
-	local b1:=b;
-	local c1:=c;
+local a1 := 0:
+local b1 := 0:
+local c1 := 0:
 
-#if a mod (order-1) = 0 then a1 := 0:
-#    else a1 := t1_lt[a mod (order-1)]:
-#    end if;
-#if b mod (order-1)= 0  then b1 := 0:
-#    else b1 := t1_lt[b mod (order-1)]:
-#    end if;
-#if c mod (order-1) = 0  then c1 := 0:
-#    else c1 := t1_lt[c mod (order-1)]:     #this is the simplest case of parameter management in the entire complex
-#    end if;
+if a mod (order-1) <> 0 then
+   a1 := t1_lt[a mod (order-1)]:
+end if;
 
+if b mod (order-1) <> 0 then
+   b1 := t1_lt[b mod (order-1)]:
+end if;
 
+if c mod (order-1) <> 0 then
+   c1 := t1_lt[c mod (order-1)]:     #this is the simplest case of parameter management in the entire c\
+omplex
+end if;
+
+#Begin if/else tree for D-L chars
 
 if a1=0 then
-    if b1=0 then
-         if c1=0 then
-         DM[2,1]:=1; #case 000
-         else
-		DM[3,1]:=2; #case 00c
-         end if;
-   elif c1=0 then
-       DM[4,1]:=3;  #case 0b0
-   elif b1=c1 then
-       DM[5,1]:=4; #case 0bb
-   else DM[6,1]:=5; #case 0bc
-   end if;
-else #a1!=0
-     if b1=0 then
-        if c1=0 then
-          DM[7,1]:=6; #case a00
-        elif a1=c1 then
-            DM[8,1]:=7; #case a0a
-         else
-            DM[9,1]:=8; #case a0c
-        end if;
-      else 
-      if c1=0 then
-      	 if a1=b1 then
-               DM[10,1]:=9;   #case aa0
-                else
-            	 DM[11,1]:=10;  #case ab0
-          end if;
-      else #none are zero
-  if a1=b1 then
-        if b1=c1 then
-         DM[12,1]:=11;  #case aaa
-        else
-          DM[13,1]:=12; #case aab
-        end if;
-     elif a1=c1 then
-         DM[14,1]:=13; #case aba
-     elif b1=c1 then
-         DM[15,1]:=14; #case abb
+   chi11(1,column,DM,'lbl');
+   chi12(3,column,DM,'lbl');
+   chi13(1,column,DM,'lbl');
+   chi14(2,column,DM,'lbl');
+   chi16(3,column,DM,'lbl');
+   chi17(3,column,DM,'lbl');
+   chi18(3,column,DM,'lbl');
+   chi19(2,column,DM,'lbl');
+   chi110(1,column,DM,'lbl');
+   chi112(1,column,DM,'lbl');      #this is the result of (0,0,0), which for T_1 is equivalent to a=0.
+
+
+elif b1=0 then
+     chi61(1,a1,order,column,DM,'lbl');
+     chi62(2,a1,order,column,DM,'lbl');
+     chi63(1,a1,order,column,DM,'lbl');
+     chi64(1,a1,order,column,DM,'lbl');
+     chi66(1,a1,order,column,DM,'lbl');      # case (a,0,0)
+
+elif c1=0 then
+    if a1=b1 then
+     chi11_1(1,a1,order,column,DM,'lbl');
+     chi11_2(1,a1,order,column,DM,'lbl');
+     chi113(1,a1,order,column,DM,'lbl');
+     chi114(1,a1,order,column,DM,'lbl');  # case (a,a,0)
+
      else
-         DM[16,1]:=15; #case abc
-     end if;
-end if;
-end if;
-end if;
+          chi171(1,a1,b1,order,column,DM,'lbl');
+          chi172(1,a1,b1,order,column,DM,'lbl');  # case (a,b,0)
+
+          end if;
+elif a1=c1 then
+     chi81(1,a1,order,column,DM,'lbl');
+     chi82(2,a1,order,column,DM,'lbl');
+     chi83(1,a1,order,column,DM,'lbl'); # case (a,a,a)
+
+elif b1=c1 then
+     chi161(1,a1,b1,order,column,DM,'lbl');
+     chi162(1,a1,b1,order,column,DM,'lbl');  # case (a,b,b)
+
+elif a1=b1 then
+     chi161(1,a1,c1,order,column,DM,'lbl');
+     chi162(1,a1,c1,order,column,DM,'lbl');  # case (a,a,b)
+
+else
+     chi251(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
 
 
+#else some kind of error message throw catch?
+
+end if;
 
 end proc;
-
-#########################################################
-#########################################################

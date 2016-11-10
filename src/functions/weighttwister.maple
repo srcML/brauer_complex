@@ -1,67 +1,67 @@
 #this function will take a weight, produce the column of that weight and send 48 twisted weights to the ten tori the appropriate number of times. 
 
-weighttwister := proc(a,b,c,lambda,order,DM::Matrix,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt)
+weighttwister := proc(a,b,c,lambda,order,DM::Matrix,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,lbl)
 
      local column := order ^ 3 - (lambda - 1);   #in the viscinity of the mathematical algorithm which twists the weights is a function which reverses the order of the output for technical reasons. 
 			  
-tone(a,b,c,column,order,DM,t1_lt):
+tone(a,b,c,column,order,DM,t1_lt,'lbl'):
 
-ttwo(a,b,c,column,order,DM,t1_lt,t2_lt):
-ttwo(a,c,b,column,order,DM,t1_lt,t2_lt):
-ttwo(c,b,a,column,order,DM,t1_lt,t2_lt):
+ttwo(a,b,c,column,order,DM,t1_lt,t2_lt,'lbl'):
+ttwo(a,c,b,column,order,DM,t1_lt,t2_lt,'lbl'):
+ttwo(c,b,a,column,order,DM,t1_lt,t2_lt,'lbl'):
 
 #need to determine which lookuptables need to be sent to each torus
 
-tthree(a+qb,c,column,order,DM):
-tthree(a+qc,b,column,order,DM):
-tthree(b+qc,a,column,order,DM):
-tthree(b-qc,a,column,order,DM):
-tthree(a-qc,b,column,order,DM):
-tthree(a-qb,c,column,order,DM):
+tthree(a+order*b,c,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tthree(a+order*c,b,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tthree(b+order*c,a,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tthree(b-order*c,a,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tthree(a-order*c,b,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tthree(a-order*b,c,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
 
-tfour(a,b,c,column,order,DM):
-tfour(b,a,c,column,order,DM):
-tfour(c,a,b,column,order,DM):
+tfour(a,b,c,column,order,DM,'lbl',t1_lt,t2_lt):
+tfour(b,a,c,column,order,DM,'lbl',t1_lt,t2_lt):
+tfour(c,a,b,column,order,DM,'lbl',t1_lt,t2_lt):
 
-tfive(a+qb,c,column,order,DM):
-tfive(a+qc,b,column,order,DM):
-tfive(b+qc,a,column,order,DM):
-tfive(b-qc,a,column,order,DM):
-tfive(a-qc,b,column,order,DM):
-tfive(a-qb,c,column,order,DM):
+tfive(a+order*b,c,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tfive(a+order*c,b,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tfive(b+order*c,a,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tfive(b-order*c,a,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tfive(a-order*c,b,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
+tfive(a-order*b,c,column,order,DM,'lbl',t1_lt,t2_lt,r1_lt):
  
-tsix(a+qb,c,column,order,DM):
-tsix(a+qc,b,column,order,DM):
-tsix(b+qc,a,column,order,DM):
-tsix(b-qc,a,column,order,DM):
-tsix(a-qc,b,column,order,DM):
-tsix(a-qb,c,column,order,DM):
+tsix(a+order*b,c,column,order,DM,'lbl',t1_lt,r2_lt):
+tsix(a+order*c,b,column,order,DM,'lbl',t1_lt,r2_lt):
+tsix(b+order*c,a,column,order,DM,'lbl',t1_lt,r2_lt):
+tsix(b-order*c,a,column,order,DM,'lbl',t1_lt,r2_lt):
+tsix(a-order*c,b,column,order,DM,'lbl',t1_lt,r2_lt):
+tsix(a-order*b,c,column,order,DM,'lbl',t1_lt,r2_lt):
 
-tseven(a+qc+q^2b,column,order,DM):
-tseven(a+qb+q^2c,column,order,DM):
-tseven(a-qc+q^2b,column,order,DM):
-tseven(a+qb-q^2c,column,order,DM):
-tseven(a-qc-q^2b,column,order,DM):
-tseven(a-qc-q^2c,column,order,DM):
-tseven(a-qb+q^2c,column,order,DM):
-tseven(a+qc-q^2b,column,order,DM):
+tseven(a+order*c+b*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
+tseven(a+order*b+c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
+tseven(a-order*c+b*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
+tseven(a+order*b-c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
+tseven(a-order*c-b*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
+tseven(a-order*c-c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
+tseven(a-order*b+c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
+tseven(a+order*c-b*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
 
-teight(a,b,c,column,order,DM):
+teight(a,b,c,column,order,DM,'lbl',t2_lt):
 
-tnine(a+qb,c,column,order,DM):
-tnine(a+qc,b,column,order,DM):
-tnine(b+qc,a,column,order,DM):
-tnine(b-qc,a,column,order,DM):
-tnine(a-qc,b,column,order,DM):
-tnine(a-qb,c,column,order,DM):
+tnine(a+order*b,c,column,order,DM,'lbl',t2_lt,r2_lt):
+tnine(a+order*c,b,column,order,DM,'lbl',t2_lt,r2_lt):
+tnine(b+order*c,a,column,order,DM,'lbl',t2_lt,r2_lt):
+tnine(b-order*c,a,column,order,DM,'lbl',t2_lt,r2_lt):
+tnine(a-order*c,b,column,order,DM,'lbl',t2_lt,r2_lt):
+tnine(a-order*b,c,column,order,DM,'lbl',t2_lt,r2_lt):
 
-tten(a+qc+q^2b,column,order,DM):
-tten(a+qb+q^2c,column,order,DM):
-tten(a-qc+q^2b,column,order,DM):
-tten(a+qb-q^2c,column,order,DM):
-tten(a-qc-q^2b,column,order,DM):
-tten(a-qc-q^2c,column,order,DM):
-tten(a-qb+q^2c,column,order,DM):
-tten(a+qc-q^2b,column,order,DM):
+tten(a+order*c+b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a+order*b+c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a-order*c+b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a+order*b-c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a-order*c-b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a-order*c-c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a-order*b+c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a+order*c-b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
 
 end proc;

@@ -1,11 +1,11 @@
 #this is a collection of ten functions, corresponding to tori. They should all accept order, a twisted weight from the weight twister function, the correct lookup tables, a column index, and the decomposition matrix
 
-tone := proc(a,b,c,column,order,DM::Matrix,t1_lt,twentyfivelt)
+tone := proc(a,b,c,column,order,DM::Matrix,t1_lt,lbl)
 
 #manage the parameter sets via lookuptables here
-local a1 = 0:
-local b1 = 0:
-local c1 = 0:
+local a1 := 0:
+local b1 := 0:
+local c1 := 0:
 
 if a mod (order-1) <> 0 then 
    a1 := t1_lt[a mod (order-1)]:
@@ -22,52 +22,52 @@ end if;
 #Begin if/else tree for D-L chars
 
 if a1=0 then
-   chi11(1,column,DM);
-   chi12(3,column,DM); 
-   chi13(1,column,DM);
-   chi14(2,column,DM);
-   chi16(3,column,DM);
-   chi17(3,column,DM);
-   chi18(3,column,DM);
-   chi19(2,column,DM);
-   chi110(1,column,DM);
-   chi112(1,column,DM);      #this is the result of (0,0,0), which for T_1 is equivalent to a=0. 
+   chi11(1,column,DM,'lbl');
+   chi12(3,column,DM,'lbl'); 
+   chi13(1,column,DM,'lbl');
+   chi14(2,column,DM,'lbl');
+   chi16(3,column,DM,'lbl');
+   chi17(3,column,DM,'lbl');
+   chi18(3,column,DM,'lbl');
+   chi19(2,column,DM,'lbl');
+   chi110(1,column,DM,'lbl');
+   chi112(1,column,DM,'lbl');      #this is the result of (0,0,0), which for T_1 is equivalent to a=0. 
 
 elif b1=0 then
-     chi61(1,a1,order,column,DM);
-     chi62(2,a1,order,column,DM);
-     chi63(1,a1,order,column,DM);
-     chi64(1,a1,order,column,DM);
-     chi66(1,a1,order,column,DM);      # case (a,0,0)
+     chi61(1,a1,order,column,DM,'lbl');
+     chi62(2,a1,order,column,DM,'lbl');
+     chi63(1,a1,order,column,DM,'lbl');
+     chi64(1,a1,order,column,DM,'lbl');
+     chi66(1,a1,order,column,DM,'lbl');      # case (a,0,0)
     
 elif c1=0 then
     if a1=b1 then
-     chi11_1(1,a1,order,column,DM);
-     chi11_2(1,a1,order,column,DM);
-     chi113(1,a1,order,column,DM);
-     chi114(1,a1,order,column,DM);  # case (a,a,0)
+     chi11_1(1,a1,order,column,DM,'lbl');
+     chi11_2(1,a1,order,column,DM,'lbl');
+     chi113(1,a1,order,column,DM,'lbl');
+     chi114(1,a1,order,column,DM,'lbl');  # case (a,a,0)
 
      else 
-          chi171(1,a1,b1,order,column,DM);
-	  chi172(1,a1,b1,order,column,DM);  # case (a,b,0)
+          chi171(1,a1,b1,order,column,DM,'lbl');
+	  chi172(1,a1,b1,order,column,DM,'lbl');  # case (a,b,0)
 
 	  end if; 
 
 elif a1=c1 then
-     chi81(1,a1,order,column,DM);
-     chi82(2,a1,order,column,DM);
-     chi83(1,a1,order,column,DM); # case (a,a,a)
+     chi81(1,a1,order,column,DM,'lbl');
+     chi82(2,a1,order,column,DM,'lbl');
+     chi83(1,a1,order,column,DM,'lbl'); # case (a,a,a)
     
 elif b1=c1 then
-     chi161(1,a1,b1,order,column,DM);
-     chi162(1,a1,b1,order,column,DM);  # case (a,b,b)
+     chi161(1,a1,b1,order,column,DM,'lbl');
+     chi162(1,a1,b1,order,column,DM,'lbl');  # case (a,b,b)
 
 elif a1=b1 then
-     chi161(1,a1,c1,order,column,DM);
-     chi162(1,a1,c1,order,column,DM);  # case (a,a,b)
+     chi161(1,a1,c1,order,column,DM,'lbl');
+     chi162(1,a1,c1,order,column,DM,'lbl');  # case (a,a,b)
 
 else 
-     chi251(1,a1,b1,c1,order,column,DM);     #case (a,b,c)
+     chi251(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
 
 
 #else some kind of error message throw catch?
@@ -80,11 +80,11 @@ end proc;
 
 #############################################################################################################
 
-ttwo := proc(a,b,c,column,order,DM::Matrix, t1_lt, t2_lt)
+ttwo := proc(a,b,c,column,order,DM::Matrix, t1_lt, t2_lt, lbl)
 
-local a1 = 0:
-local b1 = 0:
-local c1 = 0:
+local a1 := 0:
+local b1 := 0:
+local c1 := 0:
 
 if a mod (order-1) <> 0 then
    a1 := t1_lt[a mod (order-1)];
@@ -105,64 +105,64 @@ if a1=0 then
     if b1=0 then
    	 if c1=0 then
   	 #case 000
-       	       chi11(-1,column,DM);
-	       chi12(-1,column,DM);
-	       chi13(1,column,DM);
-	       chi14(-2,column,DM);
-	       chi16(1,column,DM);
-	       chi17(-1,column,DM);
-	       chi18(1,column,DM);
-	       chi19(2,column,DM);
-	       chi110(-1,column,DM);
-	       chi112(1,column,DM);
+       	       chi11(-1,column,DM,'lbl');
+	       chi12(-1,column,DM,'lbl');
+	       chi13(1,column,DM,'lbl');
+	       chi14(-2,column,DM,'lbl');
+	       chi16(1,column,DM,'lbl');
+	       chi17(-1,column,DM,'lbl');
+	       chi18(1,column,DM,'lbl');
+	       chi19(2,column,DM,'lbl');
+	       chi110(-1,column,DM,'lbl');
+	       chi112(1,column,DM,'lbl');
          else #case 00c
-	      chi71(1,c1,order,column,DM);
-	      chi72(2,c1,order,column,DM);
-	      chi73(1,c1,order,column,DM);
-	      chi74(1,c1,order,column,DM);
-	      chi76(1,c1,order,column,DM);
+	      chi71(1,c1,order,column,DM,'lbl');
+	      chi72(2,c1,order,column,DM,'lbl');
+	      chi73(1,c1,order,column,DM,'lbl');
+	      chi74(1,c1,order,column,DM,'lbl');
+	      chi76(1,c1,order,column,DM,'lbl');
       end if;
    elif c1=0 then
    	#case 0b0
-	      chi61(-1,b1,order,column,DM);
-	      chi63(-1,b1,order,column,DM);
-	      chi64(1,b1,order,column,DM);
-	      chi66(1,b1,order,column,DM);
+	      chi61(-1,b1,order,column,DM,'lbl');
+	      chi63(-1,b1,order,column,DM,'lbl');
+	      chi64(1,b1,order,column,DM,'lbl');
+	      chi66(1,b1,order,column,DM,'lbl');
      else #case 0bc
-     	  chi201(1,b1,c1,order,column,DM);
-	  chi202(1,b1,c1,order,column,DM);
+     	  chi201(1,b1,c1,order,column,DM,'lbl');
+	  chi202(1,b1,c1,order,column,DM,'lbl');
    end if;
 else #a1!=0 
      if b1=0 then 
      	if c1=0 then
 	   #case a00
-	   	 chi61(-1,a1,order,column,DM);
-		 chi63(-1,a1,order,column,DM);
-                 chi64(1,a1,order,column,DM);
-                 chi66(1,a1,order,column,DM);
+	   	 chi61(-1,a1,order,column,DM,'lbl');
+		 chi63(-1,a1,order,column,DM,'lbl');
+                 chi64(1,a1,order,column,DM,'lbl');
+                 chi66(1,a1,order,column,DM,'lbl');
 	 else 
 	     #case a0c
-	     	   chi201(1,a1,c1,order,column,DM);
-                   chi202(1,a1,c1,order,column,DM);
+	     	   chi201(1,a1,c1,order,column,DM,'lbl');
+                   chi202(1,a1,c1,order,column,DM,'lbl');
         end if;
       else
        if c1=0 then
        	   if a1=b1 then
       	       #case aa0
-	       	     chi11_1(-1,a1,order,column,DM);
-		     chi11_2(1,a1,order,column,DM);
-		     chi113(-1,a1,order,column,DM);
-		     chi114(1,a1,order,column,DM);
+	       	     chi11_1(-1,a1,order,column,DM,'lbl');
+		     chi11_2(1,a1,order,column,DM,'lbl');
+		     chi113(-1,a1,order,column,DM,'lbl');
+		     chi114(1,a1,order,column,DM,'lbl');
 	  else
-	       	     chi171(-1,a1,b1,order,column,DM);
-		     chi172(1,a1,b1,order,column,DM);
+	       	     chi171(-1,a1,b1,order,column,DM,'lbl');
+		     chi172(1,a1,b1,order,column,DM,'lbl');
    	 end if;
 else #none are zero
      if a1=b1 then
-	   chi181(1,a1,c1,order,column,DM);
-	   chi182(1,a1,c1,order,column,DM);
+	   chi181(1,a1,c1,order,column,DM,'lbl');
+	   chi182(1,a1,c1,order,column,DM,'lbl');
      else 
-	  chi261(1,a1,b1,c1,order,column,DM);
+	  chi261(1,a1,b1,c1,order,column,DM,'lbl');
      end if;
 end if;
 end if;
@@ -175,13 +175,13 @@ end proc;
 
 #############################################################################################################
 
-tthree := proc(a,b,column,order,DM::Matrix,t1_lt,t2_lt,r1_lt)
+tthree := proc(a,b,column,order,DM::Matrix,lbl,t1_lt,t2_lt,r1_lt)
 
 #parameter management; a is the result of a+qb and is reduced mod q^2-1, b is reduced mod q-1
-local a1 = 0:  #case a ain't congruent to anything
-local a2 = 0: #case a congruent to q-1
-local a3 = 0: #case a congruent to q+1 
-local b1 = 0:
+local a1 := 0:  #case a ain't congruent to anything
+local a2 := 0: #case a congruent to q-1
+local a3 := 0: #case a congruent to q+1 
+local b1 := 0:
 
 if b mod (order - 1) <> 0 then
    b1 := t1_lt[b mod (order-1)];
@@ -201,48 +201,48 @@ end if; # the various congruence if/elif
 
 if a1=0 then
    if b1=0 then
-      chi11(-1,column,DM);
-      chi12(-1,column,DM);
-      chi13(-1,column,DM);
-      chi16(-1,column,DM);
-      chi17(1,column,DM);
-      chi18(1,column,DM);
-      chi110(1,column,DM);
-      chi112(1,column,DM);   #case 0,0
+      chi11(-1,column,DM,'lbl');
+      chi12(-1,column,DM,'lbl');
+      chi13(-1,column,DM,'lbl');
+      chi16(-1,column,DM,'lbl');
+      chi17(1,column,DM,'lbl');
+      chi18(1,column,DM,'lbl');
+      chi110(1,column,DM,'lbl');
+      chi112(1,column,DM,'lbl');   #case 0,0
    else
-	chi61(-1,b1,order,column,DM);
-	chi63(1,b1,order,column,DM);
-	chi64(-1,b1,order,column,DM);
-	chi66(1,b1,order,column,DM);   #case 0,b
+	chi61(-1,b1,order,column,DM,'lbl');
+	chi63(1,b1,order,column,DM,'lbl');
+	chi64(-1,b1,order,column,DM,'lbl');
+	chi66(1,b1,order,column,DM,'lbl');   #case 0,b
    end if; #cases 0,0 and 0,b
 elif a3 <> 0 then         #either b is modulus, 0 or distinct
      if b1= a3 then
-     	chi81(-1,b1,order,column,DM);
-	chi83(1,b1,order,column,DM);
+     	chi81(-1,b1,order,column,DM,'lbl');
+	chi83(1,b1,order,column,DM,'lbl');
      elif b1=0 then
-     	  chi11_1(-1,a3,order,column,DM);
-	  chi11_2(-1,a3,order,column,DM);
-	  chi113(1,a3,order,column,DM);
-	  chi114(1,a3,order,column,DM);
+     	  chi11_1(-1,a3,order,column,DM,'lbl');
+	  chi11_2(-1,a3,order,column,DM,'lbl');
+	  chi113(1,a3,order,column,DM,'lbl');
+	  chi114(1,a3,order,column,DM,'lbl');
      else
-	chi161(-1,a3,b1,order,column,DM);
-	chi162(1,a3,b1,order,column,DM);
+	chi161(-1,a3,b1,order,column,DM,'lbl');
+	chi162(1,a3,b1,order,column,DM,'lbl');
      end if;    #cases aq+a
 elif a2<>0 then     #b is 0 or distinct
      if b1=0 then
-     	chi131(1,a2,order,column,DM);
-	chi132(1,a2,order,column,DM);
-	chi133(1,a2,order,column,DM);
-	chi134(1,a2,order,column,DM);
+     	chi131(1,a2,order,column,DM,'lbl');
+	chi132(1,a2,order,column,DM,'lbl');
+	chi133(1,a2,order,column,DM,'lbl');
+	chi134(1,a2,order,column,DM,'lbl');
      else
-	chi211(1,a2,b1,order,column,DM);
-	chi212(1,a2,b1,order,column,DM);
+	chi211(1,a2,b1,order,column,DM,'lbl');
+	chi212(1,a2,b1,order,column,DM,'lbl');
      end if;   #cases aq-a
 elif b1=0 then 
-     chi191(1,a1,order,column,DM,r1_lt);
-     chi192(1,a1,order,column,DM,r1_lt);
+     chi191(1,a1,order,column,DM,'lbl',r1_lt);
+     chi192(1,a1,order,column,DM,'lbl',r1_lt);
 else 
-     chi 271(1,a1,b1,order,column,DM);
+     chi271(1,a1,b1,order,column,DM,'lbl',r1_lt);
 end if; #a =0
 
 
@@ -253,13 +253,13 @@ end proc;
 
 #############################################################################################################
 
-tfour := proc(a,b,c,column,order,DM::Matrix,t1_lt,t2_lt)
+tfour := proc(a,b,c,column,order,DM::Matrix,lbl,t1_lt,t2_lt)
 
 #parameter management
 
-local a1 = 0:
-local b1 = 0:
-local c1 = 0:
+local a1 := 0:
+local b1 := 0:
+local c1 := 0:
 
 if a mod (order-1) <> 0 then
    a1 := t1_lt[a mod (order-1)];
@@ -277,55 +277,55 @@ end if;
 if a1=0 then
    if b1=0 then
       if c1=0 then
-        chi11(1,column,DM);
-        chi12(1,column,DM);
-        chi13(-1,column,DM);
-        chi15(-2,column,DM);
-        chi16(-1,column,DM);
-        chi17(-1,column,DM);
-        chi18(1,column,DM);
-        chi110(-1,column,DM);
-        chi111(-2,column,DM);
-        chi112(1,column,DM);        	 #case 000
+        chi11(1,column,DM,'lbl');
+        chi12(1,column,DM,'lbl');
+        chi13(-1,column,DM,'lbl');
+        chi15(-2,column,DM,'lbl');
+        chi16(-1,column,DM,'lbl');
+        chi17(-1,column,DM,'lbl');
+        chi18(1,column,DM,'lbl');
+        chi110(-1,column,DM,'lbl');
+        chi111(-2,column,DM,'lbl');
+        chi112(1,column,DM,'lbl');        	 #case 000
       else 
-      	chi71(-1,c1,order,column,DM);
-	chi72(-1,c1,order,column,DM);
-	chi73(1,c1,order,column,DM);
-	chi74(1,c1,order,column,DM);   #case 00c
+      	chi71(-1,c1,order,column,DM,'lbl');
+	chi72(-1,c1,order,column,DM,'lbl');
+	chi73(1,c1,order,column,DM,'lbl');
+	chi74(1,c1,order,column,DM,'lbl');   #case 00c
        end if; 
    elif c1=0 then
-      	chi71(-1,b1,order,column,DM);
-	chi72(-1,b1,order,column,DM);
-	chi73(1,b1,order,column,DM);
-	chi74(1,b1,order,column,DM);    #case 00c again
+      	chi71(-1,b1,order,column,DM,'lbl');
+	chi72(-1,b1,order,column,DM,'lbl');
+	chi73(1,b1,order,column,DM,'lbl');
+	chi74(1,b1,order,column,DM,'lbl');    #case 00c again
    elif b1=c1 then
-   	chi131(-1,b1,order,column,DM);
-	chi132(1,b1,order,column,DM);
-	chi133(-1,b1,order,column,DM);
-	chi134(1,b1,order,column,DM);   	#case 0aa
+   	chi131(-1,b1,order,column,DM,'lbl');
+	chi132(1,b1,order,column,DM,'lbl');
+	chi133(-1,b1,order,column,DM,'lbl');
+	chi134(1,b1,order,column,DM,'lbl');   	#case 0aa
    else 
-   	chi231(1,c1,b1,order,column,DM);
-	chi232(1,c1,b1,order,column,DM);   	#case 0ab
+   	chi231(1,c1,b1,order,column,DM,'lbl');
+	chi232(1,c1,b1,order,column,DM,'lbl');   	#case 0ab
    end if;    
 elif b1=0 then
      if c1=0 then 
-	chi61(1,a1,order,column,DM);
-	chi63(-1,a1,order,column,DM);
-	chi64(-1,a1,order,column,DM);
-	chi65(-2,a1,order,column,DM);
-	chi66(1,a1,order,column,DM);       	#case a00
+	chi61(1,a1,order,column,DM,'lbl');
+	chi63(-1,a1,order,column,DM,'lbl');
+	chi64(-1,a1,order,column,DM,'lbl');
+	chi65(-2,a1,order,column,DM,'lbl');
+	chi66(1,a1,order,column,DM,'lbl');       	#case a00
      else 
-     	chi201(-1,a1,c1,order,column,DM);
-	chi202(1,a1,c1,order,column,DM);     	  #case a0c
+     	chi201(-1,a1,c1,order,column,DM,'lbl');
+	chi202(1,a1,c1,order,column,DM,'lbl');     	  #case a0c
      end if;
 elif c1=0 then 
-     	chi201(-1,a1,b1,order,column,DM);
-	chi202(1,a1,b1,order,column,DM);    #case a0c again
+     	chi201(-1,a1,b1,order,column,DM,'lbl');
+	chi202(1,a1,b1,order,column,DM,'lbl');    #case a0c again
 elif b1=c1 then
-     	 chi211(-1,b1,a1,order,column,DM);
-	 chi212(1,b1,a1,order,column,DM);     	   #case abb
+     	 chi211(-1,b1,a1,order,column,DM,'lbl');
+	 chi212(1,b1,a1,order,column,DM,'lbl');     	   #case abb
 else 
-	chi281(1,a1,b1,c1,order,column,DM);	#case abc
+	chi281(1,a1,b1,c1,order,column,DM,'lbl');	#case abc
 end if;
 
 end proc;
@@ -334,23 +334,23 @@ end proc;
 
 #############################################################################################################
 
-tfive := proc(a,b,column,order,DM::Matrix)
+tfive := proc(a,b,column,order,DM::Matrix,lbl,t1_lt,t2_lt,r1_lt)
 
 #parameter management; a is the result of a+-qb and is reduced mod q^2-1, b is reduced mod q+1
-local a1 = 0: #case a ain't congruent to anything
-local a2 = 0: #case a congruent to q-1
-local a3 = 0: #case a congruent to q+1 
-local b1 = 0:
+local a1 := 0: #case a ain't congruent to anything
+local a2 := 0: #case a congruent to q-1
+local a3 := 0: #case a congruent to q+1 
+local b1 := 0:
 
 if b mod (order + 1) <> 0 then
-   b1:= t2_lt[b mod (order-1)];
+   b1:= t2_lt[b mod (order+1)];
 end if;
 
 if a mod (order ^ 2 - 1) <> 0 then
    if a mod (order+1) = 0 then
-      a3 := t1_lt[a mod (order ^ 2 - 1) / (order + 1)];
+      a3 := t1_lt[(a mod (order ^ 2 - 1)) / (order + 1)];
    elif a mod (order - 1) = 0 then
-      a2 := t2_lt[a mod (order ^ 2 - 1) / (order - 1)];
+      a2 := t2_lt[(a mod (order ^ 2 - 1)) / (order - 1)];
    else
       a1 := r1_lt[2,a mod (order ^ 2 - 1)];
    end if;
@@ -359,48 +359,48 @@ end if; # the various congruence if/elif
 
 if a1=0 then
    if b1=0 then
-      chi11(1,column,DM);
-      chi12(-1,column,DM);
-      chi13(-1,column,DM);
-      chi16(1,column,DM);
-      chi17(1,column,DM);
-      chi18(-1,column,DM);
-      chi110(-1,column,DM);
-      chi112(1,column,DM);   #case 0,0
+      chi11(1,column,DM,'lbl');
+      chi12(-1,column,DM,'lbl');
+      chi13(-1,column,DM,'lbl');
+      chi16(1,column,DM,'lbl');
+      chi17(1,column,DM,'lbl');
+      chi18(-1,column,DM,'lbl');
+      chi110(-1,column,DM,'lbl');
+      chi112(1,column,DM,'lbl');   #case 0,0
    else
-	chi71(-1,b1,order,column,DM);
-	chi73(1,b1,order,column,DM);
-	chi74(-1,b1,order,column,DM);
-	chi76(1,b1,order,column,DM);   #case 0,b
+	chi71(-1,b1,order,column,DM,'lbl');
+	chi73(1,b1,order,column,DM,'lbl');
+	chi74(-1,b1,order,column,DM,'lbl');
+	chi76(1,b1,order,column,DM,'lbl');   #case 0,b
    end if; #cases 0,0 and 0,b
 elif a3 <> 0 then         #either b is modulus, 0 or distinct
     if b1=0 then
-     	  chi11_1(-1,a3,order,column,DM);
-	  chi11_2(-1,a3,order,column,DM);
-	  chi113(1,a3,order,column,DM);
-	  chi114(1,a3,order,column,DM);
+     	  chi11_1(-1,a3,order,column,DM,'lbl');
+	  chi11_2(-1,a3,order,column,DM,'lbl');
+	  chi113(1,a3,order,column,DM,'lbl');
+	  chi114(1,a3,order,column,DM,'lbl');
      else
-	chi181(-1,a3,b1,order,column,DM);
-	chi182(1,a3,b1,order,column,DM);
+	chi181(-1,a3,b1,order,column,DM,'lbl');
+	chi182(1,a3,b1,order,column,DM,'lbl');
      end if;    #cases aq+a
 elif a2<>0 then     #b is 0 or distinct
      if b1= a2 then
-     	chi91(-1,b1,order,column,DM);
-	chi93(1,b1,order,column,DM);
+     	chi91(-1,b1,order,column,DM,'lbl');
+	chi93(1,b1,order,column,DM,'lbl');
      elif b1=0 then
-     	chi11_1(1,a2,order,column,DM);
-	chi11_2(-1,a2,order,column,DM);
-	chi113(-1,a2,order,column,DM);
-	chi114(1,a2,order,column,DM);
+     	chi11_1(1,a2,order,column,DM,'lbl');
+	chi11_2(-1,a2,order,column,DM,'lbl');
+	chi113(-1,a2,order,column,DM,'lbl');
+	chi114(1,a2,order,column,DM,'lbl');
      else
-	chi221(1,a2,b1,order,column,DM);
-	chi222(1,a2,b1,order,column,DM);
+	chi221(1,a2,b1,order,column,DM,'lbl');
+	chi222(1,a2,b1,order,column,DM,'lbl');
      end if;   #cases aq-a
 elif b1=0 then 
-     chi191(-1,a1,order,column,DM,r1_lt);
-     chi192(1,a1,order,column,DM,r1_lt);
+     chi191(-1,a1,order,column,DM,'lbl',r1_lt);
+     chi192(1,a1,order,column,DM,'lbl',r1_lt);
 else 
-     chi 291(1,a1,b1,order,column,DM);
+     chi291(1,a1,b1,order,column,DM,'lbl',r1_lt);
 end if; #a =0
 
 end proc;
@@ -409,11 +409,11 @@ end proc;
 
 #############################################################################################################
 
-tsix := proc(a,b,column,order,DM::Matrix,r2_lt,t1_lt)
+tsix := proc(a,b,column,order,DM::Matrix,lbl,t1_lt,r2_lt)
 
 #parameter management made easy by virtue of few cases. a is the result of a+-qb and is reduced mod q^2+1, b is reduced mod q-1
-local a1 = 0:
-local b1 = 0:
+local a1 := 0:
+local b1 := 0:
 
 if a mod (order^2 +1) <> 0 then 
    a1:=r2_lt[2,a mod (order ^ 2 + 1)];
@@ -428,26 +428,26 @@ end if;
 
 if a1= 0 then
    if b1 = 0 then 
-       chi11(1,column,DM);
-       chi14(1,column,DM);
-       chi15(1,column,DM);
-       chi16(-1,column,DM);
-       chi17(-1,column,DM);
-       chi19(1,column,DM);
-       chi111(1,column,DM);
-       chi112(1,column,DM);         #case 00
+       chi11(1,column,DM,'lbl');
+       chi14(1,column,DM,'lbl');
+       chi15(1,column,DM,'lbl');
+       chi16(-1,column,DM,'lbl');
+       chi17(-1,column,DM,'lbl');
+       chi19(1,column,DM,'lbl');
+       chi111(1,column,DM,'lbl');
+       chi112(1,column,DM,'lbl');         #case 00
    else 
-   	chi241(1,b1,order,column,DM,r2_lt);
-	chi242(1,b1,order,column,DM,r2_lt);#case 0b
+   	chi241(1,b1,order,column,DM,'lbl',r2_lt);
+	chi242(1,b1,order,column,DM,'lbl',r2_lt);#case 0b
    end if;
 elif b1=0 then
-	chi61(1,a1,order,column,DM);
-	chi62(-1,a1,order,column,DM);
-	chi65(1,a1,order,column,DM);
-	chi66(1,a1,order,column,DM);       	#case a00
+	chi61(1,a1,order,column,DM,'lbl');
+	chi62(-1,a1,order,column,DM,'lbl');
+	chi65(1,a1,order,column,DM,'lbl');
+	chi66(1,a1,order,column,DM,'lbl');       	#case a00
        #case a0
 else
-	chi301(1,a1,b1,order,column,DM);#case ab
+	chi301(1,a1,b1,order,column,DM,'lbl',r2_lt);#case ab
 end if;
 
 end proc;
@@ -456,27 +456,27 @@ end proc;
 
 #############################################################################################################
 
-tseven := proc(a,column,order,DM::Matrix,s1_lt,t1_lt)
+tseven := proc(a,column,order,DM::Matrix,lbl,t1_lt,s1_lt)
 #parameter management
 
-local a1 = 0:   #a is congruent to a zero divisor
-local a2 = 0:   #a is not congruent to anything
+local a1 := 0:   #a is congruent to a zero divisor
+local a2 := 0:   #a is not congruent to anything
 
 if a mod (order ^ 3 - 1) = 0 then
-   chi11(1,column,DM);
-   chi13(1,column,DM);
-   chi14(-1,column,DM);
-   chi19(-1,column,DM);
-   chi110(1,column,DM);
-   chi112(1,column,DM);
+   chi11(1,column,DM,'lbl');
+   chi13(1,column,DM,'lbl');
+   chi14(-1,column,DM,'lbl');
+   chi19(-1,column,DM,'lbl');
+   chi110(1,column,DM,'lbl');
+   chi112(1,column,DM,'lbl');
 elif a mod (order ^ 2 + order + 1) = 0 then
     a1 := t1_lt[a mod (order ^ 3 - 1)  / (order ^ 2 + order + 1)];
-    chi81(1,a1, order,column,DM);
-    chi82(-1,a1,order,column,DM);
-    chi83(1,a1,order,column,DM);
+    chi81(1,a1, order,column,DM,'lbl');
+    chi82(-1,a1,order,column,DM,'lbl');
+    chi83(1,a1,order,column,DM,'lbl');
 else
     a2 := s1_lt[2,a mod	(order ^ 3 - 1)];
-    chi311(1,a2,order,column,DM,s1_lt);
+    chi311(1,a2,order,column,DM,'lbl',s1_lt);
 end if;
 
 end proc;
@@ -485,11 +485,11 @@ end proc;
 
 #############################################################################################################
 
-teight := proc(a,b,c,column,order,DM::Matrix,t2_lt)
+teight := proc(a,b,c,column,order,DM::Matrix,lbl,t2_lt)
 
-local a1 = 0:
-local b1 = 0:
-local c1 = 0:
+local a1 := 0:
+local b1 := 0:
+local c1 := 0:
 
 if a mod (order+1) <> 0 then
     a1 := t2_lt[a mod (order+1)]:
@@ -505,52 +505,52 @@ end if;
 
 #Begin if/else tree for D-L chars
 if a1=0 then
-   chi11(-1,column,DM);
-   chi12(1,column,DM);
-   chi13(3,column,DM);
-   chi15(2,column,DM);
-   chi16(-3,column,DM);
-   chi17(3,column,DM);
-   chi18(-1,column,DM);
-   chi110(-3,column,DM);
-   chi111(-2,column,DM);
-   chi112(1,column,DM);      #this is the result of (0,0,0), which for T_8 is equivalent to a=0.
+   chi11(-1,column,DM,'lbl');
+   chi12(1,column,DM,'lbl');
+   chi13(3,column,DM,'lbl');
+   chi15(2,column,DM,'lbl');
+   chi16(-3,column,DM,'lbl');
+   chi17(3,column,DM,'lbl');
+   chi18(-1,column,DM,'lbl');
+   chi110(-3,column,DM,'lbl');
+   chi111(-2,column,DM,'lbl');
+   chi112(1,column,DM,'lbl');      #this is the result of (0,0,0), which for T_8 is equivalent to a=0.
 
 elif b1=0 then
-     chi71(1,a1,order,column,DM);
-     chi73(-1,a1,order,column,DM);
-     chi74(-1,a1,order,column,DM);
-     chi75(-2,a1,order,column,DM);
-     chi76(1,a1,order,column,DM);      # case (a,0,0)
+     chi71(1,a1,order,column,DM,'lbl');
+     chi73(-1,a1,order,column,DM,'lbl');
+     chi74(-1,a1,order,column,DM,'lbl');
+     chi75(-2,a1,order,column,DM,'lbl');
+     chi76(1,a1,order,column,DM,'lbl');      # case (a,0,0)
 
 elif c1=0 then
     if a1=b1 then
-     chi131(1,a1,order,column,DM);
-     chi132(-1,a1,order,column,DM);
-     chi133(-1,a1,order,column,DM);
-     chi134(1,a1,order,column,DM);  # case (a,a,0)
+     chi131(1,a1,order,column,DM,'lbl');
+     chi132(-1,a1,order,column,DM,'lbl');
+     chi133(-1,a1,order,column,DM,'lbl');
+     chi134(1,a1,order,column,DM,'lbl');  # case (a,a,0)
 
      else
-          chi231(-1,a1,b1,order,column,DM);
-          chi232(1,a1,b1,order,column,DM);  # case (a,b,0)
+          chi231(-1,a1,b1,order,column,DM,'lbl');
+          chi232(1,a1,b1,order,column,DM,'lbl');  # case (a,b,0)
 
           end if; 
 
 elif a1=c1 then
-     chi91(-1,a1,order,column,DM);
-     chi92(-2,a1,order,column,DM);
-     chi93(1,a1,order,column,DM); # case (a,a,a)
+     chi91(-1,a1,order,column,DM,'lbl');
+     chi92(-2,a1,order,column,DM,'lbl');
+     chi93(1,a1,order,column,DM,'lbl'); # case (a,a,a)
 
 elif b1=c1 then
-     chi221(-1,a1,b1,order,column,DM);
-     chi222(1,a1,b1,order,column,DM);  # case (a,b,b)
+     chi221(-1,a1,b1,order,column,DM,'lbl');
+     chi222(1,a1,b1,order,column,DM,'lbl');  # case (a,b,b)
 
 elif a1=b1 then
-     chi221(-1,a1,c1,order,column,DM);
-     chi222(1,a1,c1,order,column,DM);  # case (a,a,b)
+     chi221(-1,a1,c1,order,column,DM,'lbl');
+     chi222(1,a1,c1,order,column,DM,'lbl');  # case (a,a,b)
 
 else
-     chi231(1,a1,b1,c1,order,column,DM);     #case (a,b,c)
+     chi281(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
 end if;
 
 
@@ -560,11 +560,11 @@ end proc;
 
 #############################################################################################################
 
-tnine := proc(a,b,column,order,DM::Matrix,r2_lt,t2_lt)
+tnine := proc(a,b,column,order,DM::Matrix,lbl,t2_lt,r2_lt)
 
 #parameter management made easy by virtue of few cases. a is the result of a+-qb and is reduced mod q^2+1, b is reduced mod q+1
-local a1 = 0:
-local b1 = 0:
+local a1 := 0:
+local b1 := 0:
 
 if a mod (order^2 +1) <> 0 then 
     a1 := r2_lt[2,a mod (order ^ 2 + 1)];
@@ -579,26 +579,26 @@ end if;
 
 if a1= 0 then
    if b1 = 0 then 
-       chi11(-1,column,DM);
-       chi14(1,column,DM);
-       chi15(1,column,DM);
-       chi16(1,column,DM);
-       chi17(-1,column,DM);
-       chi19(-1,column,DM);
-       chi111(-1,column,DM);
-       chi112(1,column,DM);         #case 00
+       chi11(-1,column,DM,'lbl');
+       chi14(1,column,DM,'lbl');
+       chi15(1,column,DM,'lbl');
+       chi16(1,column,DM,'lbl');
+       chi17(-1,column,DM,'lbl');
+       chi19(-1,column,DM,'lbl');
+       chi111(-1,column,DM,'lbl');
+       chi112(1,column,DM,'lbl');         #case 00
    else 
-   	chi71(1,b1,order,column,DM);
-	chi72(-1,b1,order,column,DM);
-	chi75(1,b1,order,column,DM);
-	chi76(1,b1,order,column,DM);       	#case 0b
+   	chi71(1,b1,order,column,DM,'lbl');
+	chi72(-1,b1,order,column,DM,'lbl');
+	chi75(1,b1,order,column,DM,'lbl');
+	chi76(1,b1,order,column,DM,'lbl');       	#case 0b
     end if;
 elif b1=0 then
-	chi241(-1,a1,order,column,DM,r2_lt);
-	chi242(1,a1,order,column,DM,r2_lt);#case 0b
+	chi241(-1,a1,order,column,DM,'lbl',r2_lt);
+	chi242(1,a1,order,column,DM,'lbl',r2_lt);#case 0b
        #case a0
 else
-	chi331(1,a1,b1,order,column,DM);#case ab
+	chi331(1,a1,b1,order,column,DM,'lbl',r2_lt);#case ab
 end if;
 end proc;
 
@@ -606,26 +606,26 @@ end proc;
 
 #############################################################################################################
 
-tten := proc(a,column,order,DM::Matrix,s2_lt,t2_lt)
+tten := proc(a,column,order,DM::Matrix,lbl,t2_lt,s2_lt)
 #parameter management
-local a1 = 0:
-local a2 = 0:
+local a1 := 0:
+local a2 := 0:
 
 if a mod (order ^ 3 + 1) = 0 then
-   chi11(-1,column,DM);
-   chi12(1,column,DM);
-   chi15(-1,column,DM);
-   chi18(-1,column,DM);
-   chi111(1,column,DM);
-   chi112(1,column,DM);
+   chi11(-1,column,DM,'lbl');
+   chi12(1,column,DM,'lbl');
+   chi15(-1,column,DM,'lbl');
+   chi18(-1,column,DM,'lbl');
+   chi111(1,column,DM,'lbl');
+   chi112(1,column,DM,'lbl');
 elif a mod (order ^ 2 - order + 1) = 0 then 
-     a1 := t2_lt[a mod (order ^ 3 + 1)  / (order ^ 2 - order + 1)]; 
-     chi91(-1,a1, order,column,DM);
-     chi92(1,a1,order,column,DM);
-     chi93(1,a1,order,column,DM);
+     a1 := t2_lt[(a mod (order ^ 3 + 1))  / (order ^ 2 - order + 1)]; 
+     chi91(-1,a1, order,column,DM,'lbl');
+     chi92(1,a1,order,column,DM,'lbl');
+     chi93(1,a1,order,column,DM,'lbl');
 else
-     a2 := s2_lt[a mod (order ^ 3 + 1)];
-     chi341(1,a2,order,column,DM,s2_lt);
+     a2 := s2_lt[2,a mod (order ^ 3 + 1)];
+     chi341(1,a2,order,column,DM,'lbl',s2_lt);
 end if; #cong 0 mod zero diviser
 
 end proc;
