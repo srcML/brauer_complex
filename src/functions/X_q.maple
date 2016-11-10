@@ -6,9 +6,9 @@ calculate_X_q:=proc(order)
 
 #definition of local variables
 	local X_q:= Matrix(order^3,3);   #The weights will be listed with x,y,z in each column
-	local i:
-	local j:
-	local k:	
+#	local i:
+#	local j:
+#	local k:	
 
 #Here is the nested loop which fills the values
 

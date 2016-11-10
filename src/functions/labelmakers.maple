@@ -1,21 +1,37 @@
 #constructing column headers
 
-calculatelbls := proc(X_q,order)
+calculatelbls := proc(X_q::Matrix,order)
 
-local DMLlbl:=Array(1..order^3, dataype=string):
-local DMPlbl:=Array(1..order^3, dataype=string):
-
-
+local DMLlbl:= [seq (i,i=1..order^3)]:
+local DMPlbl:= [seq (i,i=1..order^3)]:
+local a:=0:
+local b:=0:
+local c:=0:
+local ith_string:="0":
 for i from 1 to order^3 do
+    a:=X_q[i,1]:
+    b:=X_q[i,2]:
+    c:=X_q[i,3]:
 
-    DMLlbl:= cat("\Lambda (" convert(X_q(i,1),string),convert(X_q[i,2],string),convert(X_q[i,3],string),")" );
+    ith_string := cat("\Lambda(", convert(a,string),convert(b,string),convert(c,string),")" );
 
-end do
+    DMLlbl[i] := ith_string:
+
+
+end do;
 for i from 1 to order^3 do
+    a:=X_q[i,1]:
+    b:=X_q[i,2]:
+    c:=X_q[i,3]:
 
-    DMPlbl:= cat("\Phi (" convert(X_q[i,1],string),convert(X_q[i,2],string),convert(X_q[i,3],string),")" );
+    ith_string := cat("\Lambda(", convert(a,string),convert(b,string),convert(c,string),")" );
 
-end do
+    DMPlbl[i] := ith_string:
+
+
+end do;
+
 
 return DMLlbl, DMPlbl;
+
 end proc;

@@ -249,9 +249,9 @@ chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix, DMlbl::Matrix)
 end proc;
 chi261 := proc(coefficient,a,b,c,order,column,DM::Matrix, DMlbl::Matrix)
 if b>a then      
-       local index:=(order/2)*(order/2-1-a)*(a-1)+b-a+c :
+       local index:=(order/2)*(order/2-1-a)*(a-1)+b-a-1+c :
 else
-       local index:= 1/32*order*(order-2)*(order-4)+ (order/2)*(order/2-1-b)*(b-1)+a-a+c :
+       local index:= 1/32*order*(order-2)*(order-4)+ (order/2)*(order/2-1-b)*(b-1)+a-b-1+c :
 end if;      
        local row := 4+47/12*order+15/4*order^2+1/48*order^3+index:
       DM[row , column] := DM[row , column] + coefficient;
@@ -263,9 +263,9 @@ chi271 := proc(coefficient,a,b,order,column,DM::Matrix, DMlbl::Matrix,r1_lt)
 end proc;
 chi281 := proc(coefficient,a,b,c,order,column,DM::Matrix, DMlbl::Matrix)
 if c>b then      
-       local index:=(order/2-1)*(order/2-b)*(b-1)+c-b+a :
+       local index:=(order/2-1)*(order/2-b)*(b-1)+c-b-1+a :
 else
-       local index:= 1/32*order*(order-2)^2+(order/2-1)*(order/2-c)*(c-1)+b-c+a :
+       local index:= 1/32*order*(order-2)^2+(order/2-1)*(order/2-c)*(c-1)+b-c-1+a :
 end if;      
       local row:=4+59/12*order+23/8*order^2+5/24*order^3 + index:
       DM[row, column] := DM[row , column] + coefficient;

@@ -26,8 +26,8 @@ nrBrchars := que^3;
 #nrchars :=18;
 #nrBrchars :=2;     #for testing purposes
 
-DM := Matrix(nrchars, nrBrchars);
-DMlbl := Array(1..nrchars, datatype=string);
+#DM := Matrix(nrchars, nrBrchars);
+#DMlbl := Array(1..nrchars, datatype=string);
 
 
 X_q := calculate_X_q(que):
@@ -36,7 +36,7 @@ X_q;
 
 #stabilizer(que,X_q,DM):
 
-DMLambdalbl, DMPhilbl := calculatelbls(X_q,order):
+DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
 DMLambdalbl;
 
 r1, r1_lt := calculate_r1(que):
