@@ -12,11 +12,11 @@ if a mod (order-1) <> 0 then
 end if;
 
 if b mod (order-1) <> 0 then
-   b1 := t1_lt[b mod (order-1)]:
+   b := t1_lt[b mod (order-1)]:
 end if;
 
 if c mod (order-1) <> 0 then 
-   c1 := t1_lt[c mod (order-1)]:     #this is the simplest case of parameter management in the entire complex
+   c := t1_lt[c mod (order-1)]:     #this is the simplest case of parameter management in the entire complex
 end if;
 
 #Begin if/else tree for D-L chars
@@ -90,11 +90,11 @@ if a mod (order-1) <> 0 then
    a1 := t1_lt[a mod (order-1)];
 end if;
 
-if b1 mod (order-1) <> 0 then
+if b mod (order-1) <> 0 then
    b1 := t1_lt[b mod (order-1)];
 end if;
 
-if c1 mod (order+1 ) <> 0 then
+if c mod (order+1 ) <> 0 then
    c1 := t2_lt[c mod (order+1)];
 end if;
 
@@ -265,11 +265,11 @@ if a mod (order-1) <> 0 then
    a1 := t1_lt[a mod (order-1)];
 end if;
 
-if b1 mod (order-1) <> 0 then
+if b mod (order+1) <> 0 then
    b1 := t2_lt[b mod (order+1)];
 end if;
 
-if c1 mod (order+1) <> 0 then
+if c mod (order+1) <> 0 then
    c1 := t2_lt[c mod (order+1)];
 end if;
 
@@ -437,15 +437,16 @@ if a1= 0 then
        chi111(1,column,DM,'lbl');
        chi112(1,column,DM,'lbl');         #case 00
    else 
-   	chi241(1,b1,order,column,DM,'lbl',r2_lt);
-	chi242(1,b1,order,column,DM,'lbl',r2_lt);#case 0b
+	chi61(1,b1,order,column,DM,'lbl');
+	chi62(-1,b1,order,column,DM,'lbl');
+	chi65(1,b1,order,column,DM,'lbl');
+	chi66(1,b1,order,column,DM,'lbl');       	#case a00
+
    end if;
 elif b1=0 then
-	chi61(1,a1,order,column,DM,'lbl');
-	chi62(-1,a1,order,column,DM,'lbl');
-	chi65(1,a1,order,column,DM,'lbl');
-	chi66(1,a1,order,column,DM,'lbl');       	#case a00
-       #case a0
+   	chi241(1,a1,order,column,DM,'lbl',r2_lt);
+	chi242(1,a1,order,column,DM,'lbl',r2_lt);#case 0b
+       #case a0      And  guy, if you're going to swap coords, you gotta swap them everywhere. 
 else
 	chi301(1,a1,b1,order,column,DM,'lbl',r2_lt);#case ab
 end if;
