@@ -42,6 +42,10 @@ DMlbl;
 DM[1];
 DM[2];
 DM[13];
+
+writeto("DM.txt.");
+DM;
+
 #stabilizer(que,X_q,DM):
 
 #DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
