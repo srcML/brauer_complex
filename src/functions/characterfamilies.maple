@@ -94,7 +94,7 @@ chi81 := proc(coefficient,parameter,order,column,DM::Matrix, lbl)
       DM[6 + 6 * order + parameter , column] := DM[6 + 6 * order + parameter , column] + coefficient;
 end proc;
 chi82 := proc(coefficient,parameter,order,column,DM::Matrix, lbl)
-      DM[5 + 13 * order / 2 + parameter , column] := DM[6 + 13 * order / 2 + parameter , column] + coefficient;
+      DM[5 + 13 * order / 2 + parameter , column] := DM[5 + 13 * order / 2 + parameter , column] + coefficient;
 end proc;
 chi83 := proc(coefficient,parameter,order,column,DM::Matrix, lbl)
       DM[4 + 7 * order + parameter , column] := DM[4 + 7 * order + parameter , column] + coefficient;
@@ -281,7 +281,7 @@ chi301 := proc(coefficient,a,b,order,column,DM::Matrix, lbl,r2_lt)
       DM[row , column] := DM[row , column] + coefficient;
 end proc;
 chi311 := proc(coefficient,a,order,column,DM::Matrix, lbl,s1_lt)
-#       local a_row:= s1_lt[1,a]:
+ #      local a_row:= s1_lt[1,a]:
 local a_row:=1:
       local row:=4+31/6*order+17/8*order^2+25/48*order^3+a_row:
        DM[row,column]:=DM[row,column]+coefficient;

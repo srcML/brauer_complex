@@ -8,15 +8,15 @@ local b1 := 0:
 local c1 := 0:
 
 if a mod (order-1) <> 0 then 
-   a1 := t1_lt[a mod (order-1)]:
+   a1 := t1_lt[(a mod (order-1))]:
 end if;
 
 if b mod (order-1) <> 0 then
-   b1 := t1_lt[b mod (order-1)]:
+   b1 := t1_lt[(b mod (order-1))]:
 end if;
 
 if c mod (order-1) <> 0 then 
-   c1 := t1_lt[c mod (order-1)]:     #this is the simplest case of parameter management in the entire complex
+   c1 := t1_lt[(c mod (order-1))]:     #this is the simplest case of parameter management in the entire complex
 end if;
 
 #Begin if/else tree for D-L chars
@@ -59,8 +59,8 @@ elif a1=c1 then
      chi83(1,a1,order,column,DM,'lbl'); # case (a,a,a)
     
 elif b1=c1 then
-     chi161(1,a1,b1,order,column,DM,'lbl');
-     chi162(1,a1,b1,order,column,DM,'lbl');  # case (a,b,b)
+     chi161(1,b1,a1,order,column,DM,'lbl');
+     chi162(1,b1,a1,order,column,DM,'lbl');  # case (a,b,b)
 
 elif a1=b1 then
      chi161(1,a1,c1,order,column,DM,'lbl');
@@ -87,15 +87,15 @@ local b1 := 0:
 local c1 := 0:
 
 if a mod (order-1) <> 0 then
-   a1 := t1_lt[a mod (order-1)];
+   a1 := t1_lt[(a mod (order-1))];
 end if;
 
 if b mod (order-1) <> 0 then
-   b1 := t1_lt[b mod (order-1)];
+   b1 := t1_lt[(b mod (order-1))];
 end if;
 
 if c mod (order+1 ) <> 0 then
-   c1 := t2_lt[c mod (order+1)];
+   c1 := t2_lt[(c mod (order+1))];
 end if;
 
 #Here, the parameters have been permuted, which makes the if-else tree more complex. 
@@ -184,16 +184,16 @@ local a3 := 0: #case a congruent to q+1
 local b1 := 0:
 
 if b mod (order - 1) <> 0 then
-   b1 := t1_lt[b mod (order-1)];
+   b1 := t1_lt[(b mod (order-1))];
 end if;
 
 if a mod (order ^ 2 - 1) <> 0 then
    if a mod (order+1) = 0 then
-      a3 := t1_lt[(a mod (order ^ 2 - 1)) / (order + 1)];
+      a3 := t1_lt[((a mod (order ^ 2 - 1)) / (order + 1))];
    elif a mod (order - 1)=0 then
-      a2 := t2_lt[(a mod (order ^ 2 - 1)) / (order - 1)];
+      a2 := t2_lt[((a mod (order ^ 2 - 1)) / (order - 1))];
   else
-      a1 := r1_lt[2,a mod (order ^ 2 - 1)];
+      a1 := r1_lt[2,(a mod (order ^ 2 - 1))];
    end if;
 else
 end if; # the various congruence if/elif
@@ -261,15 +261,15 @@ local b1 := 0:
 local c1 := 0:
 
 if a mod (order-1) <> 0 then
-   a1 := t1_lt[a mod (order-1)];
+   a1 := t1_lt[(a mod (order-1))];
 end if;
 
 if b mod (order+1) <> 0 then
-   b1 := t2_lt[b mod (order+1)];
+   b1 := t2_lt[(b mod (order+1))];
 end if;
 
 if c mod (order+1) <> 0 then
-   c1 := t2_lt[c mod (order+1)];
+   c1 := t2_lt[(c mod (order+1))];
 end if;
 
 #if else tree for character calls
@@ -303,8 +303,8 @@ if a1=0 then
 	chi133(-1,b1,order,column,DM,'lbl');
 	chi134(1,b1,order,column,DM,'lbl');   	#case 0aa
    else 
-   	chi231(1,c1,b1,order,column,DM,'lbl');
-	chi232(1,c1,b1,order,column,DM,'lbl');   	#case 0ab
+   	chi231(1,b1,c1,order,column,DM,'lbl');
+	chi232(1,b1,c1,order,column,DM,'lbl');   	#case 0ab
    end if;    
 elif b1=0 then
      if c1=0 then 
@@ -342,16 +342,16 @@ local a3 := 0: #case a congruent to q+1
 local b1 := 0:
 
 if b mod (order + 1) <> 0 then
-   b1:= t2_lt[b mod (order+1)];
+   b1:= t2_lt[(b mod (order+1))];
 end if;
 
 if a mod (order ^ 2 - 1) <> 0 then
    if a mod (order+1) = 0 then
-      a3 := t1_lt[(a mod (order ^ 2 - 1)) / (order + 1)];
+      a3 := t1_lt[((a mod (order ^ 2 - 1)) / (order + 1))];
  elif a mod (order - 1) = 0 then
-      a2 := t2_lt[(a mod (order ^ 2 - 1)) / (order - 1)];
+      a2 := t2_lt[((a mod (order ^ 2 - 1)) / (order - 1))];
  else
-      a1 := r1_lt[2,a mod (order ^ 2 - 1)];
+      a1 := r1_lt[2,(a mod (order ^ 2 - 1))];
    end if;
 end if; # the various congruence if/elif
 #if else tree for character calls
@@ -375,7 +375,7 @@ elif a3 <> 0 then         #either b is modulus, 0 or distinct
      end if;    #cases aq+a
 elif a2<>0 then     #b is 0 or distinct
      if b1= a2 then
-     	chi91(-1,b1,order,column,DM,'lbl');
+     	chi91(1,b1,order,column,DM,'lbl');
 	chi93(1,b1,order,column,DM,'lbl');
      elif b1=0 then
      	chi131(-1,a2,order,column,DM,'lbl');
@@ -469,7 +469,7 @@ if a mod (order ^ 3 - 1) = 0 then
    chi110(1,column,DM,'lbl');
    chi112(1,column,DM,'lbl');
 elif a mod (order ^ 2 + order + 1) = 0 then
-    a1 := t1_lt[a mod (order ^ 3 - 1)  / (order ^ 2 + order + 1)];
+    a1 := t1_lt[(a mod (order ^ 3 - 1))  / (order ^ 2 + order + 1)];
     chi81(1,a1, order,column,DM,'lbl');
     chi82(-1,a1,order,column,DM,'lbl');
     chi83(1,a1,order,column,DM,'lbl');
@@ -541,8 +541,8 @@ elif a1=c1 then
      chi93(1,a1,order,column,DM,'lbl'); # case (a,a,a)
 
 elif b1=c1 then
-     chi221(-1,a1,b1,order,column,DM,'lbl');
-     chi222(1,a1,b1,order,column,DM,'lbl');  # case (a,b,b)
+     chi221(-1,b1,a1,order,column,DM,'lbl');
+     chi222(1,b1,a1,order,column,DM,'lbl');  # case (a,b,b)
 
 elif a1=b1 then
      chi221(-1,a1,c1,order,column,DM,'lbl');

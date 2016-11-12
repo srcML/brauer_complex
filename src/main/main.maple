@@ -38,16 +38,24 @@ DMlbl := [seq (i,i=nrchars)]:
 #X_q := calculate_X_q(que):
 #bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'lbl'):
 
-a:=1:
-b:=1:
-c:=0:
+#887 and 885 to test
+a:=8:
+b:=8:
+c:=7:
 
 weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_l\
 t,'DMlbl');
 
-DMlbl[1];
-#DM[1];
+#DMlbl[1];
+#DMlbl[2];
+DM[1];
 #DM[12];
+#DM[13];
+
+
+#for i from 1 to 32 do 
+# X_q[i];
+#end do;
 
 DMcolumntest:= Matrix(1,nrchars):
 
@@ -65,36 +73,17 @@ DMcolumntest;
 #DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
 #DMLambdalbl;
 
-
-
-
-
 #r1;
-#r1_lookup_table;
-
+#r1_lt[14 mod order];
 #r2;
-#r2_lookup_table;
 
 #t1;
-#t1_lookup_table;
 
 
+#t1_lt[5 mod 4];
 #t2;
-#t2_lookup_table;
+#t2_lt[5 mod order];
 
 #s2;
-#s2_lookup_table;
 
 #s1;
-#s1_lookup_table;
-
-
-
-
-
-
-
-
-
-
-

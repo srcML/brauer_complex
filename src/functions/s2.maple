@@ -48,16 +48,16 @@ calculate_s2 := proc(order)
 	 s2_matrix[current_row, 3] := column_three_value;
   	 is_generated[column_three_value] := true;
 
-	 column_four_value := ( - order ^ 2 * current_number) mod max_value;
+	 column_four_value := (order ^ 3 * current_number) mod max_value;
 	 s2_matrix[current_row, 4] := column_four_value;
   	 is_generated[column_four_value] := true;
 
-	 column_five_value := (- order * current_number) mod max_value;
-         s2_matrix[current_row, 5] := column_four_value;
+	 column_five_value := (order ^4* current_number) mod max_value;
+         s2_matrix[current_row, 5] := column_five_value;
          is_generated[column_five_value] := true;	 
 
-	 column_six_value := ( - current_number) mod max_value;
-         s2_matrix[current_row, 6] := column_four_value;
+	 column_six_value := (order^5*current_number) mod max_value;
+         s2_matrix[current_row, 6] := column_six_value;
          is_generated[column_six_value] := true;
 
 	 current_row := current_row + 1;

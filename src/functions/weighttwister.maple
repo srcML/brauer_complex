@@ -40,7 +40,7 @@ tseven(a+order*b+c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
 tseven(a-order*c+b*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
 tseven(a+order*b-c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
 tseven(a-order*c-b*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
-tseven(a-order*c-c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
+tseven(a-order*b-c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
 tseven(a-order*b+c*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
 tseven(a+order*c-b*order^2,column,order,DM,'lbl',t1_lt,s1_lt):
 
@@ -53,13 +53,13 @@ tnine(b-order*c,a,column,order,DM,'lbl',t2_lt,r2_lt):
 tnine(a-order*c,b,column,order,DM,'lbl',t2_lt,r2_lt):
 tnine(a-order*b,c,column,order,DM,'lbl',t2_lt,r2_lt):
 
-tten(a+order*c+b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
-tten(a+order*b+c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
-tten(a-order*c+b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
-tten(a+order*b-c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
 tten(a-order*c-b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
-tten(a-order*c-c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
-tten(a-order*b+c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a+order*b-c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a-order*b-c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
 tten(a+order*c-b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a-order*b+c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a+order*b+c*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a+order*c+b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
+tten(a-order*c+b*order^2,column,order,DM,'lbl',t2_lt,s2_lt):
 
 end proc;
