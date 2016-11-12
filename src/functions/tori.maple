@@ -12,11 +12,11 @@ if a mod (order-1) <> 0 then
 end if;
 
 if b mod (order-1) <> 0 then
-   b := t1_lt[b mod (order-1)]:
+   b1 := t1_lt[b mod (order-1)]:
 end if;
 
 if c mod (order-1) <> 0 then 
-   c := t1_lt[c mod (order-1)]:     #this is the simplest case of parameter management in the entire complex
+   c1 := t1_lt[c mod (order-1)]:     #this is the simplest case of parameter management in the entire complex
 end if;
 
 #Begin if/else tree for D-L chars
@@ -189,32 +189,24 @@ end if;
 
 if a mod (order ^ 2 - 1) <> 0 then
    if a mod (order+1) = 0 then
-      a3 := t1_lt[a mod (order ^ 2 - 1) / (order + 1)];
+      a3 := t1_lt[(a mod (order ^ 2 - 1)) / (order + 1)];
    elif a mod (order - 1)=0 then
-      a2 := t2_lt[a mod (order ^ 2 - 1) / (order - 1)];
-   else
+      a2 := t2_lt[(a mod (order ^ 2 - 1)) / (order - 1)];
+  else
       a1 := r1_lt[2,a mod (order ^ 2 - 1)];
    end if;
+else
 end if; # the various congruence if/elif
 
 #if-else tree for character calls. Note that the same if-else from the parameter management must be a sub-tree
 
-if a1=0 then
-   if b1=0 then
-      chi11(-1,column,DM,'lbl');
-      chi12(-1,column,DM,'lbl');
-      chi13(-1,column,DM,'lbl');
-      chi16(-1,column,DM,'lbl');
-      chi17(1,column,DM,'lbl');
-      chi18(1,column,DM,'lbl');
-      chi110(1,column,DM,'lbl');
-      chi112(1,column,DM,'lbl');   #case 0,0
-   else
-	chi61(-1,b1,order,column,DM,'lbl');
-	chi63(1,b1,order,column,DM,'lbl');
-	chi64(-1,b1,order,column,DM,'lbl');
-	chi66(1,b1,order,column,DM,'lbl');   #case 0,b
-   end if; #cases 0,0 and 0,b
+if a1<>0 then
+   if b1=0 then 
+     chi191(1,a1,order,column,DM,'lbl',r1_lt);
+     chi192(1,a1,order,column,DM,'lbl',r1_lt);
+   else 
+     chi271(1,a1,b1,order,column,DM,'lbl',r1_lt);  
+   end if;
 elif a3 <> 0 then         #either b is modulus, 0 or distinct
      if b1= a3 then
      	chi81(-1,b1,order,column,DM,'lbl');
@@ -238,14 +230,21 @@ elif a2<>0 then     #b is 0 or distinct
 	chi211(1,a2,b1,order,column,DM,'lbl');
 	chi212(1,a2,b1,order,column,DM,'lbl');
      end if;   #cases aq-a
-elif b1=0 then 
-     chi191(1,a1,order,column,DM,'lbl',r1_lt);
-     chi192(1,a1,order,column,DM,'lbl',r1_lt);
-else 
-     chi271(1,a1,b1,order,column,DM,'lbl',r1_lt);
+elif b1=0 then
+      chi11(-1,column,DM,'lbl');
+      chi12(-1,column,DM,'lbl');
+      chi13(-1,column,DM,'lbl');
+      chi16(-1,column,DM,'lbl');
+      chi17(1,column,DM,'lbl');
+      chi18(1,column,DM,'lbl');
+      chi110(1,column,DM,'lbl');
+      chi112(1,column,DM,'lbl');   #case 0,0
+   else
+	chi61(-1,b1,order,column,DM,'lbl');
+	chi63(1,b1,order,column,DM,'lbl');
+	chi64(-1,b1,order,column,DM,'lbl');
+	chi66(1,b1,order,column,DM,'lbl');   #case 0,b
 end if; #a =0
-
-
 
 end proc;
 
@@ -289,15 +288,15 @@ if a1=0 then
         chi112(1,column,DM,'lbl');        	 #case 000
       else 
       	chi71(-1,c1,order,column,DM,'lbl');
-	chi72(-1,c1,order,column,DM,'lbl');
-	chi73(1,c1,order,column,DM,'lbl');
-	chi74(1,c1,order,column,DM,'lbl');   #case 00c
+	chi73(-1,c1,order,column,DM,'lbl');
+	chi74(1,c1,order,column,DM,'lbl');
+	chi76(1,c1,order,column,DM,'lbl');   #case 00c
        end if; 
    elif c1=0 then
       	chi71(-1,b1,order,column,DM,'lbl');
-	chi72(-1,b1,order,column,DM,'lbl');
-	chi73(1,b1,order,column,DM,'lbl');
-	chi74(1,b1,order,column,DM,'lbl');    #case 00c again
+	chi73(-1,b1,order,column,DM,'lbl');
+	chi74(1,b1,order,column,DM,'lbl');
+	chi76(1,b1,order,column,DM,'lbl');    #case 00c again
    elif b1=c1 then
    	chi131(-1,b1,order,column,DM,'lbl');
 	chi132(1,b1,order,column,DM,'lbl');
@@ -349,16 +348,45 @@ end if;
 if a mod (order ^ 2 - 1) <> 0 then
    if a mod (order+1) = 0 then
       a3 := t1_lt[(a mod (order ^ 2 - 1)) / (order + 1)];
-   elif a mod (order - 1) = 0 then
+ elif a mod (order - 1) = 0 then
       a2 := t2_lt[(a mod (order ^ 2 - 1)) / (order - 1)];
-   else
+ else
       a1 := r1_lt[2,a mod (order ^ 2 - 1)];
    end if;
 end if; # the various congruence if/elif
 #if else tree for character calls
 
-if a1=0 then
-   if b1=0 then
+if a1<>0 then
+     if b1=0 then 
+     	chi191(-1,a1,order,column,DM,'lbl',r1_lt);
+	chi192(1,a1,order,column,DM,'lbl',r1_lt);
+     else 
+	 chi291(1,a1,b1,order,column,DM,'lbl',r1_lt);
+     end if;
+elif a3 <> 0 then         #either b is modulus, 0 or distinct
+    if b1=0 then
+     	  chi11_1(1,a3,order,column,DM,'lbl');
+	  chi11_2(-1,a3,order,column,DM,'lbl');
+	  chi113(-1,a3,order,column,DM,'lbl');
+	  chi114(1,a3,order,column,DM,'lbl');
+     else
+	chi181(-1,a3,b1,order,column,DM,'lbl');
+	chi182(1,a3,b1,order,column,DM,'lbl');
+     end if;    #cases aq+a
+elif a2<>0 then     #b is 0 or distinct
+     if b1= a2 then
+     	chi91(-1,b1,order,column,DM,'lbl');
+	chi93(1,b1,order,column,DM,'lbl');
+     elif b1=0 then
+     	chi131(-1,a2,order,column,DM,'lbl');
+	chi132(-1,a2,order,column,DM,'lbl');
+	chi133(1,a2,order,column,DM,'lbl');
+	chi134(1,a2,order,column,DM,'lbl');
+     else
+	chi221(1,a2,b1,order,column,DM,'lbl');
+	chi222(1,a2,b1,order,column,DM,'lbl');
+     end if;   #cases aq-a
+ elif b1=0 then
       chi11(1,column,DM,'lbl');
       chi12(-1,column,DM,'lbl');
       chi13(-1,column,DM,'lbl');
@@ -372,37 +400,7 @@ if a1=0 then
 	chi73(1,b1,order,column,DM,'lbl');
 	chi74(-1,b1,order,column,DM,'lbl');
 	chi76(1,b1,order,column,DM,'lbl');   #case 0,b
-   end if; #cases 0,0 and 0,b
-elif a3 <> 0 then         #either b is modulus, 0 or distinct
-    if b1=0 then
-     	  chi11_1(-1,a3,order,column,DM,'lbl');
-	  chi11_2(-1,a3,order,column,DM,'lbl');
-	  chi113(1,a3,order,column,DM,'lbl');
-	  chi114(1,a3,order,column,DM,'lbl');
-     else
-	chi181(-1,a3,b1,order,column,DM,'lbl');
-	chi182(1,a3,b1,order,column,DM,'lbl');
-     end if;    #cases aq+a
-elif a2<>0 then     #b is 0 or distinct
-     if b1= a2 then
-     	chi91(-1,b1,order,column,DM,'lbl');
-	chi93(1,b1,order,column,DM,'lbl');
-     elif b1=0 then
-     	chi11_1(1,a2,order,column,DM,'lbl');
-	chi11_2(-1,a2,order,column,DM,'lbl');
-	chi113(-1,a2,order,column,DM,'lbl');
-	chi114(1,a2,order,column,DM,'lbl');
-     else
-	chi221(1,a2,b1,order,column,DM,'lbl');
-	chi222(1,a2,b1,order,column,DM,'lbl');
-     end if;   #cases aq-a
-elif b1=0 then 
-     chi191(-1,a1,order,column,DM,'lbl',r1_lt);
-     chi192(1,a1,order,column,DM,'lbl',r1_lt);
-else 
-     chi291(1,a1,b1,order,column,DM,'lbl',r1_lt);
-end if; #a =0
-
+end if;
 end proc;
 
 #############################################################################################################

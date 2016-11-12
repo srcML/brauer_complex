@@ -178,11 +178,11 @@ chi182 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
 end proc;
 chi191 := proc(coefficient,a,order,column,DM::Matrix, lbl,r1_lt)
        local a_row:= r1_lt[1,a]:
-      DM[5+15/2*order+5/4*order^2 + a_row , column] := DM[5+15/2*order+5/4*order^2 , column] + coefficient;
+      DM[5+15/2*order+5/4*order^2 + a_row , column] := DM[5+15/2*order+5/4*order^2+a_row , column] + coefficient;
 end proc;
 chi192 := proc(coefficient,a,order,column,DM::Matrix, lbl,r1_lt)
        local a_row:= r1_lt[1,a]:
-      DM[5+7*order+3/2*order^2 +a_row, column] := DM[5+7*order+3/2*order^2 , column] + coefficient;
+      DM[5+7*order+3/2*order^2 +a_row, column] := DM[5+7*order+3/2*order^2+a_row , column] + coefficient;
 end proc;
 chi201 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
       DM[5+13/2*order+7/4*order^2 + order/2*(a-1)+b  , column] := DM[5+13/2*order+7/4*order^2+ order/2*(a-1)+b , column] + coefficient;

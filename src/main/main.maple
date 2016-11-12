@@ -39,7 +39,7 @@ DMlbl := [seq (i,i=nrchars)]:
 #bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'lbl'):
 
 a:=1:
-b:=0:
+b:=1:
 c:=0:
 
 weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_l\
