@@ -29,7 +29,7 @@ calculate_s2 := proc(order)
 
 	 current_number := current_number + 1;
 
-  	 if current_number mod (order^2 - q + 1) = 0 then
+  	 if current_number mod (order^2 - order + 1) = 0 then
 		next;
 	 end if; 
 

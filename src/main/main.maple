@@ -36,26 +36,29 @@ DMlbl := Array(1..nrchars, datatype=string):
 
 
 X_q := calculate_X_q(que):
-bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'lbl'):
+bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
 
-#887 and 885 to test
-a:=8:
-b:=8:
-c:=5:
 
+#776  to test
+#a:=3:
+#b:=2:
+#c:=1:
+
+#a1:=s2_lt[2,a+que*b-que^2*c];
+#chi341(1,a1,que,1,DM, DMlbl,s2_lt);
 
 ######################################################################
 
 #weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'DMlbl');
 
-#DMlbl[2];
+DMlbl;
 DM[1];
 #DM[12];
 #DM[13];
 
-for i from 1 to 32 do 
- X_q[i];
-end do;
+#for i from 1 to 32 do 
+# X_q[i];
+#end do;
 
 
 ######################################################################
@@ -67,7 +70,7 @@ end do;
 
 #DMcolumntest;
 
-DMlbl;
+#DMlbl;
 ######################################################################
 #writeto("DM.txt");
 #DM;

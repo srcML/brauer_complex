@@ -359,8 +359,8 @@ chi301 := proc(coefficient,a,b,order,column,DM::Matrix, lbl,r2_lt)
       lbl[row] := cat("\chi_{30,1}(",convert(a,string),convert(b,string), ")");
 end proc;
 chi311 := proc(coefficient,a,order,column,DM::Matrix, lbl,s1_lt)
- #      local a_row:= s1_lt[1,a]:
-local a_row:=1:
+       local a_row:= s1_lt[1,a]:
+#local a_row:=5:
       local row:=4+31/6*order+17/8*order^2+25/48*order^3+a_row:
        DM[row,column]:=DM[row,column]+coefficient;
        lbl[row] := cat("\chi_{31,1}(",convert(a,string), ")");
@@ -373,15 +373,15 @@ chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
       lbl[row] := cat("\chi_{32,1}(",convert(a,string),convert(b,string),convert(c,string), ")");
 end proc;
 chi331 := proc(coefficient,a,b,order,column,DM::Matrix, lbl,r2_lt)
-#       local index:=order/2*(r2_lt[1,a]-1)+b:
-local index:=1:
+       local index:=order/2*(r2_lt[1,a]-1)+b:
+#local index:=5:
        local row:=4+31/6*order+2*order^2+17/24*order^3+index: 
       DM[row , column] := DM[row , column] + coefficient;
       lbl[row] := cat("\chi_{33,1}(",convert(a,string),convert(b,string), ")");
 end proc;
 chi341 := proc(coefficient,a,order,column,DM::Matrix, lbl,s2_lt)
-#       local a_row:= s2_lt[1,a]:
-local a_row:= 1:
+       local a_row:= s2_lt[1,a]:
+#local a_row:= 1:
        local row:=(order+1)*(5*order^2+7*order+24)/6+a_row :
       DM[row , column] := DM[row , column] + coefficient;
       lbl[row] := cat("\chi_{34,1}(",convert(a,string), ")");

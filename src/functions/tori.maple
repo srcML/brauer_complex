@@ -623,7 +623,7 @@ elif a mod (order ^ 2 - order + 1) = 0 then
      chi92(1,a1,order,column,DM,'lbl');
      chi93(1,a1,order,column,DM,'lbl');
 else
-     a2 := s2_lt[2,a mod (order ^ 3 + 1)];
+     a2 := s2_lt[2,(a mod (order ^ 3 + 1))];
      chi341(1,a2,order,column,DM,'lbl',s2_lt);
 end if; #cong 0 mod zero diviser
 
