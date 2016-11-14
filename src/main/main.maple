@@ -42,16 +42,20 @@ DMlbl := [seq (i,i=nrchars)]:
 a:=8:
 b:=8:
 c:=7:
+par:=13;
+parameter:=4;
+DMlbl['par'] := cat("\chi_{11,1}(", convert( parameter,string), ")");
+DMlbl[par] := cat("\chi_{11,1}(", convert( parameter,string), ")");
 
-weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_l\
-t,'DMlbl');
+#???????????????????????????????????
 
-#DMlbl[1];
+DMlbl[par];
+weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'DMlbl');
+
 #DMlbl[2];
-DM[1];
+#DM[1];
 #DM[12];
 #DM[13];
-
 
 #for i from 1 to 32 do 
 # X_q[i];
@@ -65,6 +69,8 @@ end do:
 
 DMcolumntest;
 
+DMlbl;
+
 #writeto("DM.txt");
 #DM;
 
@@ -73,17 +79,8 @@ DMcolumntest;
 #DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
 #DMLambdalbl;
 
-#r1;
-#r1_lt[14 mod order];
+#r1;#r1_lt[14 mod order];
 #r2;
-
-#t1;
-
-
-#t1_lt[5 mod 4];
-#t2;
-#t2_lt[5 mod order];
-
-#s2;
-
-#s1;
+#t1;#t1_lt[5 mod 4];
+#t2;#t2_lt[5 mod order];
+#s2;#s1;
