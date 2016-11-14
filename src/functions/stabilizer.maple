@@ -11,18 +11,15 @@ for lambda from 1 to order^3 do
   
 column := order ^ 3 - (lambda - 1):
   
-a1 = X_q[lambda,1]:
-b1 = X_q[lambda,2]:
-c1 = X_q[lambda,3]:
-
-
-#Begin if/else tree for D-L chars
+a1 := X_q[lambda,1]:
+b1 := X_q[lambda,2]:
+c1 := X_q[lambda,3]:
 
 if a1=0 then
 
    for row from 1 to (order+1) * (order^2+order+4) do
 
-       DM[row,column] := DM[row,column] / 48;      #only one entry will actually be 48, all others will be 0, this is more a sanity check
+       DM[row,column] := (1/48)*DM[row,column];      #only one entry will actually be 48, all others will be 0, this is more a sanity check
 
    end do;		#case 000
 

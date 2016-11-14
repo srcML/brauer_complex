@@ -7,17 +7,29 @@ local a1 := 0:
 local b1 := 0:
 local c1 := 0:
 
+local a2:=0:
+local b2:=0:
+local c2:=0:
+
 if a mod (order-1) <> 0 then 
-   a1 := t1_lt[(a mod (order-1))]:
+   a2 := t1_lt[(a mod (order-1))]:
 end if;
 
 if b mod (order-1) <> 0 then
-   b1 := t1_lt[(b mod (order-1))]:
+   b2 := t1_lt[(b mod (order-1))]:
 end if;
 
 if c mod (order-1) <> 0 then 
-   c1 := t1_lt[(c mod (order-1))]:     #this is the simplest case of parameter management in the entire complex
+   c2 := t1_lt[(c mod (order-1))]:     #this is the simplest case of parameter management in the entire complex
 end if;
+
+#sort in descending order
+S:=[a2,b2,c2];
+S:=sort(S);
+a1:=S[3];
+b1:=S[2];
+c1:=S[1];   
+
 
 #Begin if/else tree for D-L chars
 
@@ -59,12 +71,12 @@ elif a1=c1 then
      chi83(1,a1,order,column,DM,'lbl'); # case (a,a,a)
     
 elif b1=c1 then
-     chi161(1,b1,a1,order,column,DM,'lbl');
-     chi162(1,b1,a1,order,column,DM,'lbl');  # case (a,b,b)
+     chi161(1,a2,b2,order,column,DM,'lbl');
+     chi162(1,a2,b2,order,column,DM,'lbl');  # case (a,b,b)
 
 elif a1=b1 then
-     chi161(1,a1,c1,order,column,DM,'lbl');
-     chi162(1,a1,c1,order,column,DM,'lbl');  # case (a,a,b)
+     chi161(1,a2,c2,order,column,DM,'lbl');
+     chi162(1,a2,c2,order,column,DM,'lbl');  # case (a,a,b)
 
 else 
      chi251(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
@@ -86,17 +98,23 @@ local a1 := 0:
 local b1 := 0:
 local c1 := 0:
 
+local a2:=0:
+local b2:=0:
+
 if a mod (order-1) <> 0 then
-   a1 := t1_lt[(a mod (order-1))];
+   a2 := t1_lt[(a mod (order-1))];
 end if;
 
 if b mod (order-1) <> 0 then
-   b1 := t1_lt[(b mod (order-1))];
+   b2 := t1_lt[(b mod (order-1))];
 end if;
 
 if c mod (order+1 ) <> 0 then
    c1 := t2_lt[(c mod (order+1))];
 end if;
+
+a1:=max(a2,b2);
+b1:=min(a2,b2);
 
 #Here, the parameters have been permuted, which makes the if-else tree more complex. 
 
@@ -260,17 +278,23 @@ local a1 := 0:
 local b1 := 0:
 local c1 := 0:
 
+local b2:=0:
+local c2:=0:
+
 if a mod (order-1) <> 0 then
    a1 := t1_lt[(a mod (order-1))];
 end if;
 
 if b mod (order+1) <> 0 then
-   b1 := t2_lt[(b mod (order+1))];
+   b2 := t2_lt[(b mod (order+1))];
 end if;
 
 if c mod (order+1) <> 0 then
-   c1 := t2_lt[(c mod (order+1))];
+   c2 := t2_lt[(c mod (order+1))];
 end if;
+
+b1:=max(b2,c2);
+c1:=min(b2,c2);
 
 #if else tree for character calls
 if a1=0 then
@@ -340,6 +364,7 @@ local a1 := 0: #case a ain't congruent to anything
 local a2 := 0: #case a congruent to q-1
 local a3 := 0: #case a congruent to q+1 
 local b1 := 0:
+
 
 if b mod (order + 1) <> 0 then
    b1:= t2_lt[(b mod (order+1))];
@@ -489,18 +514,29 @@ teight := proc(a,b,c,column,order,DM::Matrix,lbl,t2_lt)
 local a1 := 0:
 local b1 := 0:
 local c1 := 0:
+local a2:=0:
+local b2:=0:
+local c2:=0:
 
 if a mod (order+1) <> 0 then
-    a1 := t2_lt[a mod (order+1)]:
+    a2 := t2_lt[(a mod (order+1))]:
 end if;
 
 if b mod (order+1) <> 0 then
-    b1 := t2_lt[b mod (order+1)]:
+    b2 := t2_lt[(b mod (order+1))]:
 end if;
 
 if c mod (order+1) <> 0 then
-   c1 := t2_lt[c mod (order+1)]:  
+   c2 := t2_lt[(c mod (order+1))]:  
 end if;
+
+#sort in descending order
+S:=[a2,b2,c2];
+S:=sort(S);
+a1:=S[3];
+b1:=S[2];
+c1:=S[1];   
+
 
 #Begin if/else tree for D-L chars
 if a1=0 then
@@ -533,7 +569,7 @@ elif c1=0 then
           chi231(-1,a1,b1,order,column,DM,'lbl');
           chi232(1,a1,b1,order,column,DM,'lbl');  # case (a,b,0)
 
-          end if; 
+      end if; 
 
 elif a1=c1 then
      chi91(-1,a1,order,column,DM,'lbl');
@@ -541,15 +577,15 @@ elif a1=c1 then
      chi93(1,a1,order,column,DM,'lbl'); # case (a,a,a)
 
 elif b1=c1 then
-     chi221(-1,b1,a1,order,column,DM,'lbl');
-     chi222(1,b1,a1,order,column,DM,'lbl');  # case (a,b,b)
+     chi221(-1,a2,b2,order,column,DM,'lbl');
+     chi222(1,a2,b2,order,column,DM,'lbl');  # case (a,b,b)
 
 elif a1=b1 then
-     chi221(-1,a1,c1,order,column,DM,'lbl');
-     chi222(1,a1,c1,order,column,DM,'lbl');  # case (a,a,b)
+     chi221(-1,a2,c2,order,column,DM,'lbl');
+     chi222(1,a2,c2,order,column,DM,'lbl');  # case (a,a,b)
 
 else
-     chi281(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
+     chi321(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
 end if;
 
 

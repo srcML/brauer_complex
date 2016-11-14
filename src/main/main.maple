@@ -15,7 +15,7 @@ $include <bigiterator.maple> ;
 $include <tori.maple> ;
 $include <characterfamilies.maple> ;
 $include <weighttwister.maple> ;
-#$include <stabilizer.maple> ;
+$include <stabilizer.maple> ;
 
 interface(rtablesize=infinity):
 
@@ -35,29 +35,42 @@ DM := Matrix(nrchars, nrBrchars):
 DMlbl := Array(1..nrchars, datatype=string):
 
 
-X_q := calculate_X_q(que):
+X_q := calculate_X_q(que);
 bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
-
+stabilizer(que,X_q,DM);
 
 #776  to test
-#a:=3:
-#b:=2:
-#c:=1:
+#a:=38:
+#b:=22:
+#c:=17:
 
+#sort in descending order
+#S:=[a2,b2,c2];
+#S:=sort(S);
+#a1:=S[3];
+#b1:=S[2];
+#c1:=S[1];
+
+
+#teight(a1,b1,c1,1,que,DM,DMlbl,t2_lt):
+#DMlbl;
 #a1:=s2_lt[2,a+que*b-que^2*c];
-#chi341(1,a1,que,1,DM, DMlbl,s2_lt);
-
+#chi321(1,3,2,1,que,1,DM,DMlbl,t2_lt);
+#DMlbl;
 ######################################################################
 
 #weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'DMlbl');
-
+#writeto(`DMprog.txt`);
 DMlbl;
-DM[1];
-#DM[12];
-#DM[13];
+DM[13*8];
+#i:=1;
 
-#for i from 1 to 32 do 
-# X_q[i];
+#for i from 1 to 32 do
+#DM[i];
+#end do;
+
+#for i from 1 to 32 do
+#  X_q[i];
 #end do;
 
 
@@ -75,7 +88,6 @@ DM[1];
 #writeto("DM.txt");
 #DM;
 
-#stabilizer(que,X_q,DM):
 
 #DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
 #DMLambdalbl;
@@ -85,3 +97,20 @@ DM[1];
 #t1;#t1_lt[5 mod 4];
 #t2;#t2_lt[5 mod order];
 #s2;#s1;
+
+
+
+#for i from 1 to nrchars do
+
+#    FileTools[Text][WriteString]("output.txt",DMlbl[i]):
+#    for j from 1 to nrBrchars do
+
+#        FileTools[Text][WriteString]("output.txt", cat(" & ",convert( DM[i,j],string)));
+
+#    end do:
+
+#    FileTools[Text][WriteString]("output.txt", "\\\\\n"):
+
+#end do:
+
+#FileTools[Text][Close]("output.txt"):
