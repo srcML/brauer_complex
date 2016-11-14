@@ -32,7 +32,7 @@ nrchars := (que+1) * (que^2+que+4);
 nrBrchars := que^3;
 
 DM := Matrix(nrchars, nrBrchars):
-DMlbl := [seq (i,i=nrchars)]:
+DMlbl := Array(1..nrchars, datatype=string):
 
 
 #X_q := calculate_X_q(que):
@@ -44,8 +44,8 @@ b:=8:
 c:=7:
 par:=13;
 parameter:=4;
-DMlbl['par'] := cat("\chi_{11,1}(", convert( parameter,string), ")");
-DMlbl[par] := cat("\chi_{11,1}(", convert( parameter,string), ")");
+DMlbl['par'] := cat("\chi_{11,1}(", convert(parameter,string), ")");
+DMlbl[par] := cat("\chi_{11,1}(", convert(parameter,string), ")");
 
 #???????????????????????????????????
 
