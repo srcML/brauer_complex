@@ -61,13 +61,18 @@ stabilizer(que,X_q,DM);
 
 #weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'DMlbl');
 #writeto(`DMprog.txt`);
-DMlbl;
-DM[13*8];
+#DMlbl;
+#DM[1];
+#DM[2];
+#DM[4];
+#DM[13];
+#DM[13*8];
+
 #i:=1;
 
-#for i from 1 to 32 do
-#DM[i];
-#end do;
+for i from 1 to 50 do
+DM[i];
+end do;
 
 #for i from 1 to 32 do
 #  X_q[i];
