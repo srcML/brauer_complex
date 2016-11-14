@@ -35,42 +35,40 @@ DM := Matrix(nrchars, nrBrchars):
 DMlbl := Array(1..nrchars, datatype=string):
 
 
-#X_q := calculate_X_q(que):
-#bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'lbl'):
+X_q := calculate_X_q(que):
+bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'lbl'):
 
 #887 and 885 to test
 a:=8:
 b:=8:
-c:=7:
-par:=13;
-parameter:=4;
-DMlbl['par'] := cat("\chi_{11,1}(", convert(parameter,string), ")");
-DMlbl[par] := cat("\chi_{11,1}(", convert(parameter,string), ")");
+c:=5:
 
-#???????????????????????????????????
 
-DMlbl[par];
-weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'DMlbl');
+######################################################################
+
+#weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,'DMlbl');
 
 #DMlbl[2];
-#DM[1];
+DM[1];
 #DM[12];
 #DM[13];
 
-#for i from 1 to 32 do 
-# X_q[i];
-#end do;
+for i from 1 to 32 do 
+ X_q[i];
+end do;
 
-DMcolumntest:= Matrix(1,nrchars):
 
-for i from 1 to nrchars do
-    DMcolumntest[1,i]:=DM[i,512]:
-end do:
+######################################################################
+#DMcolumntest:= Matrix(1,nrchars):
 
-DMcolumntest;
+#for i from 1 to nrchars do
+#    DMcolumntest[1,i]:=DM[i,512]:
+#end do:
+
+#DMcolumntest;
 
 DMlbl;
-
+######################################################################
 #writeto("DM.txt");
 #DM;
 
