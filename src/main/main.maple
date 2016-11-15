@@ -1,4 +1,4 @@
-
+$include <firstentry.maple> ;
 $include <X_q.maple> ;
 
 $include <labelmakers.maple> ;
@@ -42,9 +42,15 @@ bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
 stabilizer(que,X_q,DM);
 
 
-for i from 1 to 8 *13 do
-DM[i];
-end do;
+test:=Array(1..nrchars, fill=0, datatype=integer):
+firstentry(nrchars, nrBrchars, DM, test):
+test;
+
+DM[nrchars-2];
+
+#for i from nrchars-469 to nrchars-460 do
+#    DM[i];
+#end do;
 
 #for i from 1 to 28 do
 #  X_q[i];

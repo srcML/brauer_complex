@@ -580,14 +580,16 @@ elif a1=c1 then
      chi92(-2,a1,order,column,DM,'lbl');
      chi93(1,a1,order,column,DM,'lbl'); # case (a,a,a)
 
-elif b1=c1 then
-     chi221(-1,a2,b2,order,column,DM,'lbl');
-     chi222(1,a2,b2,order,column,DM,'lbl');  # case (a,b,b)
+elif b2=c2 then
+     chi221(-1,b2,a2,order,column,DM,'lbl');
+     chi222(1,b2,a2,order,column,DM,'lbl');  # case (a,b,b)
 
-elif a1=b1 then
+elif a2=b2 then
      chi221(-1,a2,c2,order,column,DM,'lbl');
      chi222(1,a2,c2,order,column,DM,'lbl');  # case (a,a,b)
-
+elif a2=c2 then
+     chi221(-1,b2,c2,order,column,DM,'lbl');
+     chi222(1,b2,c2,order,column,DM,'lbl');  # case (a,a,b)
 else
      chi321(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
 end if;
