@@ -69,14 +69,18 @@ elif a1=c1 then
      chi81(1,a1,order,column,DM,'lbl');
      chi82(2,a1,order,column,DM,'lbl');
      chi83(1,a1,order,column,DM,'lbl'); # case (a,a,a)
-    
-elif b1=c1 then
-     chi161(1,a2,b2,order,column,DM,'lbl');
-     chi162(1,a2,b2,order,column,DM,'lbl');  # case (a,b,b)
 
-elif a1=b1 then
+#construct this if-else tree using the 2-series    
+elif a2=b2 then
      chi161(1,a2,c2,order,column,DM,'lbl');
-     chi162(1,a2,c2,order,column,DM,'lbl');  # case (a,a,b)
+     chi162(1,a2,c2,order,column,DM,'lbl');  # case (a,b,b)
+
+elif a2=c2 then
+     chi161(1,a2,b2,order,column,DM,'lbl');
+     chi162(1,a2,b2,order,column,DM,'lbl');  # case (a,a,b)
+elif b2=c2 then
+     chi161(1,b2,a2,order,column,DM,'lbl');
+     chi162(1,b2,a2,order,column,DM,'lbl');  # case (a,a,b)
 
 else 
      chi251(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
