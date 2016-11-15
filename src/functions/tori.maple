@@ -83,7 +83,7 @@ elif b2=c2 then
      chi162(1,b2,a2,order,column,DM,'lbl');  # case (a,a,b)
 
 else 
-     chi251(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
+#     chi251(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
 
 
 #else some kind of error message throw catch?

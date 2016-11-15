@@ -3,21 +3,21 @@ local j:=0;
 local i:=1;
 local entryfound:=Array(1..nrchars, fill = false, datatype=boolean);
 
-#while not (i = nrchars) do 
-for i from 1 to nrchars do
 
+while not (i=nrchars) do
+      j:=0;
   while not entryfound[i] do
-  	for j from 0 to nrBrchars-1 do
-  	      test[i]:=DM[i,(nrBrchars-j)];
-	      j:=j+1;	
+        test[i]:=DM[i,(nrBrchars-j)];
+#         test[i]:=DM[i,j+1];
         if test[i]<>0 then 
-      	  entryfound[i]:=true;
-	  i:=i+1;
-    end if;
-    	if (j=(nrBrchars-1)) then test[i]:= DM[i,1]; entryfound[i]:=true; i:=i+1;  end if;
-	end do;
-    end do;
+        entryfound[i]:=true;
+        end if;
+	j:=j+1; 
   end do;
+entryfound[i]:=true;
+i:=i+1
+    end do;
+
 
 
 

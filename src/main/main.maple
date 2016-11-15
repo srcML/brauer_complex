@@ -20,7 +20,7 @@ $include <stabilizer.maple> ;
 
 interface(rtablesize=infinity):
 
-que := 8;     #eight is essentially the only reasonable value, though we may run 16 to check things
+que := 8; 
 
 r1, r1_lt := calculate_r1(que):
 r2, r2_lt := calculate_r2(que):
@@ -42,17 +42,17 @@ bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
 stabilizer(que,X_q,DM);
 
 
+#DM;
 test:=Array(1..nrchars, fill=0, datatype=integer):
 firstentry(nrchars, nrBrchars, DM, test):
 test;
 
-DM[nrchars-2];
 
-#for i from nrchars-469 to nrchars-460 do
+#for i from 18 to 21 do
 #    DM[i];
 #end do;
 
-#for i from 1 to 28 do
+#for i from 1 to 52 do
 #  X_q[i];
 #end do;
 
