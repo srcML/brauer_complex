@@ -1,5 +1,6 @@
 $include <firstentry.maple> ;
 $include <X_q.maple> ;
+$include <Y_q.maple> ;
 
 $include <labelmakers.maple> ;
 $include <r1.maple> ;
@@ -20,7 +21,7 @@ $include <stabilizer.maple> ;
 
 interface(rtablesize=infinity):
 
-que := 8; 
+que := 4; 
 
 r1, r1_lt := calculate_r1(que):
 r2, r2_lt := calculate_r2(que):
@@ -38,14 +39,15 @@ DMlbl := Array(1..nrchars, datatype=string):
 
 
 X_q := calculate_X_q(que):
-bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
-stabilizer(que,X_q,DM);
+Y_q:= calculate_Y_q(que);
+#bigiterator(que,DM,Y_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
+#stabilizer(que,X_q,DM);
 
 
 #DM;
-test:=Array(1..nrchars, fill=0, datatype=integer):
-firstentry(nrchars, nrBrchars, DM, test):
-test;
+#test:=Array(1..nrchars, fill=0, datatype=integer):
+#firstentry(nrchars, nrBrchars, DM, test):
+#test;
 
 
 #for i from 18 to 21 do
