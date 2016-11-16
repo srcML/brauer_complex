@@ -1,8 +1,0 @@
-weighttwister := proc(a,b,c,lambda,order,DM::Matrix,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,lbl)
-
-     local column := order ^ 3 - (lambda - 1);   #in the viscinity of the mathematical algorithm which \
-twists the weights is a function which reverses the order of the output for technical reasons.
-
-tone(a,b,c,column,order,DM,t1_lt,'lbl'):
-
-end proc;

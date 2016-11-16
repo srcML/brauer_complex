@@ -1,8 +1,7 @@
+##################################################################################################
 $include <firstentry.maple> ;
 $include <X_q.maple> ;
-$include <Y_q.maple> ;
 $include <X_qsort.maple> ;
-
 $include <labelmakers.maple> ;
 $include <r1.maple> ;
 $include <r2.maple> ;
@@ -10,20 +9,21 @@ $include <t1.maple> ;
 $include <t2.maple> ;
 $include <s2.maple> ;
 $include <s1.maple> ;
-
-#$include <t1test.maple> ;
-#$include <weighttest.maple> ;
-
 $include <bigiterator.maple> ;
 $include <tori.maple> ;
 $include <characterfamilies.maple> ;
 $include <weighttwister.maple> ;
 $include <stabilizer.maple> ;
+$include <DM9.maple> ;
+$include <DM9sort.maple> ;
+##################################################################################################
 
 interface(rtablesize=infinity):
-
 que := 8; 
 
+##################################################################################################
+
+#Here are the parameters for the characters.
 r1, r1_lt := calculate_r1(que):
 r2, r2_lt := calculate_r2(que):
 t1, t1_lt := calculate_t1(que):
@@ -31,73 +31,76 @@ t2, t2_lt := calculate_t2(que):
 s2, s2_lt := calculate_s2(que):
 s1, s1_lt := calculate_s1(que):
 
+##################################################################################################
+#Here is the primary main program sequence. It produces the Z-basis for the decomposition matrix.
+#Also produces a matrix with nines in the entries where the algorithm gives error. 
 nrchars := (que+1) * (que^2+que+4);
 nrBrchars := que^3;
 
 DM := Matrix(nrchars, nrBrchars):
 DMlbl := Array(1..nrchars, datatype=string):
 
-
-
 X_q := calculate_X_q(que):
-#Y_q:= calculate_Y_q(que);
 X_qsort(X_q,que):
 bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
 stabilizer(que,X_q,DM);
 
+#DM9:=DM:
+#DM9(DM9,nrchars,nrBrchars);
 
+##################################################################################################
+#Everything from here down is an optional sequence for viewing different portions of the matrix
+
+#For q=4, the matrix DM is small enough to reasonably view in terminal
 #DM;
+
+#Since the algorithm gives that there is accumulating error from right to left,
+#the first non-zero entry is a decomposition number for each row. The following extracts those values.
+#Also serves as a check for the algorithm (fractions and negatives not allowed). 
+
 test:=Array(1..nrchars, fill=0, datatype=integer):
 firstentry(nrchars, nrBrchars, DM, test):
 test;
 
+#The labels themselves are not unintereresting. Also serves as a check for the algorithm.
+DMlbl;
 
-for i from 1 to 15 do
-    DM[i];
-end do;
 
-#for i from 1 to 52 do
-#  X_q[i];
+#For q>4, the matrix is too large to view in entirety. To show some rows, use the following.
+#for i from 1 to 15 do
+#    DM[i];
 #end do;
 
+#When curious which weight gave rise to an entry, the following is sometimes useful.
+#for i from 1 to 52 do
+  X_q[75];
+#end do;
 
-######################################################################
-#DMcolumntest:= Matrix(1,nrchars):
+#To work with one weight at a time, the following will produce a single column of the decomposition matrix. 
+DMcolumntest:= Matrix(1,nrchars):
+a:=6;
+b:=5;
+c:=3;
+weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl);
+for i from 1 to nrchars do
+    DMcolumntest[1,i]:=DM[i,512]:
+end do:
+DMcolumntest;
 
-#for i from 1 to nrchars do
-#    DMcolumntest[1,i]:=DM[i,512]:
-#end do:
+##################################################################################################
 
-#DMcolumntest;
-
-#DMlbl;
-######################################################################
-#writeto("DM.txt");
-#DM;
-
-
+#For the column headers, if you wish to compile as a .tex file
 #DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
 #DMLambdalbl;
 
-#r1;#r1_lt[14 mod order];
-#r2;
-#t1;#t1_lt[5 mod 4];
-#t2;#t2_lt[5 mod order];
-#s2;#s1;
+##################################################################################################
+#The following writes the matrix in .tex format for a table
 
-
-
-for i from 1 to nrchars do
-
-    FileTools[Text][WriteString]("output.txt",DMlbl[i]):
-    for j from 1 to nrBrchars do
-
-        FileTools[Text][WriteString]("output.txt", cat(" & ",convert( DM[i,j],string)));
-
-    end do:
-
-    FileTools[Text][WriteString]("output.txt", "\\\\\n"):
-
-end do:
-
-FileTools[Text][Close]("output.txt"):
+#for i from 1 to nrchars do
+#    FileTools[Text][WriteString]("output.txt",DMlbl[i]):
+#    for j from 1 to nrBrchars do
+#        FileTools[Text][WriteString]("output.txt", cat(" & ",convert( DM[i,j],string)));
+#    end do:
+#    FileTools[Text][WriteString]("output.txt", "\\\\\n"):
+#end do:
+#FileTools[Text][Close]("output.txt"):

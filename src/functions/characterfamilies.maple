@@ -195,7 +195,7 @@ end if;
 
 row := 13 * order - 1 + rowidx ;
 DM[row  , column] := DM[row, column]+coefficient;
-lbl[row] := cat("\$\\chi_{16,1}(",convert(a,string),convert(b,string), ")\$");
+lbl[row] := cat("\$\\chi_{16,1}(",convert(a,string),",",convert(b,string), ")\$");
 
 end proc;
 
@@ -209,27 +209,27 @@ else
 end if;
      row:=1 + 23 / 2 * order + 1 / 4 * order ^ 2  +rowidx;
           DM[row  , column] := DM[row, column]+coefficient;
-	  lbl[row] := cat("\$\\chi_{16,2}(",convert(a,string),convert(b,string), ")\$");
+	  lbl[row] := cat("\$\\chi_{16,2}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi171 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:=3 + 10 * order + 1 / 2 * order ^ 2 +(order-2)/2*(b-1)-(b-1)*b/2+a-b;
           DM[row  , column] := DM[row, column]+coefficient;
-	  lbl[row] := cat("\$\\chi_{17,1}(",convert(a,string),convert(b,string), ")\$");
+	  lbl[row] := cat("\$\\chi_{17,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi172 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:=4 + 37 / 4 * order +5/8* order ^ 2 +(order-2)/2*(b-1)-(b-1)*b/2+a-b;
           DM[row  , column] := DM[row, column]+coefficient;
-	  lbl[row] := cat("\$\\chi_{17,2}(",convert(a,string),convert(b,string), ")\$");
+	  lbl[row] := cat("\$\\chi_{17,2}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi181 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
       local row:=5 + 17 / 2 * order + 3 / 4 * order ^ 2 + order/2*(a-1)+b;
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{18,1}(",convert(a,string),convert(b,string), ")\$");
+      lbl[row] := cat("\$\\chi_{18,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi182 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:=5+8*order+order^2 + order/2*(a-1)+b;
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{18,2}(",convert(a,string),convert(b,string), ")\$");
+      lbl[row] := cat("\$\\chi_{18,2}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi191 := proc(coefficient,a,order,column,DM::Matrix, lbl,r1_lt)
        local a_row:= r1_lt[1,a]:
@@ -246,22 +246,22 @@ end proc;
 chi201 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:=5+13/2*order+7/4*order^2 + order/2*(a-1)+b;
       DM[row  , column] := DM[row , column] + coefficient;
-       lbl[row] := cat("\$\\chi_{20,1}(",convert(a,string),convert(b,string), ")\$");
+       lbl[row] := cat("\$\\chi_{20,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi202 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:=5+6*order+2*order^2 + order/2*(a-1)+b;
       DM[row , column] := DM[row , column] + coefficient;
-       lbl[row] := cat("\$\\chi_{20,2}(",convert(a,string),convert(b,string), ")\$");
+       lbl[row] := cat("\$\\chi_{20,2}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi211 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:=5+11/2*order+9/4*order^2 + (order-2)/2*(a-1)+b;
       DM[row , column] := DM[row , column] + coefficient;
-       lbl[row] := cat("\$\\chi_{21,1}(",convert(a,string),convert(b,string), ")\$");
+       lbl[row] := cat("\$\\chi_{21,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi212 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:=5+5*order+5/2*order^ 2+(order-2)/2*(a-1)+b;
       DM[row , column] := DM[row , column] + coefficient;
-       lbl[row] := cat("\$\\chi_{21,2}(",convert(a,string),convert(b,string), ")\$");
+       lbl[row] := cat("\$\\chi_{21,2}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi221 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
 local rowidx:=0:
@@ -274,7 +274,7 @@ end if;
      row:=5+9/2*order+11/4*order^2 +rowidx;
 #local row:=1;
           DM[row  , column] := DM[row, column]+coefficient;
-	  lbl[row] := cat("\$\\chi_{22,1}(",convert(a,string),convert(b,string), ")\$");
+	  lbl[row] := cat("\$\\chi_{22,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi222 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
 local rowidx:=0:
@@ -286,17 +286,17 @@ else
 end if;
       row:=5+4*order+3*order^2 +rowidx;
           DM[row  , column] := DM[row, column]+coefficient;
-	  lbl[row] := cat("\$\\chi_{22,2}(",convert(a,string),convert(b,string), ")\$");
+	  lbl[row] := cat("\$\\chi_{22,2}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi231 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:= 5+7/2*order+13/4*order^2 + order/2*(b-1)-(b-1)*b/2+     a-b:
       DM[row  , column] := DM[row, column]+coefficient;
-	  lbl[row] := cat("\$\\chi_{23,1}(",convert(a,string),convert(b,string), ")\$");
+	  lbl[row] := cat("\$\\chi_{23,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi232 := proc(coefficient,a,b,order,column,DM::Matrix, lbl)
        local row:=5+13/4*order+27/8*order^2 +order/2*(b-1)-(b-1)*b/2+     a-b:
       DM[row  , column] := DM[row, column]+coefficient;
-      lbl[row] := cat("\$\\chi_{23,2}(",convert(a,string),convert(b,string), ")\$");
+      lbl[row] := cat("\$\\chi_{23,2}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi241 := proc(coefficient,a,order,column,DM::Matrix, lbl,r2_lt)
       local a_row := r2_lt[1,a]:
@@ -315,7 +315,7 @@ chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
        local rowidx:=1/6*(c-1)*(c^2-3*n*c+c+3*(n-1)*n)+   n*(b-1)-b*(b-1)/2- ((c)*n-(c)*(c+1)/2 )  +    a-b;
        local row:= 5+3*order+4*order^2+ rowidx:
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{25,1}(",convert(a,string),convert(b,string),convert(c,string), ")\$");
+      lbl[row] := cat("\$\\chi_{25,1}(",convert(a,string),",",convert(b,string),",",convert(c,string), ")\$");
 end proc;
 chi261 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
 #       local rowidx:=(order/2)*(order/2-a)*(a-1)+b-a-1+c :
@@ -323,13 +323,13 @@ chi261 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
 	local rowidx:=n*(n-1)/2*(c-1)+  n*(b-1)-b*(b-1)/2+  a-b;
        local row := 4+47/12*order+15/4*order^2+1/48*order^3+rowidx:
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{26,1}(",convert(a,string),convert(b,string),convert(c,string), ")\$");
+      lbl[row] := cat("\$\\chi_{26,1}(",convert(a,string),",",convert(b,string),",",convert(c,string), ")\$");
 end proc;
 chi271 := proc(coefficient,a,b,order,column,DM::Matrix, lbl,r1_lt)
        local rowidx:=(order-2)/2*(r1_lt[1,a]-1)+b:
        local row:= 4+53/12*order+27/8*order^2+1/12*(order^3)+rowidx:
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{27,1}(",convert(a,string),convert(b,string), ")\$");
+      lbl[row] := cat("\$\\chi_{27,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi281 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
 #       local rowidx:=(order/2-1)*(order/2-b+1)*(b-1)+c-b-1+a :
@@ -338,19 +338,19 @@ chi281 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
 #  local rowidx:=1;
       local row:=4+59/12*order+23/8*order^2+5/24*order^3 + rowidx:
       DM[row, column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{28,1}(",convert(a,string),convert(b,string),convert(c,string), ")\$");
+      lbl[row] := cat("\$\\chi_{28,1}(",convert(a,string),",",convert(b,string),",",convert(c,string), ")\$");
 end proc;
 chi291 := proc(coefficient,a,b,order,column,DM::Matrix, lbl,r1_lt)
        local rowidx:= order/2*(r1_lt[1,a]-1)+b:
        local row:=4+31/6*order+21/8*order^2+13/48*order^3+rowidx:
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{29,1}(",convert(a,string),convert(b,string), ")\$");
+      lbl[row] := cat("\$\\chi_{29,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi301 := proc(coefficient,a,b,order,column,DM::Matrix, lbl,r2_lt)
        local rowidx:=(order-2)/2*(r2_lt[1,a]-1)+b :
        local row:= (order+2)*(19*order^2+76*order+96)/48+rowidx:
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{30,1}(",convert(a,string),convert(b,string), ")\$");
+      lbl[row] := cat("\$\\chi_{30,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi311 := proc(coefficient,a,order,column,DM::Matrix, lbl,s1_lt)
        local a_row:= s1_lt[1,a]:
@@ -365,14 +365,14 @@ chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
 #  local rowidx:=1;
        local row:= 4+5*order+17/8*order^2+11/16*order^3+rowidx:
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{32,1}(",convert(a,string),convert(b,string),convert(c,string), ")\$");
+      lbl[row] := cat("\$\\chi_{32,1}(",convert(a,string),",",convert(b,string),",",convert(c,string), ")\$");
 end proc;
 chi331 := proc(coefficient,a,b,order,column,DM::Matrix, lbl,r2_lt)
        local rowidx:=order/2*(r2_lt[1,a]-1)+b:
 #local row:=5:
        local row:=4+31/6*order+2*order^2+17/24*order^3+rowidx: 
       DM[row , column] := DM[row , column] + coefficient;
-      lbl[row] := cat("\$\\chi_{33,1}(",convert(a,string),convert(b,string), ")\$");
+      lbl[row] := cat("\$\\chi_{33,1}(",convert(a,string),",",convert(b,string), ")\$");
 end proc;
 chi341 := proc(coefficient,a,order,column,DM::Matrix, lbl,s2_lt)
        local a_row:= s2_lt[1,a]:
