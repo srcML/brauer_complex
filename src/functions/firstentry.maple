@@ -4,7 +4,7 @@ local i:=1;
 local entryfound:=Array(1..nrchars, fill = false, datatype=boolean);
 
 
-while not (i=nrchars) do
+while not (i=nrchars+1) do
       j:=0;
   while not entryfound[i] do
         test[i]:=DM[i,(nrBrchars-j)];
@@ -14,7 +14,7 @@ while not (i=nrchars) do
         end if;
 	j:=j+1; 
   end do;
-entryfound[i]:=true;
+#entryfound[i]:=true;
 i:=i+1
     end do;
 

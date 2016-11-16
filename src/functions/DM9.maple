@@ -1,26 +1,28 @@
-#This replaces in each row all entries to the left of the rightmost non-zero entry with nines
+
+#This replaces in each row all entries to the left of the rightmost non-zero entry with -1
 
 DM9:= proc(DM, nrchars, nrBrchars)
 
-#below is the syntax of the first-entry function. It can be manipulated to instead write nines after those entries
-local j:=0;
+local j;
 local i:=1;
+
 local entryfound:=Array(1..nrchars, fill = false, datatype=boolean);
 
-
+#for i from 1 to nrchars do
 while not (i=nrchars) do
-      j:=0;
-  while not entryfound[i] do
-        test[i]:=DM[i,(nrBrchars-j)];
-#         test[i]:=DM[i,j+1];
-        if test[i]<>0 then
-        entryfound[i]:=true;
-        end if;
-        j:=j+1;
+j:=nrBrchars;
+#  for j from 1 to nrBrchars do
+   while not (j=0) do
+          if entryfound[i] then
+	     DM[i,j]:=-1;
+	  end if;  
+     	  if DM[i,j]<>0 then
+              entryfound[i]:=true;
+       	  end if;
+	j:=j-1;
   end do;
-entryfound[i]:=true;
-i:=i+1
-    end do;
+i:=i+1;
+end do;
 
 
 

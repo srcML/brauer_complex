@@ -93,3 +93,39 @@ tten(order^2*a-order*c-b,column,order,DM,'lbl',t2_lt,s2_lt):
 tten(order^2*a+order*c-b,column,order,DM,'lbl',t2_lt,s2_lt):
 
 end proc;
+
+#tten inputs
+# q^2*a+q*c+b;
+# q^2*a-q*b+c;
+# q^2*a+q*b+c;
+# q^2*a-q*c+b;
+# q^2*a+q*b-c;
+# q^2*a-q*b-c;
+# q^2*a-q*c-b;
+#q^2*a+q*c-b;
+
+#tfive inputs
+#a+q*b;
+#a+q*c;
+#b+q*c;
+#q*b-c;
+#q*a-c;
+#q*a-b;
+
+
+#chi9series tester
+#tfive(a+que*b,c,1,que,DM,DMlbl,t1_lt,t2_lt,r1_lt):
+#tfive(a+que*c,b,1,que,DM,DMlbl,t1_lt,t2_lt,r1_lt):
+#tfive(b+que*c,a,1,que,DM,DMlbl,t1_lt,t2_lt,r1_lt):
+#tfive(que*b-c,a,1,que,DM,DMlbl,t1_lt,t2_lt,r1_lt):
+#tfive(que*a-c,b,1,que,DM,DMlbl,t1_lt,t2_lt,r1_lt):
+#tfive(que*a-b,c,1,que,DM,DMlbl,t1_lt,t2_lt,r1_lt):
+#teight(a,b,c,1,que,DM,DMlbl,t2_lt):
+#tten(que^2*a+que*c+b,1,que,DM,DMlbl,t2_lt,s2_lt):
+#tten(que^2*a-que*b+c,1,que,DM,DMlbl,t2_lt,s2_lt):
+#tten(que^2*a+que*b+c,1,que,DM,DMlbl,t2_lt,s2_lt):
+#tten(que^2*a-que*c+b,1,que,DM,DMlbl,t2_lt,s2_lt):
+#tten(que^2*a+que*b-c,1,que,DM,DMlbl,t2_lt,s2_lt):
+#tten(que^2*a-que*b-c,1,que,DM,DMlbl,t2_lt,s2_lt):
+#tten(que^2*a-que*c-b,1,que,DM,DMlbl,t2_lt,s2_lt):
+#tten(que^2*a+que*c-b,1,que,DM,DMlbl,t2_lt,s2_lt):

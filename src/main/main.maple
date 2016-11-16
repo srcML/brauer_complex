@@ -19,7 +19,7 @@ $include <DM9sort.maple> ;
 ##################################################################################################
 
 interface(rtablesize=infinity):
-que := 8; 
+que := 2; 
 
 ##################################################################################################
 
@@ -45,13 +45,87 @@ X_qsort(X_q,que):
 bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
 stabilizer(que,X_q,DM);
 
-#DM9:=DM:
-#DM9(DM9,nrchars,nrBrchars);
+#DM[75];
 
 ##################################################################################################
+
+#This algorithm will write -1 to the left of the rightmost nonzero entry in each row, for use in latex formatting. 
+
+DM9:=DM;
+entryfound:=Array(1..nrchars, fill = false, datatype=boolean);
+i:=1;
+while not (i=nrchars+1) do
+j:=nrBrchars:
+   while not (j=0) do
+          if entryfound[i] then
+             DM9[i,j]:=-1;
+          end if;
+          if DM9[i,j]<>0 then
+               entryfound[i]:=true;
+ 	      j:=j-1;
+ 	      else j:=j-1; 
+         end if;
+  end do;
+i:=i+1:
+end do;
+
+#entryfound;
+DM9;
+
+##################################################################################################
+
+Sp62degrees:=Array([1,
+   35,
+   15,
+   27,
+   7,
+   84,
+   168,
+   280,
+   216,
+   120,
+   56,
+   512,
+   21,
+   189,
+   105,
+   105,
+   21,
+   336,
+   35,
+   70,
+   280,
+   105,
+   210,
+   210,
+   420,
+   189,
+   378,
+   405,
+   189,
+   315
+]);
+
+for i from 1 to 29 do
+    for j from 1 to 29 do
+    	if Sp62degrees[j]>Sp62degrees[j+1] then
+	   DMstore:=DM[j+1];
+	   DM[j+1]:=DM[j];
+	   DM[j]:=DMstore;
+	   degstore:=Sp62degrees[j+1];
+	   Sp62degrees[j+1]:=Sp62degrees[j];
+	   Sp62degrees[j]:=degstore;
+	end if;
+     end do;
+end do;
+
+Sp62degrees;
+DM;
+
+
 #Everything from here down is an optional sequence for viewing different portions of the matrix
 
-#For q=4, the matrix DM is small enough to reasonably view in terminal
+#For q=2,4, the matrix DM is small enough to reasonably view in terminal
 #DM;
 
 #Since the algorithm gives that there is accumulating error from right to left,
@@ -72,20 +146,22 @@ DMlbl;
 #end do;
 
 #When curious which weight gave rise to an entry, the following is sometimes useful.
-#for i from 1 to 52 do
-  X_q[75];
+#for i from 74 to 76 do
+  X_q;
 #end do;
 
 #To work with one weight at a time, the following will produce a single column of the decomposition matrix. 
-DMcolumntest:= Matrix(1,nrchars):
-a:=6;
-b:=5;
-c:=3;
-weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl);
-for i from 1 to nrchars do
-    DMcolumntest[1,i]:=DM[i,512]:
-end do:
-DMcolumntest;
+#DMcolumntest:= Matrix(1,nrchars):
+#a:=4;
+#b:=4;
+#c:=3;
+#weighttwister(a,b,c,1,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl);
+#for i from 1 to nrchars do
+#    DMcolumntest[1,i]:=DM[i,512]:
+#end do:
+#DMcolumntest;
+#DMlbl;
+
 
 ##################################################################################################
 
@@ -97,10 +173,10 @@ DMcolumntest;
 #The following writes the matrix in .tex format for a table
 
 #for i from 1 to nrchars do
-#    FileTools[Text][WriteString]("output.txt",DMlbl[i]):
+#    FileTools[Text][WriteString]("output4x.txt",DMlbl[i]):
 #    for j from 1 to nrBrchars do
-#        FileTools[Text][WriteString]("output.txt", cat(" & ",convert( DM[i,j],string)));
+#        FileTools[Text][WriteString]("output4x.txt", cat(" & ",convert( DM9[i,j],string)));
 #    end do:
-#    FileTools[Text][WriteString]("output.txt", "\\\\\n"):
+#    FileTools[Text][WriteString]("output4x.txt", "\\\\\n"):
 #end do:
-#FileTools[Text][Close]("output.txt"):
+#FileTools[Text][Close]("output4x.txt"):
