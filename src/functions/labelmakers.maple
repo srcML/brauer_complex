@@ -13,9 +13,9 @@ for i from 1 to order^3 do
     b:=X_q[i,2]:
     c:=X_q[i,3]:
 
-    ith_string := cat("\Lambda(", convert(a,string),convert(b,string),convert(c,string),")" );
+    ith_string := cat("\$\\Lambda(", convert(a,string),",",convert(b,string),",",convert(c,string),")\$&" );
 
-    DMLlbl[i] := ith_string:
+    DMLlbl[order^3-i+1] := ith_string:
 
 
 end do;
@@ -24,9 +24,9 @@ for i from 1 to order^3 do
     b:=X_q[i,2]:
     c:=X_q[i,3]:
 
-    ith_string := cat("\Lambda(", convert(a,string),convert(b,string),convert(c,string),")" );
+    ith_string := cat("\$\\Phi(", convert(a,string),",",convert(b,string),",",convert(c,string),")\$&" );
 
-    DMPlbl[i] := ith_string:
+    DMPlbl[order^3-i+1] := ith_string:
 
 
 end do;

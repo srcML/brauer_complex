@@ -1,0 +1,69 @@
+> DMLambdalbl;
+[\begin{sideways}$\Lambda(9,6,3)$\end{sideways}& \begin{sideways}$\Lambda(8,6,3)$\end{sideways}& \begin{sideways}$\Lambda(8,5,3)$\end{sideways}& \begin{sideways}$\Lambda(8,5,2)$\end{sideways}& \begin{sideways}$\Lambda(7,6,3)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(7,5,3)$\end{sideways}& \begin{sideways}$\Lambda(7,5,2)$\end{sideways}& \begin{sideways}$\Lambda(7,4,3)$\end{sideways}& \begin{sideways}$\Lambda(7,4,2)$\end{sideways}& \begin{sideways}$\Lambda(7,4,1)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(6,6,3)$\end{sideways}& \begin{sideways}$\Lambda(6,5,3)$\end{sideways}& \begin{sideways}$\Lambda(6,5,2)$\end{sideways}& \begin{sideways}$\Lambda(6,4,3)$\end{sideways}& \begin{sideways}$\Lambda(6,4,2)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(6,4,1)$\end{sideways}& \begin{sideways}$\Lambda(6,3,3)$\end{sideways}& \begin{sideways}$\Lambda(6,3,2)$\end{sideways}& \begin{sideways}$\Lambda(6,3,1)$\end{sideways}& \begin{sideways}$\Lambda(6,3,0)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(5,5,3)$\end{sideways}& \begin{sideways}$\Lambda(5,5,2)$\end{sideways}& \begin{sideways}$\Lambda(5,4,3)$\end{sideways}& \begin{sideways}$\Lambda(5,4,2)$\end{sideways}& \begin{sideways}$\Lambda(5,4,1)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(5,3,3)$\end{sideways}& \begin{sideways}$\Lambda(5,3,2)$\end{sideways}& \begin{sideways}$\Lambda(5,3,1)$\end{sideways}& \begin{sideways}$\Lambda(5,3,0)$\end{sideways}& \begin{sideways}$\Lambda(5,2,2)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(5,2,1)$\end{sideways}& \begin{sideways}$\Lambda(5,2,0)$\end{sideways}& \begin{sideways}$\Lambda(4,4,3)$\end{sideways}& \begin{sideways}$\Lambda(4,4,2)$\end{sideways}& \begin{sideways}$\Lambda(4,4,1)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(4,3,3)$\end{sideways}& \begin{sideways}$\Lambda(4,3,2)$\end{sideways}& \begin{sideways}$\Lambda(4,3,1)$\end{sideways}& \begin{sideways}$\Lambda(4,3,0)$\end{sideways}& \begin{sideways}$\Lambda(4,2,2)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(4,2,1)$\end{sideways}& \begin{sideways}$\Lambda(4,2,0)$\end{sideways}& \begin{sideways}$\Lambda(4,1,1)$\end{sideways}& \begin{sideways}$\Lambda(4,1,0)$\end{sideways}& \begin{sideways}$\Lambda(3,3,3)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(3,3,2)$\end{sideways}& \begin{sideways}$\Lambda(3,3,1)$\end{sideways}& \begin{sideways}$\Lambda(3,3,0)$\end{sideways}& \begin{sideways}$\Lambda(3,2,2)$\end{sideways}& \begin{sideways}$\Lambda(3,2,1)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(3,2,0)$\end{sideways}& \begin{sideways}$\Lambda(3,1,1)$\end{sideways}& \begin{sideways}$\Lambda(3,1,0)$\end{sideways}& \begin{sideways}$\Lambda(3,0,0)$\end{sideways}& \begin{sideways}$\Lambda(2,2,2)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(2,2,1)$\end{sideways}& \begin{sideways}$\Lambda(2,2,0)$\end{sideways}& \begin{sideways}$\Lambda(2,1,1)$\end{sideways}& \begin{sideways}$\Lambda(2,1,0)$\end{sideways}& \begin{sideways}$\Lambda(2,0,0)$\end{sideways}&
+
+    \begin{sideways}$\Lambda(1,1,1)$\end{sideways}& \begin{sideways}$\Lambda(1,1,0)$\end{sideways}& \begin{sideways}$\Lambda(1,0,0)$\end{sideways}& \begin{sideways}$\Lambda(0,0,0)$&"]
+
+> DMPhilbl;
+[\begin{sideways}$\Phi(9,6,3)$\end{sideways}& \begin{sideways}$\Phi(8,6,3)$\end{sideways}& \begin{sideways}$\Phi(8,5,3)$\end{sideways}& \begin{sideways}$\Phi(8,5,2)$\end{sideways}& \begin{sideways}$\Phi(7,6,3)$\end{sideways}& \begin{sideways}$\Phi(7,5,3)$\end{sideways}&
+
+    \begin{sideways}$\Phi(7,5,2)$\end{sideways}& \begin{sideways}$\Phi(7,4,3)$\end{sideways}& \begin{sideways}$\Phi(7,4,2)$\end{sideways}& \begin{sideways}$\Phi(7,4,1)$\end{sideways}& \begin{sideways}$\Phi(6,6,3)$\end{sideways}&
+
+    \begin{sideways}$\Phi(6,5,3)$\end{sideways}& \begin{sideways}$\Phi(6,5,2)$\end{sideways}& \begin{sideways}$\Phi(6,4,3)$\end{sideways}& \begin{sideways}$\Phi(6,4,2)$\end{sideways}& \begin{sideways}$\Phi(6,4,1)$\end{sideways}&
+
+    \begin{sideways}$\Phi(6,3,3)$\end{sideways}& \begin{sideways}$\Phi(6,3,2)$\end{sideways}& \begin{sideways}$\Phi(6,3,1)$\end{sideways}& \begin{sideways}$\Phi(6,3,0)$\end{sideways}& \begin{sideways}$\Phi(5,5,3)$\end{sideways}&
+
+    \begin{sideways}$\Phi(5,5,2)$\end{sideways}& \begin{sideways}$\Phi(5,4,3)$\end{sideways}& \begin{sideways}$\Phi(5,4,2)$\end{sideways}& \begin{sideways}$\Phi(5,4,1)$\end{sideways}& \begin{sideways}$\Phi(5,3,3)$\end{sideways}&
+
+    \begin{sideways}$\Phi(5,3,2)$\end{sideways}& \begin{sideways}$\Phi(5,3,1)$\end{sideways}& \begin{sideways}$\Phi(5,3,0)$\end{sideways}& \begin{sideways}$\Phi(5,2,2)$\end{sideways}& \begin{sideways}$\Phi(5,2,1)$\end{sideways}&
+
+    \begin{sideways}$\Phi(5,2,0)$\end{sideways}& \begin{sideways}$\Phi(4,4,3)$\end{sideways}& \begin{sideways}$\Phi(4,4,2)$\end{sideways}& \begin{sideways}$\Phi(4,4,1)$\end{sideways}& \begin{sideways}$\Phi(4,3,3)$\end{sideways}&
+
+    \begin{sideways}$\Phi(4,3,2)$\end{sideways}& \begin{sideways}$\Phi(4,3,1)$\end{sideways}& \begin{sideways}$\Phi(4,3,0)$\end{sideways}& \begin{sideways}$\Phi(4,2,2)$\end{sideways}& \begin{sideways}$\Phi(4,2,1)$\end{sideways}&
+
+    \begin{sideways}$\Phi(4,2,0)$\end{sideways}& \begin{sideways}$\Phi(4,1,1)$\end{sideways}& \begin{sideways}$\Phi(4,1,0)$\end{sideways}& \begin{sideways}$\Phi(3,3,3)$\end{sideways}& \begin{sideways}$\Phi(3,3,2)$\end{sideways}&
+
+    \begin{sideways}$\Phi(3,3,1)$\end{sideways}& \begin{sideways}$\Phi(3,3,0)$\end{sideways}& \begin{sideways}$\Phi(3,2,2)$\end{sideways}& \begin{sideways}$\Phi(3,2,1)$\end{sideways}& \begin{sideways}$\Phi(3,2,0)$\end{sideways}&
+
+    \begin{sideways}$\Phi(3,1,1)$\end{sideways}& \begin{sideways}$\Phi(3,1,0)$\end{sideways}& \begin{sideways}$\Phi(3,0,0)$\end{sideways}& \begin{sideways}$\Phi(2,2,2)$\end{sideways}& \begin{sideways}$\Phi(2,2,1)$\end{sideways}&
+
+    \begin{sideways}$\Phi(2,2,0)$\end{sideways}& \begin{sideways}$\Phi(2,1,1)$\end{sideways}& \begin{sideways}$\Phi(2,1,0)$\end{sideways}& \begin{sideways}$\Phi(2,0,0)$\end{sideways}& \begin{sideways}$\Phi(1,1,1)$\end{sideways}&
+
+    \begin{sideways}$\Phi(1,1,0)$\end{sideways}& \begin{sideways}$\Phi(1,0,0)$\end{sideways}& \begin{sideways}$\Phi(0,0,0)$&"]
+
+> 
+##################################################################################################
+#The following writes the matrix in .tex format for a table
+> 
+#for i from 1 to nrchars do
+#    FileTools[Text][WriteString]("output4.txt",DMlbl[i]):
+#    for j from 1 to nrBrchars do
+#        FileTools[Text][WriteString]("output4.txt", cat(" & ",convert( DM[i,j],string)));
+#    end do:
+#    FileTools[Text][WriteString]("output4.txt", "\\\\\n"):
+#end do:
+#FileTools[Text][Close]("output4.txt"):
+> 
+> quit
+memory used=10.7MB, alloc=7.2MB, time=0.27
