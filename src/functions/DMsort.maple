@@ -1,0 +1,30 @@
+DMsort:=proc(DM,DMlbl,nrchars,nrBrchars)
+
+local availablerow:=nrchars;
+local j:=nrBrchars;
+local i:=nrchars;
+local dmstore;
+local dmlblstore;
+
+while not (j=1) do
+      	 i:=availablerow;
+	  while not (i=1) do
+	  	if DM[i,j]<>0 then
+
+		   dmlblstore:=DMlbl[availablerow];
+		   DMlbl[availablerow]:=DMlbl[i];
+		   DMlbl[i]:=dmlblstore;
+
+		   dmstore:=DM[availablerow];
+		   DM[availablerow]:=DM[i];
+		   DM[i]:=dmstore;
+
+		   availablerow:=availablerow-1
+
+		end if;
+	  i:=i-1;
+	  end do;
+      j:=j-1;
+      end do;
+
+end proc;
