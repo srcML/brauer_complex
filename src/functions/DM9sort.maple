@@ -1,7 +1,0 @@
-#this function will sort the matrix DM9 so that zeros are pushed upwards in the matrix
-
-DM9sort:=proc(DM9, order)
-
-#Bubble sort is too expensive for this, talk to Michael
-
-end proc;
