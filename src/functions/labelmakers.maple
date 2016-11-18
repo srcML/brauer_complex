@@ -2,8 +2,8 @@
 
 calculatelbls := proc(X_q::Matrix,order)
 
-local DMLlbl:= [seq (i,i=1..order^3)]:
-local DMPlbl:= [seq (i,i=1..order^3)]:
+local DMLlbl:= Array(1..order^3, datatype=string):
+local DMPlbl:= Array(1..order^3, datatype=string):
 local a:=0:
 local b:=0:
 local c:=0:
