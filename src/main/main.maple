@@ -136,16 +136,16 @@ DMlbl := Array(1..nrchars, datatype=string):
 #end do;
 
 #To work with one weight at a time, the following will produce a single column of the decomposition matrix. 
-#DMcolumn:= Matrix(1,nrchars):
-#a:=2;
-#b:=2;
-#c:=2;
-#weighttwister(a,b,c,nrBrchars,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl);
-#for i from 1 to nrchars do
-#    DMcolumn[1,i]:=DM[i,1]:
-#end do:
-#DMcolumn;
-#DMlbl;
+DMcolumn:= Matrix(1,nrchars):
+a:=2;
+b:=2;
+c:=2;
+weighttwister(a,b,c,nrBrchars,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl);
+for i from 1 to nrchars do
+    DMcolumn[1,i]:=DM[i,1]:
+end do:
+DMcolumn;
+DMlbl;
 
 ##################################################################################################
 
@@ -168,10 +168,10 @@ DMlbl := Array(1..nrchars, datatype=string):
 #FileTools[Text][Close]("output4col.txt"):
 
 #This writes just one column worth of data at a time
-#FileTools[Text][Open]("output8col222.txt"):
-#for i from 1 to nrchars do
-#    FileTools[Text][WriteString]("output8col222.txt", convert(DMcolumn[1,i],string)):
-#    FileTools[Text][WriteString]("output8col222.txt",DMlbl[i]):
-#end do:
-#FileTools[Text][Close]("output8col222.txt"):
+FileTools[Text][Open]("output8col222.txt"):
+for i from 1 to nrchars do
+    FileTools[Text][WriteString]("output8col222.txt", convert(DMcolumn[1,i],string)):
+    FileTools[Text][WriteString]("output8col222.txt",DMlbl[i]):
+end do:
+FileTools[Text][Close]("output8col222.txt"):
 
