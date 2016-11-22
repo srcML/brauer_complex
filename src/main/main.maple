@@ -19,7 +19,7 @@ $include <DMsort.maple> ;
 ##################################################################################################
 
 interface(rtablesize=infinity):
-que := 16;
+que := 8;
 
 ##################################################################################################
 
@@ -38,13 +38,13 @@ t1triples,t2triples:=triplesbuilder(que):
 nrchars := (que+1) * (que^2+que+4);
 nrBrchars := que^3;
 
-#DM := Matrix(nrchars, nrBrchars):
-#DMlbl := Array(1..nrchars, datatype=string):
+DM := Matrix(nrchars, nrBrchars):
+DMlbl := Array(1..nrchars, datatype=string):
 
-X_q := calculate_X_q(que):
-X_qsort(X_q,que):
+#X_q := calculate_X_q(que):
+#X_qsort(X_q,que):
 #bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples):
-#stabilizer(que,X_q,DM);
+#stabilizer(que,X_q,DM):
 
 ##################################################################################################
 
@@ -84,7 +84,7 @@ X_qsort(X_q,que):
 ##################################################################################################
 
 #In the case Sp(6,2), the decomposition numbers were known. The following re-orders by character degree as in the known result
-#Sp62degrees:=Array([1 35,   15,   27,   7,   84,   168,   280,   216,   120,   56,   512,   21,   189,   105,   105,   21,   336,   35,   70,   280,   105,   210,   210,   420,   189,   378,   405,   189,   315]);
+#Sp62degrees:=Array([1,35,15,27,7,84,168,280,216,120,56,512,21,189,105,105,21,336,35,70,280,105,210,210,420,189,378,405,189,315]);
 
 #for i from 1 to 29 do
 #    for j from 1 to 29 do
@@ -126,22 +126,28 @@ X_qsort(X_q,que):
 #The labels themselves are not unintereresting. Also serves as a check for the algorithm.
 #DMlbl;
 
+##################################################################################################
+
 #For q>4, the matrix is too large to view in entirety. To show some rows, use the following.
 #for i from 1 to 15 do
 #    DM[i];
 #end do;
 
+##################################################################################################
+
 #When curious which weight gave rise to an entry, the following is sometimes useful.
-for i from 1 to 76 do
-  X_q[i];
-end do;
+#for i from 1 to 64 do
+#  X_q[i];
+#end do;
+
+##################################################################################################
 
 #To work with one weight at a time, the following will produce a single column of the decomposition matrix. 
 #DMcolumn:= Matrix(1,nrchars):
-#a:=2;
-#b:=2;
-#c:=2;
-#weighttwister(a,b,c,nrBrchars,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl);
+#a:=14;
+#b:=7;
+#c:=0;
+#weighttwister(a,b,c,nrBrchars,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples);
 #for i from 1 to nrchars do
 #    DMcolumn[1,i]:=DM[i,1]:
 #end do:
@@ -152,7 +158,7 @@ end do;
 
 #For the column headers, if you wish to compile as a .tex file
 #DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
-#writeto(`Lambdalbls8.txt`);
+#writeto(`Lambdalbls16.txt`);
 #DMLambdalbl;
 
 ##################################################################################################
@@ -168,10 +174,13 @@ end do;
 #end do:
 #FileTools[Text][Close]("output4col.txt"):
 
+##################################################################################################
+
 #This writes just one column worth of data at a time
-#FileTools[Text][Open]("output8col222.txt"):
+#FileTools[Text][Open]("output8col1470.txt"):
 #for i from 1 to nrchars do
-#    FileTools[Text][WriteString]("output8col222.txt", convert(DMcolumn[1,i],string)):
-#    FileTools[Text][WriteString]("output8col222.txt",DMlbl[i]):
+#    FileTools[Text][WriteString]("output8col1470.txt", convert(DMcolumn[1,i],string)):
+#    FileTools[Text][WriteString]("output8col1470.txt",DMlbl[i]):
 #end do:
-#FileTools[Text][Close]("output8col222.txt"):
+#FileTools[Text][Close]("output8col1470.txt"):
+
