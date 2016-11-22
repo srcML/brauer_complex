@@ -9,6 +9,7 @@ $include <t1.maple> ;
 $include <t2.maple> ;
 $include <s2.maple> ;
 $include <s1.maple> ;
+$include <triplesindexer.maple> ;
 $include <bigiterator.maple> ;
 $include <tori.maple> ;
 $include <characterfamilies.maple> ;
@@ -18,7 +19,7 @@ $include <DMsort.maple> ;
 ##################################################################################################
 
 interface(rtablesize=infinity):
-que := 8;
+que := 16;
 
 ##################################################################################################
 
@@ -29,6 +30,7 @@ t1, t1_lt := calculate_t1(que):
 t2, t2_lt := calculate_t2(que):
 s2, s2_lt := calculate_s2(que):
 s1, s1_lt := calculate_s1(que):
+t1triples,t2triples:=triplesbuilder(que):
 
 ##################################################################################################
 #Here is the primary main program sequence. It produces the Z-basis for the decomposition matrix.
@@ -41,7 +43,7 @@ DMlbl := Array(1..nrchars, datatype=string):
 
 #X_q := calculate_X_q(que):
 #X_qsort(X_q,que):
-#bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl):
+#bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples):
 #stabilizer(que,X_q,DM);
 
 ##################################################################################################
@@ -108,7 +110,7 @@ DMlbl := Array(1..nrchars, datatype=string):
 
 #For q=2,4, the matrix DM is small enough to reasonably view in terminal
 #DM;
-#DM9;
+
 ##################################################################################################
 
 #Since the algorithm gives that there is accumulating error from right to left,
@@ -124,7 +126,6 @@ DMlbl := Array(1..nrchars, datatype=string):
 #The labels themselves are not unintereresting. Also serves as a check for the algorithm.
 #DMlbl;
 
-
 #For q>4, the matrix is too large to view in entirety. To show some rows, use the following.
 #for i from 1 to 15 do
 #    DM[i];
@@ -136,16 +137,16 @@ DMlbl := Array(1..nrchars, datatype=string):
 #end do;
 
 #To work with one weight at a time, the following will produce a single column of the decomposition matrix. 
-DMcolumn:= Matrix(1,nrchars):
-a:=2;
-b:=2;
-c:=2;
-weighttwister(a,b,c,nrBrchars,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl);
-for i from 1 to nrchars do
-    DMcolumn[1,i]:=DM[i,1]:
-end do:
-DMcolumn;
-DMlbl;
+#DMcolumn:= Matrix(1,nrchars):
+#a:=2;
+#b:=2;
+#c:=2;
+#weighttwister(a,b,c,nrBrchars,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl);
+#for i from 1 to nrchars do
+#    DMcolumn[1,i]:=DM[i,1]:
+#end do:
+#DMcolumn;
+#DMlbl;
 
 ##################################################################################################
 
@@ -168,10 +169,9 @@ DMlbl;
 #FileTools[Text][Close]("output4col.txt"):
 
 #This writes just one column worth of data at a time
-FileTools[Text][Open]("output8col222.txt"):
-for i from 1 to nrchars do
-    FileTools[Text][WriteString]("output8col222.txt", convert(DMcolumn[1,i],string)):
-    FileTools[Text][WriteString]("output8col222.txt",DMlbl[i]):
-end do:
-FileTools[Text][Close]("output8col222.txt"):
-
+#FileTools[Text][Open]("output8col222.txt"):
+#for i from 1 to nrchars do
+#    FileTools[Text][WriteString]("output8col222.txt", convert(DMcolumn[1,i],string)):
+#    FileTools[Text][WriteString]("output8col222.txt",DMlbl[i]):
+#end do:
+#FileTools[Text][Close]("output8col222.txt"):

@@ -1,0 +1,38 @@
+triplesbuilder:=proc(order)
+
+local s:=stack[new]();
+local s1:=stack[new]();
+
+for i from 1 to (order-2)/2-2 do 
+    for j from i+1 to (order-2)/2-1 do
+    	for k from j+1 to (order-2)/2 do
+	  stack[push](cat(convert(k,string),convert(j,string),convert(i,string)),s);
+	    end do;
+	end do;
+end do;
+
+
+for i from 1 to order/2-2 do 
+    for j from i+1 to order/2-1 do
+    	for k from j+1 to (order)/2 do
+	  stack[push](cat(convert(k,string),convert(j,string),convert(i,string)),s1);
+	    end do;
+	end do;
+end do;
+
+return s, s1;
+end proc;
+
+triplesindex:=proc(a,b,c,s, order)
+
+local idx;
+local triplestring:=cat(convert(a,string),convert(b,string),convert(c,string));
+for i from 1 to  order^3 do
+    if triplestring=s[i] then
+       idx:=i;
+     end if;
+ end do;
+
+return idx;
+
+end proc;

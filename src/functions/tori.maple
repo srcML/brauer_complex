@@ -1,6 +1,6 @@
 #this is a collection of ten functions, corresponding to tori. They should all accept order, a twisted weight from the weight twister function, the correct lookup tables, a column index, and the decomposition matrix
 
-tone := proc(a,b,c,column,order,DM::Matrix,t1_lt,lbl)
+tone := proc(a,b,c,column,order,DM::Matrix,t1_lt,lbl,t1triples)
 
 #manage the parameter sets via lookuptables here
 local a1 := 0:
@@ -83,7 +83,7 @@ elif b2=c2 then
      chi162(1,b2,a2,order,column,DM,'lbl');  # case (a,a,b)
 
 else 
-     chi251(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
+     chi251(1,a1,b1,c1,order,column,DM,'lbl',t1triples);     #case (a,b,c)
 
 
 #else some kind of error message throw catch?
@@ -513,7 +513,7 @@ end proc;
 
 #############################################################################################################
 
-teight := proc(a,b,c,column,order,DM::Matrix,lbl,t2_lt)
+teight := proc(a,b,c,column,order,DM::Matrix,lbl,t2_lt,t2triples)
 
 local a1 := 0:
 local b1 := 0:
@@ -591,7 +591,7 @@ elif a2=c2 then
      chi221(-1,b2,c2,order,column,DM,'lbl');
      chi222(1,b2,c2,order,column,DM,'lbl');  # case (a,a,b)
 else
-     chi321(1,a1,b1,c1,order,column,DM,'lbl');     #case (a,b,c)
+     chi321(1,a1,b1,c1,order,column,DM,'lbl',t2triples);     #case (a,b,c)
 end if;
 
 

@@ -310,9 +310,8 @@ chi242 := proc(coefficient,a,order,column,DM::Matrix, lbl,r2_lt)
       DM[row  , column] := DM[row , column] + coefficient;
       lbl[row] := cat("\$\\chi_{24,2}(",convert(a,string), ")\$");
 end proc;
-chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
-       local m:=(order-2)/2: 
-       local rowidx:=1/6*(c-1)*(c^2-3*n*c+c+3*(n-1)*n)+   n*(b-1)-b*(b-1)/2- ((c)*n-(c)*(c+1)/2 )  +    a-b;
+chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl, t1triples)
+       local rowidx:=triplesindex(a,b,c,t1triples,order);
        local row:= 5+3*order+4*order^2+ rowidx:
       DM[row , column] := DM[row , column] + coefficient;
       lbl[row] := cat("\$\\chi_{25,1}(",convert(a,string),",",convert(b,string),",",convert(c,string), ")\$");
@@ -359,9 +358,8 @@ chi311 := proc(coefficient,a,order,column,DM::Matrix, lbl,s1_lt)
        DM[row,column]:=DM[row,column]+coefficient;
        lbl[row] := cat("\$\\chi_{31,1}(",convert(a,string), ")\$");
 end proc;
-chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl)
-	local n:=order/2;
-       local rowidx:=1/6*(c-1)*(c^2-3*n*c+c+3*(n-1)*n)+   n*(b-1)-b*(b-1)/2- ((c)*n-(c)*(c+1)/2 )  +    a-b;
+chi321 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl,t2triples)
+       local rowidx:=triplesindex(a,b,c,t2triples,order);
 #  local rowidx:=1;
        local row:= 4+5*order+17/8*order^2+11/16*order^3+rowidx:
       DM[row , column] := DM[row , column] + coefficient;
