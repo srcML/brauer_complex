@@ -5,32 +5,51 @@ local triple_store;
 
 for i from 1 to order^3-1 do
     for j from 1 to order^3-1 do
-    	if X_q[j,3]>X_q[j+1,3] then 
-	   triple_store:=X_q[j];
-	   X_q[j]:=X_q[j+1];
-	   X_q[j+1]:=triple_store;
-	 end if;
-   end do;
-end do;
-
-for i from 1 to order^3-1 do
-    for j from 1 to order^3-1 do
-    	if X_q[j,2]>X_q[j+1,2] then 
-	   triple_store:=X_q[j];
-	   X_q[j]:=X_q[j+1];
-	   X_q[j+1]:=triple_store;
-	 end if;
-   end do;
-end do;
-for i from 1 to order^3-1 do
-    for j from 1 to order^3-1 do
     	if X_q[j,1]>X_q[j+1,1] then 
 	   triple_store:=X_q[j];
 	   X_q[j]:=X_q[j+1];
 	   X_q[j+1]:=triple_store;
+
+	   elif X_q[j,1]=X_q[j+1,1] then
+
+	    	if X_q[j,2]>X_q[j+1,2] then 
+		 triple_store:=X_q[j];
+	 	 X_q[j]:=X_q[j+1];
+	 	 X_q[j+1]:=triple_store;
+
+		 elif  X_q[j,2]=X_q[j+1,2] then
+
+		if X_q[j,3]>X_q[j+1,3] then 
+		   triple_store:=X_q[j];
+	   	   X_q[j]:=X_q[j+1];
+	   	   X_q[j+1]:=triple_store;
+	   	 end if;
 	 end if;
+      end if;
    end do;
 end do;
 
 
 end proc;
+
+
+
+#for i from 1 to order^3-1 do
+#   for j from 1 to order^3-1 do
+#    	if X_q[j,3]>X_q[j+1,3] then 
+#	   triple_store:=X_q[j];
+#	   X_q[j]:=X_q[j+1];
+#	   X_q[j+1]:=triple_store;
+#	 end if;
+#   end do;
+#end do;
+
+#for i from 1 to order^3-1 do
+#    for j from 1 to order^3-1 do
+#    	if X_q[j,2]>X_q[j+1,2] then 
+#	   triple_store:=X_q[j];
+#	   X_q[j]:=X_q[j+1];
+#	   X_q[j+1]:=triple_store;
+#	 end if;
+#   end do;
+#end do;

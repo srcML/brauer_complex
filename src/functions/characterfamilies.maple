@@ -312,7 +312,7 @@ chi242 := proc(coefficient,a,order,column,DM::Matrix, lbl,r2_lt)
 end proc;
 chi251 := proc(coefficient,a,b,c,order,column,DM::Matrix, lbl, t1triples)
        local rowidx:=triplesindex(a,b,c,t1triples,order);
-       local row:= 5+3*order+4*order^2+ rowidx:
+       local row:= 5+3*order+4*order^2 + rowidx:
       DM[row , column] := DM[row , column] + coefficient;
       lbl[row] := cat("\$\\chi_{25,1}(",convert(a,string),",",convert(b,string),",",convert(c,string), ")\$");
 end proc;
