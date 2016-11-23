@@ -19,7 +19,7 @@ $include <DMsort.maple> ;
 ##################################################################################################
 
 interface(rtablesize=infinity):
-que := 8;
+que := 32;
 
 ##################################################################################################
 
@@ -31,7 +31,6 @@ t2, t2_lt := calculate_t2(que):
 s2, s2_lt := calculate_s2(que):
 s1, s1_lt := calculate_s1(que):
 t1triples,t2triples:=triplesbuilder(que):
-s1;
 
 ##################################################################################################
 #Here is the primary main program sequence. It produces the Z-basis for the decomposition matrix.
@@ -39,7 +38,7 @@ s1;
 nrchars := (que+1) * (que^2+que+4);
 nrBrchars := que^3;
 
-DM := Matrix(nrchars, nrBrchars):
+#DM := Matrix(nrchars, nrBrchars):
 DMlbl := Array(1..nrchars, datatype=string):
 
 #X_q := calculate_X_q(que):
@@ -144,16 +143,13 @@ DMlbl := Array(1..nrchars, datatype=string):
 ##################################################################################################
 
 #To work with one weight at a time, the following will produce a single column of the decomposition matrix. 
-#DMcolumn:= Matrix(1,nrchars):
-#a:=14;
-#b:=7;
-#c:=0;
-#weighttwister(a,b,c,nrBrchars,que,DM,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples);
-#for i from 1 to nrchars do
-#    DMcolumn[1,i]:=DM[i,1]:
-#end do:
-#DMcolumn;
-#DMlbl;
+DMcolumn:= Matrix(nrchars,1):
+a:=31;
+b:=1;
+c:=0;
+weighttwister(a,b,c,nrBrchars,que,DMcolumn,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples);
+DMcolumn;
+DMlbl;
 
 ##################################################################################################
 
@@ -178,10 +174,10 @@ DMlbl := Array(1..nrchars, datatype=string):
 ##################################################################################################
 
 #This writes just one column worth of data at a time
-#FileTools[Text][Open]("output8col1470.txt"):
-#for i from 1 to nrchars do
-#    FileTools[Text][WriteString]("output8col1470.txt", convert(DMcolumn[1,i],string)):
-#    FileTools[Text][WriteString]("output8col1470.txt",DMlbl[i]):
-#end do:
-#FileTools[Text][Close]("output8col1470.txt"):
+FileTools[Text][Open]("output32col3110.txt"):
+for i from 1 to nrchars do
+    FileTools[Text][WriteString]("output32col3110.txt", convert(DMcolumn[i,1],string)):
+    FileTools[Text][WriteString]("output32col3110.txt",DMlbl[i]):
+end do:
+FileTools[Text][Close]("output32col3110.txt"):
 
