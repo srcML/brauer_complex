@@ -19,7 +19,7 @@ $include <DMsort.maple> ;
 ##################################################################################################
 
 interface(rtablesize=infinity):
-que := 8;
+que := 4;
 
 ##################################################################################################
 
@@ -38,11 +38,11 @@ t1triples,t2triples:=triplesbuilder(que):
 nrchars := (que+1) * (que^2+que+4);
 nrBrchars := que^3;
 
-DM := Matrix(nrchars, nrBrchars):
-DMlbl := Array(1..nrchars, datatype=string):
+#DM := Matrix(nrchars, nrBrchars):
+#DMlbl := Array(1..nrchars, datatype=string):
 
-#X_q := calculate_X_q(que):
-#X_qsort(X_q,que):
+X_q := calculate_X_q(que):
+X_qsort(X_q,que):
 #bigiterator(que,DM,X_q,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples):
 #stabilizer(que,X_q,DM):
 
@@ -157,9 +157,9 @@ DMlbl := Array(1..nrchars, datatype=string):
 ##################################################################################################
 
 #For the column headers, if you wish to compile as a .tex file
-#DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
-#writeto(`Lambdalbls16.txt`);
-#DMLambdalbl;
+DMLambdalbl, DMPhilbl := calculatelbls(X_q,que):
+writeto(`Philbls4.txt`);
+DMPhilbl;
 
 ##################################################################################################
 #The following writes the matrix in .tex format for a table

@@ -26,7 +26,7 @@ for i from 1 to order^3 do
 
     ith_string := cat("\$\\Phi(", convert(a,string),",",convert(b,string),",",convert(c,string),")\$&" );
 
-    DMPlbl[order^3-i+1] := ith_string:
+    DMPlbl[i] := ith_string:
 
 
 end do;
