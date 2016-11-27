@@ -19,7 +19,7 @@ $include <DMsort.maple> ;
 ##################################################################################################
 
 interface(rtablesize=infinity):
-que := 32;
+que := 8;
 
 ##################################################################################################
 
@@ -144,8 +144,8 @@ DMlbl := Array(1..nrchars, datatype=string):
 
 #To work with one weight at a time, the following will produce a single column of the decomposition matrix. 
 DMcolumn:= Matrix(nrchars,1):
-a:=31;
-b:=1;
+a:=12;
+b:=7;
 c:=0;
 weighttwister(a,b,c,nrBrchars,que,DMcolumn,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples);
 DMcolumn;
@@ -174,10 +174,10 @@ DMlbl;
 ##################################################################################################
 
 #This writes just one column worth of data at a time
-FileTools[Text][Open]("output32col3110.txt"):
+FileTools[Text][Open]("output8col1270x.txt"):
 for i from 1 to nrchars do
-    FileTools[Text][WriteString]("output32col3110.txt", convert(DMcolumn[i,1],string)):
-    FileTools[Text][WriteString]("output32col3110.txt",DMlbl[i]):
+    FileTools[Text][WriteString]("output8col1270x.txt", convert(DMcolumn[i,1],string)):
+    FileTools[Text][WriteString]("output8col1270x.txt",DMlbl[i]):
 end do:
-FileTools[Text][Close]("output32col3110.txt"):
+FileTools[Text][Close]("output8col1270x.txt"):
 

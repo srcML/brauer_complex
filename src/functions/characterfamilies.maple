@@ -235,7 +235,7 @@ chi191 := proc(coefficient,a,order,column,DM::Matrix, lbl,r1_lt)
        local a_row:= r1_lt[1,a]:
        local row:=5+15/2*order+5/4*order^2 + a_row;
       DM[row , column] := DM[row , column] + coefficient;
-       lbl[row] := cat("\$\\chi_{19,2}(",convert(a,string), ")\$");
+       lbl[row] := cat("\$\\chi_{19,1}(",convert(a,string), ")\$");
 end proc;
 chi192 := proc(coefficient,a,order,column,DM::Matrix, lbl,r1_lt)
        local a_row:= r1_lt[1,a]:
