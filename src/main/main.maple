@@ -32,6 +32,7 @@ s2, s2_lt := calculate_s2(que):
 s1, s1_lt := calculate_s1(que):
 t1triples,t2triples:=triplesbuilder(que):
 
+r1;
 ##################################################################################################
 #Here is the primary main program sequence. It produces the Z-basis for the decomposition matrix.
 
@@ -39,7 +40,7 @@ nrchars := (que+1) * (que^2+que+4);
 nrBrchars := que^3;
 
 #DM := Matrix(nrchars, nrBrchars):
-DMlbl := Array(1..nrchars, datatype=string):
+#DMlbl := Array(1..nrchars, datatype=string):
 
 #X_q := calculate_X_q(que):
 #X_qsort(X_q,que):
@@ -143,13 +144,13 @@ DMlbl := Array(1..nrchars, datatype=string):
 ##################################################################################################
 
 #To work with one weight at a time, the following will produce a single column of the decomposition matrix. 
-DMcolumn:= Matrix(nrchars,1):
-a:=12;
-b:=7;
-c:=0;
-weighttwister(a,b,c,nrBrchars,que,DMcolumn,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples);
-DMcolumn;
-DMlbl;
+#DMcolumn:= Matrix(nrchars,1):
+#a:=12;
+#b:=7;
+#c:=0;
+#weighttwister(a,b,c,nrBrchars,que,DMcolumn,t1_lt,t2_lt,r1_lt,r2_lt,s1_lt,s2_lt,DMlbl,t1triples,t2triples);
+#DMcolumn;
+#DMlbl;
 
 ##################################################################################################
 
@@ -174,10 +175,10 @@ DMlbl;
 ##################################################################################################
 
 #This writes just one column worth of data at a time
-FileTools[Text][Open]("output8col1270x.txt"):
-for i from 1 to nrchars do
-    FileTools[Text][WriteString]("output8col1270x.txt", convert(DMcolumn[i,1],string)):
-    FileTools[Text][WriteString]("output8col1270x.txt",DMlbl[i]):
-end do:
-FileTools[Text][Close]("output8col1270x.txt"):
+#FileTools[Text][Open]("output8col1270x.txt"):
+#for i from 1 to nrchars do
+#    FileTools[Text][WriteString]("output8col1270x.txt", convert(DMcolumn[i,1],string)):
+#    FileTools[Text][WriteString]("output8col1270x.txt",DMlbl[i]):
+#end do:
+#FileTools[Text][Close]("output8col1270x.txt"):
 
